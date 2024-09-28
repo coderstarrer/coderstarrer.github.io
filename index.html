@@ -3,26 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PlanckBot - Home</title>
     <link href="styles.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>PlanckBot - Home</title>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100 text-gray-800">
     <header class="bg-blue-600 text-white p-4">
-        <h1 class="text-2xl font-bold">Meet PlanckBot</h1>
-        <p>Your friendly Discord companion!</p>
+        <h1 class="text-3xl font-bold text-center">Welcome to PlanckBot</h1>
+        <nav class="flex justify-center space-x-4 mt-2">
+            <a href="index.html" class="hover:underline">Home</a>
+            <a href="about.html" class="hover:underline">About</a>
+            <a href="features.html" class="hover:underline">Features</a>
+            <a href="termsofservice.html" class="hover:underline">Terms of Service</a>
+            <a href="license.html" class="hover:underline">License</a>
+        </nav>
     </header>
-    <main class="p-4">
-        <section>
-            <h2 class="text-xl font-semibold">Features</h2>
-            <ul class="list-disc pl-5">
-                <li>Smart profanity filter (almost 5000 words!)</li>
-                <li>Random music guessing game</li>
-                <li>Easy moderation tools</li>
-                <li>Seamless AI integration</li>
-            </ul>
-        </section>
+
+    <main class="container mx-auto my-10 p-5 bg-white rounded shadow-md">
+        <h2 class="text-2xl font-semibold mb-5">Meet PlanckBot</h2>
+        <p class="mb-5">Your friendly Discord companion! Whether you're enjoying a chill vibe with its smart profanity filter (almost 5000 words!) or having fun with a random music guessing game, PlanckBot has you covered.</p>
+        <p>It's not just about fun, though—PlanckBot helps keep your server safe and running smoothly with easy moderation tools and seamless AI integration!</p>
     </main>
-    <footer class="bg-gray-700 text-white p-4">
+
+    <footer class="bg-gray-200 text-center p-4">
         <p>&copy; 2024 PlanckBot. All rights reserved.</p>
     </footer>
 </body>
