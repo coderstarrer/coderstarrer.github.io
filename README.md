@@ -1,11 +1,19 @@
-# coderstarrer.github.io
+# PlanckBot for Discord
 
-coderstarrer.github.io is the OFFICIAL website for the Planck-Bot for Discord, do NOT trust any other website claiming to be me
+**Welcome to the official website of PlanckBot for Discord!**  
+Do NOT trust any other website claiming to be affiliated with PlanckBot.
 
-Features are being added every day
+## Features
 
-Prerequisites:
-@discordjs/voice": "^0.17.0",
+- Features are being added every day to enhance your experience!
+
+## Prerequisites
+
+To get started with PlanckBot, make sure you have the following dependencies in your project:
+
+```json
+{
+    "@discordjs/voice": "^0.17.0",
     "axios": "^1.7.7",
     "discord.js": "^14.16.2",
     "dotenv": "^16.4.5",
@@ -22,3 +30,15 @@ Prerequisites:
     "profane-words": "^1.5.11",
     "swearify": "^1.0.2",
     "ytdl-core": "^4.11.5"
+}
+
+## 1. Getting Started
+
+
+Clone the repository:
+
+git clone https://github.com/coderstarrer/coderstarrer.github.io.git
+cd coderstarrer.github.io
+
+## 2. Configure dependencies
+npm install
