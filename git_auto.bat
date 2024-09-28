@@ -30,6 +30,3 @@ echo Git automation script completed successfully!
 echo Here are the latest commits:
 git log --oneline -5
 
-echo.
-echo Press any key to exit...
-pause >nul
