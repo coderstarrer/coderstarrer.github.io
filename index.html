@@ -6,9 +6,28 @@
     <link href="styles.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>PlanckBot - Home</title>
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+        .slider {
+            display: flex;
+            transition: transform 1s ease; 
+            width: 100vw;
+        }
+        .slide {
+            min-width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column; /* Ensure vertical stacking */
+            justify-content: center;
+            align-items: center;
+            background: white; /* Ensuring no gray background */
+        }
+    </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
-    <header class="bg-blue-600 text-white p-6 shadow-lg">
+    <header class="bg-blue-600 text-white p-6">
         <h1 class="text-5xl font-extrabold text-center">Welcome to PlanckBot</h1>
         <nav class="flex justify-center space-x-8 mt-3">
             <a href="index.html" class="hover:underline hover:text-blue-300 transition">Home</a>
@@ -19,14 +38,88 @@
         </nav>
     </header>
 
-    <main class="container mx-auto my-10 p-8 bg-white rounded-lg shadow-md">
-        <h2 class="text-4xl font-semibold mb-5">Meet PlanckBot</h2>
-        <p class="mb-5 text-lg">Your friendly Discord companion! Whether you're enjoying a chill vibe with its smart profanity filter (almost 5000 words!) or having fun with a random music guessing game, PlanckBot has you covered.</p>
-        <p class="text-lg">It's not just about fun, though—PlanckBot helps keep your server safe and running smoothly with easy moderation tools and seamless AI integration!</p>
+    <main class="slider" id="slider">
+        <div class="slide">
+            <h2 class="text-4xl font-semibold">Meet PlanckBot</h2>
+            <p class="mt-4">Your friendly Discord companion!</p> <!-- Added margin-top here -->
+        </div>
+        <div class="slide">
+            <h2 class="text-4xl font-semibold">Key Features</h2>
+            <ul class="list-disc list-inside mt-4"> <!-- Added margin-top here -->
+                <li>Smart Profanity Filter</li>
+                <li>Random Music Guessing Game</li>
+            </ul>
+        </div>
     </main>
 
     <footer class="bg-gray-200 text-center p-4">
         <p>&copy; 2024 PlanckBot. All rights reserved.</p>
     </footer>
+
+    <script>
+        const slider = document.getElementById('slider');
+        let currentIndex = 0;
+
+        function updateSlider() {
+            slider.style.transform = `translateX(-${currentIndex * 100}vw)`;
+        }
+
+        // Mouse and touch events for dragging
+        let isDragging = false;
+        let startX = 0;
+
+        slider.addEventListener('mousedown', (event) => {
+            isDragging = true;
+            startX = event.clientX;
+        });
+
+        window.addEventListener('mousemove', (event) => {
+            if (!isDragging) return;
+            const dragAmount = event.clientX - startX;
+
+            // Move the slider
+            slider.style.transform = `translateX(${dragAmount - currentIndex * 100}vw)`;
+        });
+
+        window.addEventListener('mouseup', (event) => {
+            if (!isDragging) return;
+            isDragging = false;
+
+            const dragAmount = event.clientX - startX;
+            if (dragAmount > 100 && currentIndex > 0) {
+                currentIndex--; // Go to previous slide
+            } else if (dragAmount < -100 && currentIndex < slider.children.length - 1) {
+                currentIndex++; // Go to next slide
+            }
+            updateSlider();
+        });
+
+        // Touch events for mobile
+        slider.addEventListener('touchstart', (event) => {
+            isDragging = true;
+            startX = event.touches[0].clientX;
+        });
+
+        slider.addEventListener('touchmove', (event) => {
+            if (!isDragging) return;
+            const dragAmount = event.touches[0].clientX - startX;
+
+            // Move the slider
+            slider.style.transform = `translateX(${dragAmount - currentIndex * 100}vw)`;
+        });
+
+        slider.addEventListener('touchend', (event) => {
+            if (!isDragging) return;
+            isDragging = false;
+
+            const dragAmount = event.changedTouches[0].clientX - startX;
+            if (dragAmount > 100 && currentIndex > 0) {
+                currentIndex--;
+            } else if (dragAmount < -100 && currentIndex < slider.children.length - 1) {
+                currentIndex++;
+            }
+            updateSlider();
+        });
+    </script>
 </body>
 </html>

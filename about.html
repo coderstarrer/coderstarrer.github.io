@@ -6,6 +6,38 @@
     <link href="styles.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>PlanckBot - About</title>
+    <style>
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 300px; /* Adjust height as needed */
+        }
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .navigation {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            gap: 10px;
+        }
+        .nav-button {
+            padding: 10px 15px;
+            background: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
     <header class="bg-blue-600 text-white p-6">
@@ -20,21 +52,46 @@
     </header>
 
     <main class="container mx-auto my-10 p-8 bg-white rounded-lg shadow-md">
-        <h2 class="text-3xl font-semibold mb-5">What is PlanckBot?</h2>
-        <h2 class="text-3xl font-semibold mb-5">PlanckBot: Your Ultimate Discord Companion</h2>
-
-PlanckBot was meticulously crafted to elevate your Discord experience, seamlessly blending powerful features with user-friendly tools. Developed by a team of passionate and dedicated developers, this bot strives to create a vibrant, safe, and engaging environment for users of all backgrounds.
-
-At the heart of PlanckBot's design lies its commitment to enhancing community interactions. With a robust profanity filter that encompasses nearly 5000 words, it ensures that conversations remain respectful and enjoyable. Users can engage freely, knowing that PlanckBot is there to keep the chat clean without stifling fun.
-
-Beyond moderation, PlanckBot introduces exciting elements to your server. Its random music guessing game allows users to challenge each other in a fun and entertaining way, fostering camaraderie and friendly
-125
-Words
-</p>
+        <div class="slider-container">
+            <div class="slider" id="slider">
+                <div class="slide">
+                    <h2 class="text-3xl font-semibold mb-5">What is PlanckBot?</h2>
+                    <p class="text-lg">PlanckBot was meticulously crafted to elevate your Discord experience, seamlessly blending powerful features with user-friendly tools.</p>
+                </div>
+                <div class="slide">
+                    <h2 class="text-3xl font-semibold mb-5">Why PlanckBot?</h2>
+                    <p class="text-lg">At the heart of PlanckBot's design lies its commitment to enhancing community interactions.</p>
+                </div>
+            </div>
+            <div class="navigation">
+                <button class="nav-button" onclick="prevSlide()">Previous</button>
+                <button class="nav-button" onclick="nextSlide()">Next</button>
+            </div>
+        </div>
     </main>
 
     <footer class="bg-gray-200 text-center p-4">
         <p>&copy; 2024 PlanckBot. All rights reserved.</p>
     </footer>
+
+    <script>
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+            currentIndex = (index + totalSlides) % totalSlides; // Loop through slides
+            const slider = document.getElementById('slider');
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+    </script>
 </body>
 </html>

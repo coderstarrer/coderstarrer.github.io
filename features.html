@@ -6,33 +6,92 @@
     <link href="styles.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>PlanckBot - Features</title>
+    <style>
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 300px; /* Adjust height as needed */
+        }
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .navigation {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            gap: 10px;
+        }
+        .nav-button {
+            padding: 10px 15px;
+            background: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
-    <header class="bg-blue-600 text-white p-6 shadow-lg">
-        <h1 class="text-5xl font-bold text-center">Features of PlanckBot</h1>
+    <header class="bg-blue-600 text-white p-6">
+        <h1 class="text-4xl font-bold text-center">Features of PlanckBot</h1>
         <nav class="flex justify-center space-x-8 mt-3">
-            <a href="index.html" class="hover:underline hover:text-blue-300 transition">Home</a>
-            <a href="about.html" class="hover:underline hover:text-blue-300 transition">About</a>
-            <a href="features.html" class="hover:underline hover:text-blue-300 transition">Features</a>
-            <a href="tos/termsOfService.html" class="hover:underline hover:text-blue-300 transition">Terms of Service</a>
-            <a href="license.html" class="hover:underline hover:text-blue-300 transition">License</a>
+            <a href="index.html" class="hover:underline">Home</a>
+            <a href="about.html" class="hover:underline">About</a>
+            <a href="features.html" class="hover:underline">Features</a>
+            <a href="tos/termsOfService.html" class="hover:underline">Terms of Service</a>
+            <a href="license.html" class="hover:underline">License</a>
         </nav>
     </header>
 
     <main class="container mx-auto my-10 p-8 bg-white rounded-lg shadow-md">
-        <h2 class="text-4xl font-semibold mb-5">Our Key Features</h2>
-        <ul class="list-disc list-inside mb-5">
-            <li class="text-lg">Smart Profanity Filter</li>
-            <li class="text-lg">Random Music Guessing Game</li>
-            <li class="text-lg">Moderation Tools</li>
-            <li class="text-lg">Seamless AI Integration</li>
-            <li class="text-lg">User-Friendly Interface</li>
-        </ul>
-        <p class="text-lg">PlanckBot is designed to make your Discord experience enjoyable while ensuring a safe environment for all users.</p>
+        <div class="slider-container">
+            <div class="slider" id="slider">
+                <div class="slide">
+                    <h2 class="text-3xl font-semibold mb-5">Smart Profanity Filter</h2>
+                    <p class="text-lg">Almost 5000 words filtered seamlessly to maintain a safe community.</p>
+                </div>
+                <div class="slide">
+                    <h2 class="text-3xl font-semibold mb-5">Music Guessing Game</h2>
+                    <p class="text-lg">Engage with your friends in a fun music guessing game powered by YouTube!</p>
+                </div>
+            </div>
+            <div class="navigation">
+                <button class="nav-button" onclick="prevSlide()">Previous</button>
+                <button class="nav-button" onclick="nextSlide()">Next</button>
+            </div>
+        </div>
     </main>
 
     <footer class="bg-gray-200 text-center p-4">
         <p>&copy; 2024 PlanckBot. All rights reserved.</p>
     </footer>
+
+    <script>
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+            currentIndex = (index + totalSlides) % totalSlides; // Loop through slides
+            const slider = document.getElementById('slider');
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+    </script>
 </body>
 </html>
