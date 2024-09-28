@@ -19,25 +19,25 @@ body {
     padding: 20px;
     background: #ffffff;
     border-radius: 15px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
 }
 
 /* Header Styles */
 header {
     text-align: center;
-    padding: 30px;
+    padding: 40px;
     background: #4e54c8;
     color: white;
     border-radius: 15px 15px 0 0;
-    animation: fadeIn 0.5s ease-in-out;
+    animation: fadeIn 1s ease-in-out;
 }
 
 header h1 {
-    font-size: 2.5em;
+    font-size: 2.8em;
     letter-spacing: 1px;
     text-transform: uppercase;
     margin-bottom: 15px;
-    animation: slideIn 0.7s ease-in-out;
+    animation: slideIn 1s ease-in-out;
 }
 
 header nav {
@@ -47,16 +47,15 @@ header nav {
 header nav a {
     color: white;
     text-decoration: none;
-    margin: 0 20px;
+    margin: 0 25px;
     font-size: 1.2em;
-    transition: color 0.4s, transform 0.4s;
+    transition: color 0.3s ease, transform 0.3s ease;
     position: relative;
 }
 
 header nav a:hover {
     color: #8f94fb;
     transform: scale(1.1);
-    animation: bounce 0.5s ease-in-out;
 }
 
 header nav a::after {
@@ -65,7 +64,7 @@ header nav a::after {
     height: 3px;
     background: #8f94fb;
     width: 0;
-    transition: width 0.4s;
+    transition: width 0.4s ease;
     position: absolute;
     bottom: -6px;
     left: 50%;
@@ -78,15 +77,15 @@ header nav a:hover::after {
 
 /* Main Content Styles */
 main {
-    padding: 20px;
+    padding: 30px;
 }
 
 h2 {
-    font-size: 2em;
+    font-size: 2.5em;
     color: #4e54c8;
     margin-top: 20px;
     position: relative;
-    animation: fadeInUp 0.7s ease-in-out;
+    animation: fadeInUp 1s ease-in-out;
 }
 
 h2::after {
@@ -102,20 +101,20 @@ h2::after {
 p {
     font-size: 1.1em;
     color: #555;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     line-height: 1.8;
-    transition: color 0.4s, transform 0.4s;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 p:hover {
     color: #4e54c8;
-    transform: translateY(-3px);
+    transform: translateY(-2px);
 }
 
 /* Button Styles */
 .button {
     display: inline-block;
-    padding: 14px 22px;
+    padding: 16px 24px;
     border-radius: 30px;
     background: linear-gradient(90deg, #4e54c8, #8f94fb);
     color: white;
@@ -123,25 +122,25 @@ p:hover {
     font-size: 1em;
     text-align: center;
     transition: all 0.4s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 .button:hover {
     background: linear-gradient(90deg, #8f94fb, #4e54c8);
     transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-    animation: shake 0.4s ease-in-out;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    animation: shake 0.5s ease-in-out;
 }
 
 /* Card Styles */
 .card {
     background: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     margin: 20px 0;
     padding: 20px;
-    transition: transform 0.4s, box-shadow 0.4s;
-    animation: fadeIn 0.5s ease-in-out;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    animation: fadeIn 1s ease-in-out;
 }
 
 .card:hover {
@@ -157,7 +156,7 @@ ul {
 
 ul li {
     margin-bottom: 10px;
-    transition: transform 0.4s;
+    transition: transform 0.4s ease;
 }
 
 ul li:hover {
@@ -173,7 +172,7 @@ table {
 
 table, th, td {
     border: 1px solid #ddd;
-    transition: background 0.4s;
+    transition: background 0.4s ease;
 }
 
 th, td {
@@ -214,7 +213,6 @@ tr:hover {
 .pagination a:hover {
     background: linear-gradient(90deg, #8f94fb, #4e54c8);
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
 .pagination a.active {
@@ -231,7 +229,7 @@ footer {
     color: white;
     border-radius: 0 0 15px 15px;
     margin-top: 20px;
-    animation: fadeIn 0.5s ease-in-out;
+    animation: fadeIn 1s ease-in-out;
 }
 
 footer p {
@@ -245,7 +243,7 @@ footer p {
     }
 
     header h1 {
-        font-size: 2em;
+        font-size: 2.2em;
     }
 
     header nav a {
@@ -280,7 +278,7 @@ section {
     background: rgba(255, 255, 255, 0.9);
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 0.5s ease-in-out;
+    animation: fadeIn 1s ease-in-out;
 }
 
 blockquote {
@@ -289,7 +287,7 @@ blockquote {
     margin: 10px 0;
     color: #555;
     font-style: italic;
-    transition: transform 0.4s;
+    transition: transform 0.4s ease;
 }
 
 blockquote:hover {
@@ -300,7 +298,7 @@ blockquote:hover {
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 5px;
-    animation: fadeIn 0.5s ease-in-out;
+    animation: fadeIn 1s ease-in-out;
 }
 
 .notification {
@@ -344,33 +342,119 @@ blockquote:hover {
     }
 }
 
+
 @keyframes slideIn {
     from {
         transform: translateX(-100%);
-        opacity: 0;
     }
     to {
         transform: translateX(0);
-        opacity: 1;
     }
 }
 
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-10px);
-    }
-    60% {
-        transform: translateY(-5px);
-    }
-}
 
 @keyframes shake {
-    0% { transform: translate(0); }
-    25% { transform: translate(-3px); }
-    50% { transform: translate(3px); }
-    75% { transform: translate(-3px); }
-    100% { transform: translate(0); }
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-5px);
+    }
 }
+
+/* Additional Button Styles */
+.button.secondary {
+    background: #f0f0f0;
+    color: #333;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.button.secondary:hover {
+    background: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+/* Form Styles */
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px 0;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border-color: #4e54c8;
+    outline: none;
+}
+
+button[type="submit"] {
+    background: #4e54c8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background: #8f94fb;
+}
+
+/* Custom Checkbox Styles */
+.checkbox {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.checkbox input {
+    display: none;
+}
+
+.checkbox .checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #4e54c8;
+    border-radius: 4px;
+    display: inline-block;
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+.checkbox input:checked + .checkmark {
+    background: #4e54c8;
+}
+
+.checkbox .checkmark:after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 1px;
+    width: 8px;
+    height: 16px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.checkbox input:checked + .checkmark:after {
+    opacity: 1;
+}
+
+/* End of CSS */
+
