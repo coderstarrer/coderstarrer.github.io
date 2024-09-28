@@ -27,10 +27,5 @@ REM Show the latest log of commits
 echo Showing the latest commits...
 git log --oneline -5
 
-REM Optionally, create a new branch (uncomment the next two lines if needed)
-REM echo Enter the new branch name:
-REM set /p branchName="Branch Name: "
-REM git checkout -b "%branchName%" || exit /b
-
 echo Git automation script completed successfully!
 pause
