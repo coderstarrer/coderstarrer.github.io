@@ -1,11 +1,6 @@
 @echo off
 cd /d "C:/Users/BHANU/Downloads/coderstarrer.github.io-main"
 
-REM Check GIT Status
-git status
-
-REM Pull latest changes
-git pull origin main || exit /b
 
 REM Add all changes
 git add . || exit /b
