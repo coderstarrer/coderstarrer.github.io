@@ -12,17 +12,17 @@
         }
         .slider {
             display: flex;
-            transition: transform 1s ease; 
+            transition: transform 0.5s ease; /* Smooth transition */
             width: 100vw;
         }
         .slide {
             min-width: 100vw;
             height: 100vh;
             display: flex;
-            flex-direction: column; /* Ensure vertical stacking */
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: white; /* Ensuring no gray background */
+            background: white; /* No gray background */
         }
     </style>
 </head>
@@ -41,11 +41,11 @@
     <main class="slider" id="slider">
         <div class="slide">
             <h2 class="text-4xl font-semibold">Meet PlanckBot</h2>
-            <p class="mt-4">Your friendly Discord companion!</p> <!-- Added margin-top here -->
+            <p class="mt-4">Your friendly Discord companion!</p>
         </div>
         <div class="slide">
             <h2 class="text-4xl font-semibold">Key Features</h2>
-            <ul class="list-disc list-inside mt-4"> <!-- Added margin-top here -->
+            <ul class="list-disc list-inside mt-4">
                 <li>Smart Profanity Filter</li>
                 <li>Random Music Guessing Game</li>
                 <li>Moderation Commands</li>
@@ -61,64 +61,62 @@
     <script>
         const slider = document.getElementById('slider');
         let currentIndex = 0;
+        let isDragging = false;
+        let startX = 0;
+        let dragStartX = 0;
 
         function updateSlider() {
             slider.style.transform = `translateX(-${currentIndex * 100}vw)`;
         }
 
-        // Mouse and touch events for dragging
-        let isDragging = false;
-        let startX = 0;
-
         slider.addEventListener('mousedown', (event) => {
             isDragging = true;
             startX = event.clientX;
+            dragStartX = startX;
         });
 
         window.addEventListener('mousemove', (event) => {
             if (!isDragging) return;
-            const dragAmount = event.clientX - startX;
-
-            // Move the slider
+            const dragAmount = event.clientX - dragStartX;
             slider.style.transform = `translateX(${dragAmount - currentIndex * 100}vw)`;
         });
 
         window.addEventListener('mouseup', (event) => {
             if (!isDragging) return;
             isDragging = false;
-
             const dragAmount = event.clientX - startX;
-            if (dragAmount > 100 && currentIndex > 0) {
-                currentIndex--; // Go to previous slide
-            } else if (dragAmount < -100 && currentIndex < slider.children.length - 1) {
-                currentIndex++; // Go to next slide
+            
+            // Determine direction based on drag amount
+            if (dragAmount > 50 && currentIndex > 0) {
+                currentIndex--; // Swipe left
+            } else if (dragAmount < -50 && currentIndex < slider.children.length - 1) {
+                currentIndex++; // Swipe right
             }
             updateSlider();
         });
 
-        // Touch events for mobile
         slider.addEventListener('touchstart', (event) => {
             isDragging = true;
             startX = event.touches[0].clientX;
+            dragStartX = startX;
         });
 
         slider.addEventListener('touchmove', (event) => {
             if (!isDragging) return;
-            const dragAmount = event.touches[0].clientX - startX;
-
-            // Move the slider
+            const dragAmount = event.touches[0].clientX - dragStartX;
             slider.style.transform = `translateX(${dragAmount - currentIndex * 100}vw)`;
         });
 
         slider.addEventListener('touchend', (event) => {
             if (!isDragging) return;
             isDragging = false;
-
             const dragAmount = event.changedTouches[0].clientX - startX;
-            if (dragAmount > 100 && currentIndex > 0) {
-                currentIndex--;
-            } else if (dragAmount < -100 && currentIndex < slider.children.length - 1) {
-                currentIndex++;
+
+            // Determine direction based on drag amount
+            if (dragAmount > 50 && currentIndex > 0) {
+                currentIndex--; // Swipe left
+            } else if (dragAmount < -50 && currentIndex < slider.children.length - 1) {
+                currentIndex++; // Swipe right
             }
             updateSlider();
         });
