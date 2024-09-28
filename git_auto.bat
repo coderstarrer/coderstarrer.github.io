@@ -1,31 +1,10 @@
 @echo off
-cd /d "C:/Users/BHANU/Downloads/coderstarrer.github.io-main"
+cd /d "C:/Users/BHANU/Downloads/coderstarrer.github.io-main" || exit /b
 
-REM Check GIT Status
-git status
-
-REM Check for untracked files
-echo Checking for untracked files...
-git ls-files --others --exclude-standard
-
-REM Pull latest changes
 git pull origin main || exit /b
 
-REM Add all changes
 git add . || exit /b
 
-REM Commit changes with a message
-git commit -m "Git Commit Change Automation with Git AUTO Bot" || (
-    echo No changes to commit.
-    exit /b
-)
-
-REM Push changes to remote
+git commit -m "Git Commit Change Automation with Git AUTO Bot" || exit /b
+fg
 git push origin main || exit /b
-
-REM Show the latest log of commits
-echo Showing the latest commits...
-git log --oneline -5
-
-echo Git automation script completed successfully!
-pause
