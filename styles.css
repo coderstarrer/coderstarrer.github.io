@@ -13,3 +13,32 @@ nav a {
 footer {
     border-top: 1px solid #ddd;
 }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    background-color: #f0f0f0; /* Light background */
+    color: #007bff; /* Link color */
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s; /* Transition effects */
+}
+
+.pagination a:hover {
+    background-color: #007bff; /* Darker background on hover */
+    color: #fff; /* White text on hover */
+}
+
+.pagination a.active {
+    font-weight: bold;
+    background-color: #007bff; /* Active link background */
+    color: #fff; /* Active link text color */
+}
