@@ -6,5 +6,5 @@ git pull origin main || exit /b
 git add . || exit /b
 
 git commit -m "Git Commit Change Automation with Git AUTO Bot" || exit /b
-fg
+
 git push origin main || exit /b
