@@ -5,7 +5,7 @@ REM Change to the specified directory
 set "directoryPath=C:\Users\BHANU\Downloads\coderstarrer.github.io-main"
 
 cd /d "%directoryPath%" || (
-    echo Error: Failed to change directory to %directoryPath%.
+    echo Error: The specified directory does not exist: %directoryPath%.
     exit /b 1
 )
 
@@ -15,7 +15,7 @@ set /p fileToDelete="Enter the name of the file to delete (leave blank to skip):
 REM Check if the user provided a filename for deletion
 if not "!fileToDelete!"=="" (
     if exist "!fileToDelete!" (
-        del "!fileToDelete!"
+        del /f "!fileToDelete!"
         echo Deleted file: !fileToDelete!
     ) else (
         echo Error: File "!fileToDelete!" does not exist.
@@ -32,7 +32,10 @@ if not "!newFileName!"=="" (
     REM Open a loop to allow the user to enter multiple lines of content
     echo Enter content for the file (type 'END' on a new line to finish):
     
-    set "fileContent="
+    REM Create a temporary file to hold content
+    set "tempFileName=tempFile.txt"
+    echo. > "!tempFileName!"  REM Create the temporary file
+    
     :inputLoop
     set /p lineContent="> "
     
@@ -41,13 +44,13 @@ if not "!newFileName!"=="" (
         goto saveFile
     )
 
-    REM Append the line to the file content
-    set "fileContent=!fileContent!!lineContent!^&echo."
+    REM Append the line to the temporary file
+    echo !lineContent! >> "!tempFileName!"
     goto inputLoop
 
     :saveFile
-    REM Save the file content to the specified file
-    echo !fileContent! > "!newFileName!"
+    REM Move the temporary file to the new filename
+    move /Y "!tempFileName!" "!newFileName!" >nul
     echo Successfully created and saved the file: !newFileName!
 )
 
