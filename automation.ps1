@@ -9,45 +9,52 @@ if (-Not (Test-Path $directoryPath)) {
 
 Set-Location $directoryPath
 
-# Prompt for the file to delete
-$fileToDelete = Read-Host "Enter the name of the file to delete (leave blank to skip)"
+# Prompt for the file or folder to delete
+$itemToDelete = Read-Host "Enter the name of the file or folder to delete (leave blank to skip)"
 
-# Check if the user provided a filename for deletion
-if (-Not [string]::IsNullOrEmpty($fileToDelete)) {
-    if (Test-Path $fileToDelete) {
-        Remove-Item $fileToDelete -Force
-        Write-Host "Deleted file: $fileToDelete" -ForegroundColor Green
+# Check if the user provided a filename or folder for deletion
+if (-Not [string]::IsNullOrEmpty($itemToDelete)) {
+    if (Test-Path $itemToDelete) {
+        Remove-Item $itemToDelete -Recurse -Force
+        Write-Host "Deleted: $itemToDelete" -ForegroundColor Green
     } else {
-        Write-Host "Error: File '$fileToDelete' does not exist." -ForegroundColor Red
+        Write-Host "Error: Item '$itemToDelete' does not exist." -ForegroundColor Red
     }
 }
 
-# Prompt for the new file name to create
-$newFileName = Read-Host "Enter the name of the new file to create (with extension, leave blank to skip)"
+# Prompt for the new file name or folder to create
+$newItemName = Read-Host "Enter the name of the new file or folder to create (with extension or '/' for folders, leave blank to skip)"
 
-# Check if the user provided a filename for creation
-if (-Not [string]::IsNullOrEmpty($newFileName)) {
-    Write-Host "Successfully created the file: $newFileName"
+# Check if the user provided a filename or folder for creation
+if (-Not [string]::IsNullOrEmpty($newItemName)) {
+    if ($newItemName.EndsWith("/")) {
+        # Create a new folder
+        New-Item -ItemType Directory -Path $newItemName -Force
+        Write-Host "Successfully created the folder: $newItemName" -ForegroundColor Green
+    } else {
+        # Create a new file
+        Write-Host "Successfully created the file: $newItemName"
 
-    # Open a loop to allow the user to enter multiple lines of content
-    Write-Host "Enter content for the file (type 'END' on a new line to finish):"
-    
-    $fileContent = @()
-    while ($true) {
-        $lineContent = Read-Host "> "
+        # Open a loop to allow the user to enter multiple lines of content
+        Write-Host "Enter content for the file (type 'END' on a new line to finish):"
         
-        # Check for the termination condition
-        if ($lineContent -eq "END") {
-            break
+        $fileContent = @()
+        while ($true) {
+            $lineContent = Read-Host "> "
+            
+            # Check for the termination condition
+            if ($lineContent -eq "END") {
+                break
+            }
+
+            # Append the line to the file content
+            $fileContent += $lineContent
         }
 
-        # Append the line to the file content
-        $fileContent += $lineContent
+        # Save the file content to the specified file
+        $fileContent | Out-File -FilePath $newItemName -Encoding UTF8
+        Write-Host "Successfully created and saved the file: $newItemName" -ForegroundColor Green
     }
-
-    # Save the file content to the specified file
-    $fileContent | Out-File -FilePath $newFileName -Encoding UTF8
-    Write-Host "Successfully created and saved the file: $newFileName" -ForegroundColor Green
 }
 
 # Add all changes to the staging area
