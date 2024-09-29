@@ -10,6 +10,62 @@ if (-Not (Test-Path $directoryPath)) {
 Set-Location $directoryPath
 Write-Host "Current directory set to: $directoryPath" -ForegroundColor Green
 
+# Function to read user input with arrow key history
+function Read-HostWithHistory {
+    param (
+        [string]$prompt,
+        [string[]]$history = @()
+    )
+
+    $input = ""
+    $index = $history.Count
+
+    while ($true) {
+        # Clear the current line
+        [Console]::SetCursorPosition(0, [Console]::CursorTop)
+        Write-Host -NoNewLine "$prompt $input"
+
+        # Read the next key
+        $key = [Console]::ReadKey($true)
+
+        # Handle different key presses
+        switch ($key.Key) {
+            [ConsoleKey]::Enter {
+                # Exit on Enter
+                break
+            }
+            [ConsoleKey]::Backspace {
+                # Remove the last character
+                if ($input.Length -gt 0) {
+                    $input = $input.Substring(0, $input.Length - 1)
+                }
+            }
+            [ConsoleKey]::UpArrow {
+                # Move up in history
+                if ($index -gt 0) {
+                    $index--
+                    $input = $history[$index]
+                }
+            }
+            [ConsoleKey]::DownArrow {
+                # Move down in history
+                if ($index -lt $history.Count - 1) {
+                    $index++
+                    $input = $history[$index]
+                }
+            }
+            default {
+                # Add the character to the input
+                if ($key.KeyChar -ne [char]0) {
+                    $input += $key.KeyChar
+                }
+            }
+        }
+    }
+    Write-Host ""
+    return $input
+}
+
 # Prompt for the file or folder to delete
 $itemToDelete = Read-Host "Enter the name of the file or folder to delete (leave blank to skip)"
 Write-Host "User entered for deletion: '$itemToDelete'"
@@ -29,43 +85,49 @@ if (-Not [string]::IsNullOrEmpty($itemToDelete)) {
 }
 
 # Prompt for the new file name or folder to create
-$newItemName = Read-Host "Enter the name of the new file or folder to create (with extension or '/' for folders, leave blank to skip)"
+$createHistory = @()  # Store history for creation
+$newItemName = Read-HostWithHistory "Enter the name of the new file or folder to create (with extension or '/' for folders, leave blank to skip)" $createHistory
 Write-Host "User entered for creation: '$newItemName'"
 
 # Check if the user provided a filename or folder for creation
 if (-Not [string]::IsNullOrEmpty($newItemName)) {
-    $fullPathToCreate = Join-Path -Path $directoryPath -ChildPath $newItemName
-    Write-Host "Full path to create: '$fullPathToCreate'"
-
-    if ($newItemName.EndsWith("/")) {
-        # Create a new folder
-        New-Item -ItemType Directory -Path $fullPathToCreate -Force
-        Write-Host "Successfully created the folder: $fullPathToCreate" -ForegroundColor Green
+    # Check for invalid commands
+    if ($newItemName -match 'powershell -ExecutionPolicy ByPass -File') {
+        Write-Host "Error: Invalid file name. Commands are not allowed." -ForegroundColor Red
     } else {
-        # Check if the file already exists
-        if (-Not (Test-Path $fullPathToCreate)) {
-            # Open a loop to allow the user to enter multiple lines of content
-            Write-Host "Creating the file: $fullPathToCreate"
-            Write-Host "Enter content for the file (type 'END' on a new line to finish):"
-            
-            $fileContent = @()
-            while ($true) {
-                $lineContent = Read-Host "> "
+        $fullPathToCreate = Join-Path -Path $directoryPath -ChildPath $newItemName
+        Write-Host "Full path to create: '$fullPathToCreate'"
+
+        if ($newItemName.EndsWith("/")) {
+            # Create a new folder
+            New-Item -ItemType Directory -Path $fullPathToCreate -Force
+            Write-Host "Successfully created the folder: $fullPathToCreate" -ForegroundColor Green
+        } else {
+            # Check if the file already exists
+            if (-Not (Test-Path $fullPathToCreate)) {
+                # Open a loop to allow the user to enter multiple lines of content
+                Write-Host "Creating the file: $fullPathToCreate"
+                Write-Host "Enter content for the file (type 'END' on a new line to finish):"
                 
-                # Check for the termination condition
-                if ($lineContent -eq "END") {
-                    break
+                $fileContent = @()
+                while ($true) {
+                    $lineContent = Read-Host "> "
+                    
+                    # Check for the termination condition
+                    if ($lineContent -eq "END") {
+                        break
+                    }
+
+                    # Append the line to the file content
+                    $fileContent += $lineContent
                 }
 
-                # Append the line to the file content
-                $fileContent += $lineContent
+                # Save the file content to the specified file
+                $fileContent | Out-File -FilePath $fullPathToCreate -Encoding UTF8
+                Write-Host "Successfully created and saved the file: $fullPathToCreate" -ForegroundColor Green
+            } else {
+                Write-Host "Error: File '$fullPathToCreate' already exists." -ForegroundColor Red
             }
-
-            # Save the file content to the specified file
-            $fileContent | Out-File -FilePath $fullPathToCreate -Encoding UTF8
-            Write-Host "Successfully created and saved the file: $fullPathToCreate" -ForegroundColor Green
-        } else {
-            Write-Host "Error: File '$fullPathToCreate' already exists." -ForegroundColor Red
         }
     }
 }
@@ -99,3 +161,4 @@ if ($LASTEXITCODE -ne 0) {
 
 # Notify the user of successful completion
 Write-Host "Changes have been successfully committed and pushed!" -ForegroundColor Green
+en
