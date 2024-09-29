@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="styles.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <title>PlanckBot - About</title>
+    <title>Sarvamitra Vayama Sangam Gym - About</title>
     <style>
         body {
             overflow-x: hidden;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background: linear-gradient(to right, #4a90e2, #8e44ad); /* Gradient background */
+            background: #f0f4f8; /* Light background for a modern look */
+            font-family: Arial, sans-serif; /* Modern font */
         }
         .slider-container {
             flex: 1; /* Allows the slider to take up available space */
@@ -38,23 +39,19 @@
             transition: opacity 0.5s ease, transform 0.5s ease; /* Fade and scale effects */
             padding: 20px; /* Add padding for better text fitting */
             box-sizing: border-box; /* Include padding in width and height calculations */
+            background: #ffffff; /* Solid color for slides */
+            color: #333333; /* Dark text for better contrast */
+            border-radius: 10px; /* Rounded corners for modern look */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
         }
         .slide.active {
             opacity: 1;
             transform: scale(1);
         }
-        .slide.bg-gray-100 {
-            background: rgba(255, 255, 255, 0.9); /* Semi-transparent background for better contrast */
-            color: #1f2937; /* Darker text color for readability */
-        }
-        .slide.bg-blue-100 {
-            background: rgba(255, 255, 255, 0.9); /* Semi-transparent background for better contrast */
-            color: #1f2937; /* Darker text color for readability */
-        }
 
         nav a {
             position: relative;
-            color: white;
+            color: #4a90e2; /* Change link color for modern design */
             padding-bottom: 4px;
             transition: color 0.3s ease;
         }
@@ -70,7 +67,7 @@
             height: 2px;
             bottom: 0;
             left: 0;
-            background-color: #ffffff;
+            background-color: #4a90e2; /* Underline color */
             visibility: hidden;
             transform: scaleX(0);
             transition: all 0.3s ease-in-out;
@@ -83,18 +80,28 @@
         }
 
         footer {
-            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent footer */
-            color: #4b5563; /* Darker text color for contrast */
+            background: #888383; /* Solid color for footer */
+            color: #ffffff; /* White text for better contrast */
             text-align: center;
             padding: 1rem 0;
             width: 100%;
             margin-top: auto; /* Pushes footer to the bottom */
         }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem; /* Adjust font size for smaller screens */
+            }
+            h2 {
+                font-size: 2rem; /* Adjust heading size for smaller screens */
+            }
+        }
     </style>
 </head>
 <body>
     <header class="bg-blue-600 text-white p-6">
-        <h1 class="text-5xl font-extrabold text-center">Welcome to PlanckBot</h1>
+        <h1 class="text-5xl font-extrabold text-center">Welcome to Sarvamitra Vayama Gym</h1>
         <nav class="flex justify-center space-x-8 mt-3">
             <a href="index.html" class="hover:underline transition">Home</a>
             <a href="about.html" class="hover:underline transition active">About</a>
@@ -106,24 +113,24 @@
 
     <main class="slider-container" id="slider-container">
         <div class="slider" id="slider">
-            <div class="slide active bg-gray-100">
-                <h2 class="text-4xl font-semibold">What is PlanckBot?</h2>
-                <p class="mt-4 text-center">PlanckBot is a Discord bot made by a passionate programmer to enhance people's experience in Discord by removing profanity and adding fun activities.</p>
+            <div class="slide active">
+                <h2 class="text-4xl font-semibold">What is Sarvamitra Vayama Gym?</h2>
+                <p class="mt-4 text-center">Sarvamitra Vayama Gym is a fitness center dedicated to helping individuals achieve their health and wellness goals through comprehensive training programs and support.</p>
             </div>
-            <div class="slide bg-blue-100">
-                <h2 class="text-4xl font-semibold">Why PlanckBot?</h2>
+            <div class="slide">
+                <h2 class="text-4xl font-semibold">Why Join Sarvamitra Vayama Gym?</h2>
                 <ul class="list-disc list-inside mt-4 text-left">
-                    <li>Smart Profanity Filter</li>
-                    <li>Random Music Guessing Game</li>
-                    <li>Moderation Commands</li>
-                    <li>Seamless AI Chatbot Integration</li>
+                    <li>State-of-the-art equipment</li>
+                    <li>Personalized training programs</li>
+                    <li>Group fitness classes</li>
+                    <li>Experienced trainers and nutrition guidance</li>
                 </ul>
             </div>
         </div>
     </main>
 
     <footer>
-        <p>&copy; 2024 PlanckBot. All rights reserved.</p>
+        <p>&copy; 2024 Sarvamitra Vayama Sangam Gym. All rights reserved.</p>
     </footer>
 
     <script>
