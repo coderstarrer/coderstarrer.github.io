@@ -23,12 +23,32 @@ if not "!fileToDelete!"=="" (
 )
 
 REM Prompt for the new file name to create
-set /p newFileName="Enter the name of the new file to create (leave blank to skip): "
+set /p newFileName="Enter the name of the new file to create (with extension, leave blank to skip): "
 
 REM Check if the user provided a filename for creation
 if not "!newFileName!"=="" (
-    echo. > "!newFileName!"
-    echo Created new file: !newFileName!
+    echo Successfully created the file: !newFileName!
+    
+    REM Open a loop to allow the user to enter multiple lines of content
+    echo Enter content for the file (type 'END' on a new line to finish):
+    
+    set "fileContent="
+    :inputLoop
+    set /p lineContent="> "
+    
+    REM Check for the termination condition
+    if "!lineContent!"=="END" (
+        goto saveFile
+    )
+
+    REM Append the line to the file content
+    set "fileContent=!fileContent!!lineContent!^&echo."
+    goto inputLoop
+
+    :saveFile
+    REM Save the file content to the specified file
+    echo !fileContent! > "!newFileName!"
+    echo Successfully created and saved the file: !newFileName!
 )
 
 REM Add all changes to the staging area
