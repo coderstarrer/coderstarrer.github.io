@@ -5,15 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="styles.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <title>PlanckBot - Home</title>
+    <title>Sarvamitra Vayama Sangam - Home</title>
     <style>
         body {
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: #f0f4f8; /* Light background for a modern look */
+            font-family: Arial, sans-serif; /* Modern font */
         }
+        .slider-container {
+            flex: 1; /* Allows the slider to take up available space */
+            position: relative;
+            overflow: hidden;
+            width: 100vw;
+        }
+
         .slider {
             display: flex;
-            transition: transform 0.5s ease; /* Smooth transition */
-            width: 100vw;
+            transition: transform 1s ease; /* Smoother transition */
+            width: 100%;
         }
         .slide {
             min-width: 100vw;
@@ -22,103 +34,175 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: white; /* No gray background */
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.5s ease, transform 0.5s ease; /* Fade and scale effects */
+            padding: 20px; /* Add padding for better text fitting */
+            box-sizing: border-box; /* Include padding in width and height calculations */
+            background: #ffffff; /* Solid color for slides */
+            color: #333333; /* Dark text for better contrast */
+            border-radius: 10px; /* Rounded corners for modern look */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        }
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        nav a {
+            position: relative;
+            color: #4a90e2; /* Change link color for modern design */
+            padding-bottom: 4px;
+            transition: color 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: #d3e0f7;
+        }
+
+        nav a::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #4a90e2; /* Underline color */
+            visibility: hidden;
+            transform: scaleX(0);
+            transition: all 0.3s ease-in-out;
+        }
+
+        nav a:hover::before,
+        nav a.active::before {
+            visibility: visible;
+            transform: scaleX(1);
+        }
+
+        footer {
+            background: #888383; /* Solid color for footer */
+            color: #ffffff; /* White text for better contrast */
+            text-align: center;
+            padding: 1rem 0;
+            width: 100%;
+            margin-top: auto; /* Pushes footer to the bottom */
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem; /* Adjust font size for smaller screens */
+            }
+            h2 {
+                font-size: 2rem; /* Adjust heading size for smaller screens */
+            }
         }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body>
     <header class="bg-blue-600 text-white p-6">
-        <h1 class="text-5xl font-extrabold text-center">Welcome to PlanckBot</h1>
+        <h1 class="text-5xl font-extrabold text-center">Welcome to Sarvamitra Vayama Sangam</h1>
         <nav class="flex justify-center space-x-8 mt-3">
-            <a href="index.html" class="hover:underline hover:text-blue-300 transition">Home</a>
-            <a href="about.html" class="hover:underline hover:text-blue-300 transition">About</a>
-            <a href="features.html" class="hover:underline hover:text-blue-300 transition">Features</a>
-            <a href="tos/termsOfService.html" class="hover:underline hover:text-blue-300 transition">Terms of Service</a>
-            <a href="license.html" class="hover:underline hover:text-blue-300 transition">License</a>
+            <a href="index.html" class="hover:underline transition active">Home</a>
+            <a href="about.html" class="hover:underline transition">About</a>
+            <a href="features.html" class="hover:underline transition">Features</a>
+            <a href="tos/termsOfService.html" class="hover:underline transition">Terms of Service</a>
+            <a href="license.html" class="hover:underline transition">Settings</a>
         </nav>
     </header>
 
-    <main class="slider" id="slider">
-        <div class="slide">
-            <h2 class="text-4xl font-semibold">Meet PlanckBot</h2>
-            <p class="mt-4">Your friendly Discord companion!</p>
-        </div>
-        <div class="slide">
-            <h2 class="text-4xl font-semibold">Key Features</h2>
-            <ul class="list-disc list-inside mt-4">
-                <li>Smart Profanity Filter</li>
-                <li>Random Music Guessing Game</li>
-                <li>Moderation Commands</li>
-                <li>Seamless AI Chatbot Integration</li>
-            </ul>
+    <main class="slider-container" id="slider-container">
+        <div class="slider" id="slider">
+            <div class="slide active">
+                <h2 class="text-4xl font-semibold">Welcome to Sarvamitra Vayama Sangam</h2>
+                <p class="mt-4 text-center">Sarvamitra Vayama Sangam is a fitness center in Chirala,India dedicated to helping individuals achieve their health and wellness goals through comprehensive training programs and support.</p>
+            </div>
+            <div class="slide">
+                <h2 class="text-4xl font-semibold">Why Join Sarvamitra Vayama Gym?</h2>
+                <ul class="list-disc list-inside mt-4 text-left">
+                    <li>State-of-the-art equipment</li>
+                    <li>Personalized training programs</li>
+                    <li>Group fitness classes</li>
+                    <li>Experienced trainers and nutrition guidance</li>
+                </ul>
+            </div>
         </div>
     </main>
 
-    <footer class="bg-gray-200 text-center p-4">
-        <p>&copy; 2024 PlanckBot. All rights reserved.</p>
+    <footer>
+        <p>&copy; 2024 Sarvamitra Vayama Sangam. All rights reserved.</p>
     </footer>
 
     <script>
         const slider = document.getElementById('slider');
+        const slides = slider.children;
         let currentIndex = 0;
-        let isDragging = false;
-        let startX = 0;
-        let dragStartX = 0;
 
-        function updateSlider() {
-            slider.style.transform = `translateX(-${currentIndex * 100}vw)`;
+        function showSlide(index) {
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove('active');
+            }
+            slides[index].classList.add('active');
+            slider.style.transform = `translateX(-${index * 100}vw)`;
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlide(currentIndex);
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            showSlide(currentIndex);
         }
 
         slider.addEventListener('mousedown', (event) => {
-            isDragging = true;
-            startX = event.clientX;
-            dragStartX = startX;
-        });
+            let startX = event.clientX;
 
-        window.addEventListener('mousemove', (event) => {
-            if (!isDragging) return;
-            const dragAmount = event.clientX - dragStartX;
-            slider.style.transform = `translateX(${dragAmount - currentIndex * 100}vw)`;
-        });
+            function onMouseMove(moveEvent) {
+                const dragDistance = moveEvent.clientX - startX;
 
-        window.addEventListener('mouseup', (event) => {
-            if (!isDragging) return;
-            isDragging = false;
-            const dragAmount = event.clientX - startX;
-            
-            // Determine direction based on drag amount
-            if (dragAmount > 50 && currentIndex > 0) {
-                currentIndex--; // Swipe left
-            } else if (dragAmount < -50 && currentIndex < slider.children.length - 1) {
-                currentIndex++; // Swipe right
+                if (dragDistance > 50) {
+                    prevSlide();
+                    removeEventListeners();
+                } else if (dragDistance < -50) {
+                    nextSlide();
+                    removeEventListeners();
+                }
             }
-            updateSlider();
+
+            function removeEventListeners() {
+                window.removeEventListener('mousemove', onMouseMove);
+                window.removeEventListener('mouseup', removeEventListeners);
+            }
+
+            window.addEventListener('mousemove', onMouseMove);
+            window.addEventListener('mouseup', removeEventListeners);
         });
 
+        // Touch events for mobile devices
         slider.addEventListener('touchstart', (event) => {
-            isDragging = true;
-            startX = event.touches[0].clientX;
-            dragStartX = startX;
-        });
+            let startX = event.touches[0].clientX;
 
-        slider.addEventListener('touchmove', (event) => {
-            if (!isDragging) return;
-            const dragAmount = event.touches[0].clientX - dragStartX;
-            slider.style.transform = `translateX(${dragAmount - currentIndex * 100}vw)`;
-        });
+            function onTouchMove(moveEvent) {
+                const dragDistance = moveEvent.touches[0].clientX - startX;
 
-        slider.addEventListener('touchend', (event) => {
-            if (!isDragging) return;
-            isDragging = false;
-            const dragAmount = event.changedTouches[0].clientX - startX;
-
-            // Determine direction based on drag amount
-            if (dragAmount > 50 && currentIndex > 0) {
-                currentIndex--; // Swipe left
-            } else if (dragAmount < -50 && currentIndex < slider.children.length - 1) {
-                currentIndex++; // Swipe right
+                if (dragDistance > 50) {
+                    prevSlide();
+                    removeEventListeners();
+                } else if (dragDistance < -50) {
+                    nextSlide();
+                    removeEventListeners();
+                }
             }
-            updateSlider();
+
+            function removeEventListeners() {
+                window.removeEventListener('touchmove', onTouchMove);
+                window.removeEventListener('touchend', removeEventListeners);
+            }
+
+            window.addEventListener('touchmove', onTouchMove);
+            window.addEventListener('touchend', removeEventListeners);
         });
     </script>
 </body>
