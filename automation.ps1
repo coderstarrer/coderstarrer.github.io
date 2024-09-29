@@ -8,14 +8,18 @@ if (-Not (Test-Path $directoryPath)) {
 }
 
 Set-Location $directoryPath
+Write-Host "Current directory set to: $directoryPath" -ForegroundColor Green
 
 # Prompt for the file or folder to delete
 $itemToDelete = Read-Host "Enter the name of the file or folder to delete (leave blank to skip)"
+Write-Host "User entered for deletion: '$itemToDelete'"
 
 # Check if the user provided a filename or folder for deletion
 if (-Not [string]::IsNullOrEmpty($itemToDelete)) {
     # Use the full path for deletion
     $fullPathToDelete = Join-Path -Path $directoryPath -ChildPath $itemToDelete
+    Write-Host "Full path to delete: '$fullPathToDelete'"
+
     if (Test-Path $fullPathToDelete) {
         Remove-Item $fullPathToDelete -Recurse -Force
         Write-Host "Deleted: $fullPathToDelete" -ForegroundColor Green
@@ -26,17 +30,19 @@ if (-Not [string]::IsNullOrEmpty($itemToDelete)) {
 
 # Prompt for the new file name or folder to create
 $newItemName = Read-Host "Enter the name of the new file or folder to create (with extension or '/' for folders, leave blank to skip)"
+Write-Host "User entered for creation: '$newItemName'"
 
 # Check if the user provided a filename or folder for creation
 if (-Not [string]::IsNullOrEmpty($newItemName)) {
     $fullPathToCreate = Join-Path -Path $directoryPath -ChildPath $newItemName
+    Write-Host "Full path to create: '$fullPathToCreate'"
 
     if ($newItemName.EndsWith("/")) {
         # Create a new folder
         New-Item -ItemType Directory -Path $fullPathToCreate -Force
         Write-Host "Successfully created the folder: $fullPathToCreate" -ForegroundColor Green
     } else {
-        # Create a new file
+        # Check if the file already exists
         if (-Not (Test-Path $fullPathToCreate)) {
             # Open a loop to allow the user to enter multiple lines of content
             Write-Host "Creating the file: $fullPathToCreate"
