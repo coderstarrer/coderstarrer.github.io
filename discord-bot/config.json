@@ -1,6 +1,6 @@
 {
-  "token": "MTI4ODUxODE0OTUxOTQ0MTk4Mg.GOZtMS.fL-EYUsq1aVnAMAsUjkKd2PKsBrNp-XWusWUgI",
-  "clientId": "1288518149519441982",
-  "guildId": "1272566348416815196",
-  "groqApiKey": "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"
+  "token": "YOUR/DISCORD/BOT/TOKEN",
+  "clientId": "YOUR/DISCORD/CLIENT/ID",
+  "guildId": "YOUR/DISCORD/GUILD/ID",
+  "groqApiKey": "YOUR/GROQ/API/KEY"
 }
