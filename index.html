@@ -7,83 +7,137 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>Sarvamitra Vayama Sangam - Home</title>
     <style>
-    .slider-container {
-        flex: 1;
-        position: relative;
-        overflow: hidden;
-        width: 100vw;
-    }
-
-    .slider {
-        display: flex;
-        transition: transform 1s ease;
-        width: 100%;
-    }
-
-    .slide {
-        min-width: 100vw;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        opacity: 0;
-        transform: scale(0.9);
-        transition: opacity 0.5s ease, transform 0.5s ease;
-        padding: 20px;
-        box-sizing: border-box;
-        background: #ffffff;
-        color: #333333;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .slide.active {
-        opacity: 1;
-        transform: scale(1);
-    }
-
-    /* Mobile Styles */
-    @media (max-width: 768px) {
+        body {
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: #f0f4f8;
+            font-family: Arial, sans-serif;
+        }
+        .slider-container {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            width: 100vw;
+        }
+        .slider {
+            display: flex;
+            transition: transform 1s ease;
+            width: 100%;
+        }
         .slide {
-            padding: 10px;
-            height: auto; /* Adjust height for mobile */
-            min-height: 60vh; /* Ensure it's not too tall */
+            min-width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            padding: 20px;
+            box-sizing: border-box;
+            background: #ffffff;
+            color: #333333;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        nav a {
+            position: relative;
+            color: #4a90e2;
+            padding-bottom: 4px;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #d3e0f7;
+        }
+        nav a::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #4a90e2;
+            visibility: hidden;
+            transform: scaleX(0);
+            transition: all 0.3s ease-in-out;
+        }
+        nav a:hover::before,
+        nav a.active::before {
+            visibility: visible;
+            transform: scaleX(1);
+        }
+        footer {
+            background: #888383;
+            color: #ffffff;
+            text-align: center;
+            padding: 1rem 0;
+            width: 100%;
+            margin-top: auto;
         }
 
-        .slide h2 {
-            font-size: 1.5rem; /* Smaller title */
+        /* MEDIA QUERIES */
+
+        /* For mobile devices (max-width: 768px) */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem; /* Adjust title size on mobile */
+            }
+            h2 {
+                font-size: 1.75rem; /* Adjust subtitle size on mobile */
+            }
+            nav {
+                display: flex;
+                flex-wrap: wrap; /* Allow nav items to wrap */
+                justify-content: center;
+                gap: 10px;
+            }
+            nav a {
+                font-size: 1rem; /* Smaller nav links for mobile */
+                padding: 8px 12px;
+                width: 100%; /* Make each nav item take up full width */
+                text-align: center;
+            }
+            .slider-container {
+                width: 100%; /* Take full width on mobile */
+            }
+            .slide {
+                padding: 10px; /* Less padding for mobile screens */
+            }
+            footer {
+                font-size: 0.875rem; /* Smaller footer text */
+            }
         }
 
-        .slide p, .slide ul {
-            font-size: 1rem; /* Smaller paragraph and list font size */
+        /* For tablets and larger devices (min-width: 769px) */
+        @media (min-width: 769px) {
+            h1 {
+                font-size: 3.5rem; /* Larger titles for bigger screens */
+            }
+            h2 {
+                font-size: 2.5rem;
+            }
+            nav {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+            }
+            nav a {
+                font-size: 1.2rem; /* Make the nav items more prominent */
+                padding: 10px 20px;
+                white-space: nowrap; /* Ensure nav links are on one line */
+            }
+            footer {
+                font-size: 1rem;
+            }
         }
-
-        .slide ul {
-            padding-left: 15px; /* Adjust padding for list items */
-        }
-
-        .slide li {
-            margin-bottom: 8px; /* Space between list items for better readability */
-        }
-    }
-
-    /* Laptop Styles */
-    @media (min-width: 769px) {
-        .slide {
-            height: 100vh; /* Keep the height large for laptops */
-        }
-
-        .slide h2 {
-            font-size: 2.5rem; /* Normal title size for larger screens */
-        }
-
-        .slide p, .slide ul {
-            font-size: 1.25rem; /* Larger font for better readability on large screens */
-        }
-    }
-</style>
-
+    </style>
 </head>
 <body>
     <header class="bg-blue-600 text-white p-6">
