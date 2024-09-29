@@ -29,12 +29,6 @@ $newItemName = Read-Host "Enter the name of the new file or folder to create (wi
 
 # Check if the user provided a filename or folder for creation
 if (-Not [string]::IsNullOrEmpty($newItemName)) {
-    # Ensure the name is not a command and does not include certain special characters
-    if ($newItemName -like "*`"*") {
-        Write-Host "Error: Invalid name. Please avoid using special characters like quotes." -ForegroundColor Red
-        exit 1
-    }
-    
     $fullPathToCreate = Join-Path -Path $directoryPath -ChildPath $newItemName
 
     if ($newItemName.EndsWith("/")) {
@@ -43,27 +37,30 @@ if (-Not [string]::IsNullOrEmpty($newItemName)) {
         Write-Host "Successfully created the folder: $fullPathToCreate" -ForegroundColor Green
     } else {
         # Create a new file
-        Write-Host "Successfully created the file: $fullPathToCreate"
-
-        # Open a loop to allow the user to enter multiple lines of content
-        Write-Host "Enter content for the file (type 'END' on a new line to finish):"
-        
-        $fileContent = @()
-        while ($true) {
-            $lineContent = Read-Host "> "
+        if (-Not (Test-Path $fullPathToCreate)) {
+            # Open a loop to allow the user to enter multiple lines of content
+            Write-Host "Creating the file: $fullPathToCreate"
+            Write-Host "Enter content for the file (type 'END' on a new line to finish):"
             
-            # Check for the termination condition
-            if ($lineContent -eq "END") {
-                break
+            $fileContent = @()
+            while ($true) {
+                $lineContent = Read-Host "> "
+                
+                # Check for the termination condition
+                if ($lineContent -eq "END") {
+                    break
+                }
+
+                # Append the line to the file content
+                $fileContent += $lineContent
             }
 
-            # Append the line to the file content
-            $fileContent += $lineContent
+            # Save the file content to the specified file
+            $fileContent | Out-File -FilePath $fullPathToCreate -Encoding UTF8
+            Write-Host "Successfully created and saved the file: $fullPathToCreate" -ForegroundColor Green
+        } else {
+            Write-Host "Error: File '$fullPathToCreate' already exists." -ForegroundColor Red
         }
-
-        # Save the file content to the specified file
-        $fileContent | Out-File -FilePath $fullPathToCreate -Encoding UTF8
-        Write-Host "Successfully created and saved the file: $fullPathToCreate" -ForegroundColor Green
     }
 }
 
