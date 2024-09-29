@@ -1,6 +1,0 @@
-{
-  "token": "YOUR/DISCORD/BOT/TOKEN",
-  "clientId": "YOUR/DISCORD/CLIENT/ID",
-  "guildId": "YOUR/DISCORD/GUILD/ID",
-  "groqApiKey": "YOUR/GROQ/API/KEY"
-}
