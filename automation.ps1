@@ -29,6 +29,12 @@ $newItemName = Read-Host "Enter the name of the new file or folder to create (wi
 
 # Check if the user provided a filename or folder for creation
 if (-Not [string]::IsNullOrEmpty($newItemName)) {
+    # Ensure the name is not a command and does not include certain special characters
+    if ($newItemName -like "*`"*") {
+        Write-Host "Error: Invalid name. Please avoid using special characters like quotes." -ForegroundColor Red
+        exit 1
+    }
+    
     $fullPathToCreate = Join-Path -Path $directoryPath -ChildPath $newItemName
 
     if ($newItemName.EndsWith("/")) {
