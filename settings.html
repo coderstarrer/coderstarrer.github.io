@@ -65,13 +65,13 @@
 </head>
 <body class="bg-gray-100 text-gray-800">
     <header class="bg-blue-600 text-white p-6" id="header">
-        <h1 class="text-4xl font-bold text-center" id="header-title">License for PlanckBot</h1>
+        <h1 class="text-4xl font-bold text-center" id="header-title"> Settingsfor PlanckBot</h1>
         <nav class="flex justify-center space-x-8 mt-3">
             <a href="index.html" class="hover:underline" id="home-link">Home</a>
             <a href="about.html" class="hover:underline" id="about-link">About</a>
             <a href="features.html" class="hover:underline" id="features-link">Features</a>
             <a href="tos/termsOfService.html" class="hover:underline" id="terms-link">Terms of Service</a>
-            <a href="license.html" class="hover:underline" id="license-link">License</a>
+
             <a href="settings.html" class="hover:underline active" id="settings-link">Settings</a>
         </nav>
     </header>
@@ -112,7 +112,7 @@
         function changeLanguage(lang) {
             const translations = {
                 en: {
-                    headerTitle: "License for PlanckBot",
+                    headerTitle: " for PlanckBot",
                     settingsTitle: "Settings",
                     languageLabel: "Change language...",
                     conditionsTitle: "Conditions",
@@ -122,7 +122,6 @@
                     navAbout: "About",
                     navFeatures: "Features",
                     navTos: "Terms of Service",
-                    navLicense: "License",
                     navSettings: "Settings"
                 },
                 hi: {
@@ -136,7 +135,6 @@
                     navAbout: "के बारे में",
                     navFeatures: "विशेषताएँ",
                     navTos: "सेवा की शर्तें",
-                    navLicense: "लाइसेंस",
                     navSettings: "सेटिंग्स"
                 },
                 te: {
@@ -150,7 +148,6 @@
                     navAbout: "గురించి",
                     navFeatures: "లక్షణాలు",
                     navTos: "సేవా నిబంధనలు",
-                    navLicense: "లైసెన్స్",
                     navSettings: "సెట్టింగులు"
                 }
             };
@@ -168,7 +165,6 @@
             document.getElementById("about-link").innerText = translations[lang].navAbout;
             document.getElementById("features-link").innerText = translations[lang].navFeatures;
             document.getElementById("terms-link").innerText = translations[lang].navTos;
-            document.getElementById("license-link").innerText = translations[lang].navLicense;
             document.getElementById("settings-link").innerText = translations[lang].navSettings;
 
             // Save the selected language to localStorage
