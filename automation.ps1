@@ -14,11 +14,13 @@ $itemToDelete = Read-Host "Enter the name of the file or folder to delete (leave
 
 # Check if the user provided a filename or folder for deletion
 if (-Not [string]::IsNullOrEmpty($itemToDelete)) {
-    if (Test-Path $itemToDelete) {
-        Remove-Item $itemToDelete -Recurse -Force
-        Write-Host "Deleted: $itemToDelete" -ForegroundColor Green
+    # Use the full path for deletion
+    $fullPathToDelete = Join-Path -Path $directoryPath -ChildPath $itemToDelete
+    if (Test-Path $fullPathToDelete) {
+        Remove-Item $fullPathToDelete -Recurse -Force
+        Write-Host "Deleted: $fullPathToDelete" -ForegroundColor Green
     } else {
-        Write-Host "Error: Item '$itemToDelete' does not exist." -ForegroundColor Red
+        Write-Host "Error: Item '$fullPathToDelete' does not exist." -ForegroundColor Red
     }
 }
 
@@ -27,13 +29,15 @@ $newItemName = Read-Host "Enter the name of the new file or folder to create (wi
 
 # Check if the user provided a filename or folder for creation
 if (-Not [string]::IsNullOrEmpty($newItemName)) {
+    $fullPathToCreate = Join-Path -Path $directoryPath -ChildPath $newItemName
+
     if ($newItemName.EndsWith("/")) {
         # Create a new folder
-        New-Item -ItemType Directory -Path $newItemName -Force
-        Write-Host "Successfully created the folder: $newItemName" -ForegroundColor Green
+        New-Item -ItemType Directory -Path $fullPathToCreate -Force
+        Write-Host "Successfully created the folder: $fullPathToCreate" -ForegroundColor Green
     } else {
         # Create a new file
-        Write-Host "Successfully created the file: $newItemName"
+        Write-Host "Successfully created the file: $fullPathToCreate"
 
         # Open a loop to allow the user to enter multiple lines of content
         Write-Host "Enter content for the file (type 'END' on a new line to finish):"
@@ -52,8 +56,8 @@ if (-Not [string]::IsNullOrEmpty($newItemName)) {
         }
 
         # Save the file content to the specified file
-        $fileContent | Out-File -FilePath $newItemName -Encoding UTF8
-        Write-Host "Successfully created and saved the file: $newItemName" -ForegroundColor Green
+        $fileContent | Out-File -FilePath $fullPathToCreate -Encoding UTF8
+        Write-Host "Successfully created and saved the file: $fullPathToCreate" -ForegroundColor Green
     }
 }
 
@@ -65,9 +69,9 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 # Prompt for commit message and provide a default option
-$commitMessage = Read-Host "Commit message (default: 'Update')"
-if (-Not [string]::IsNullOrEmpty($commitMessage)) {
-    $commitMessage = "Update"
+$commitMessage = Read-Host "Commit message (leave blank for default 'Update')"
+if ([string]::IsNullOrEmpty($commitMessage)) {
+    $commitMessage = "Update"  # Use "Update" as the default commit message
 }
 
 # Attempt to commit changes
