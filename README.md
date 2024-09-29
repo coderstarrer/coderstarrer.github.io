@@ -31,7 +31,7 @@ To get started with PlanckBot, make sure you have the following dependencies in 
     "swearify": "^1.0.2",
     "ytdl-core": "^4.11.5"
 }
-
+```
 ## 1. Getting Started
 
 
