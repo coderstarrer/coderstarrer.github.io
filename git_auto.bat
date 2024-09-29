@@ -15,4 +15,4 @@ git commit -m "%commitMessage%"
 REM Push changes to remote
 git push origin main
 
-echo "Completed successfully!"
+echo Completed successfully!
