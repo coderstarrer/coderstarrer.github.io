@@ -64,6 +64,34 @@ if (-Not [string]::IsNullOrEmpty($newItemName)) {
             # Save the file content to the specified file
             $fileContent | Out-File -FilePath $fullPathToCreate -Encoding UTF8
             Write-Host "Successfully created and saved the file: $fullPathToCreate" -ForegroundColor Green
+
+            # Simple editing simulation
+            $edit = $true
+            while ($edit) {
+                Write-Host "Contents of the file:"
+                $currentContent = Get-Content $fullPathToCreate
+                $currentContent | ForEach-Object { Write-Host "$($_)" }
+                
+                $userCommand = Read-Host "Enter 'edit' to modify a line, 'exit' to finish editing"
+                
+                if ($userCommand -eq "edit") {
+                    # Show available lines for editing
+                    $lineNumbers = 1..$currentContent.Count
+                    Write-Host "Available lines to edit: $($lineNumbers -join ', ')"
+                    $lineToEdit = Read-Host "Enter the line number to edit (1 to $($currentContent.Count))"
+
+                    # Validate line number input
+                    if ($lineToEdit -as [int] -and $lineToEdit -gt 0 -and $lineToEdit -le $currentContent.Count) {
+                        $newLineContent = Read-Host "Enter new content for line $lineToEdit"
+                        $currentContent[$lineToEdit - 1] = $newLineContent  # Update the specific line
+                        $currentContent | Set-Content -Path $fullPathToCreate
+                    } else {
+                        Write-Host "Invalid line number. Please enter a number between 1 and $($currentContent.Count)." -ForegroundColor Red
+                    }
+                } elseif ($userCommand -eq "exit") {
+                    $edit = $false
+                }
+            }
         } else {
             Write-Host "Error: File '$fullPathToCreate' already exists." -ForegroundColor Red
         }
