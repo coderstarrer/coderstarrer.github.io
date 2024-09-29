@@ -12,19 +12,18 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background: #f0f4f8; /* Light background for a modern look */
-            font-family: Arial, sans-serif; /* Modern font */
+            background: #f0f4f8; 
+            font-family: Arial, sans-serif; 
         }
         .slider-container {
-            flex: 1; /* Allows the slider to take up available space */
+            flex: 1; 
             position: relative;
             overflow: hidden;
             width: 100vw;
         }
-
         .slider {
             display: flex;
-            transition: transform 1s ease; /* Smoother transition */
+            transition: transform 1s ease; 
             width: 100%;
         }
         .slide {
@@ -36,22 +35,21 @@
             align-items: center;
             opacity: 0;
             transform: scale(0.9);
-            transition: opacity 0.5s ease, transform 0.5s ease; /* Fade and scale effects */
-            padding: 20px; /* Add padding for better text fitting */
-            box-sizing: border-box; /* Include padding in width and height calculations */
-            background: #ffffff; /* Solid color for slides */
-            color: #333333; /* Dark text for better contrast */
-            border-radius: 10px; /* Rounded corners for modern look */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            transition: opacity 0.5s ease, transform 0.5s ease; 
+            padding: 20px; 
+            box-sizing: border-box; 
+            background: #ffffff; 
+            color: #333333; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
         }
         .slide.active {
             opacity: 1;
             transform: scale(1);
         }
-
         nav a {
             position: relative;
-            color: #4a90e2; /* Change link color for modern design */
+            color: #4a90e2; 
             padding-bottom: 4px;
             transition: color 0.3s ease;
         }
@@ -67,7 +65,7 @@
             height: 2px;
             bottom: 0;
             left: 0;
-            background-color: #4a90e2; /* Underline color */
+            background-color: #4a90e2; 
             visibility: hidden;
             transform: scaleX(0);
             transition: all 0.3s ease-in-out;
@@ -80,50 +78,49 @@
         }
 
         footer {
-            background: #888383; /* Solid color for footer */
-            color: #ffffff; /* White text for better contrast */
+            background: #888383; 
+            color: #ffffff; 
             text-align: center;
             padding: 1rem 0;
             width: 100%;
-            margin-top: auto; /* Pushes footer to the bottom */
+            margin-top: auto; 
         }
 
-        /* Responsive styles */
         @media (max-width: 768px) {
             h1 {
-                font-size: 3rem; /* Adjust font size for smaller screens */
+                font-size: 3rem; 
             }
             h2 {
-                font-size: 2rem; /* Adjust heading size for smaller screens */
+                font-size: 2rem; 
             }
         }
     </style>
 </head>
 <body>
     <header class="bg-blue-600 text-white p-6">
-        <h1 class="text-5xl font-extrabold text-center">Welcome to Sarvamitra Vayama Sangam</h1>
+        <h1 class="text-5xl font-extrabold text-center" id="home-header-title">Welcome to Sarvamitra Vayama Sangam</h1>
         <nav class="flex justify-center space-x-8 mt-3">
-            <a href="index.html" class="hover:underline transition active">Home</a>
-            <a href="about.html" class="hover:underline transition">About</a>
-            <a href="features.html" class="hover:underline transition">Features</a>
-            <a href="tos/termsOfService.html" class="hover:underline transition">Terms of Service</a>
-            <a href="license.html" class="hover:underline transition">Settings</a>
+            <a href="index.html" class="hover:underline transition active" id="home-link">Home</a>
+            <a href="about.html" class="hover:underline transition" id="about-link">About</a>
+            <a href="features.html" class="hover:underline transition" id="features-link">Features</a>
+            <a href="tos/termsOfService.html" class="hover:underline transition" id="terms-link">Terms of Service</a>
+            <a href="settings.html" class="hover:underline transition" id="settings-link">Settings</a>
         </nav>
     </header>
 
     <main class="slider-container" id="slider-container">
         <div class="slider" id="slider">
             <div class="slide active">
-                <h2 class="text-4xl font-semibold">Welcome to Sarvamitra Vayama Sangam</h2>
-                <p class="mt-4 text-center">Sarvamitra Vayama Sangam is a fitness center in Chirala,India dedicated to helping individuals achieve their health and wellness goals through comprehensive training programs and support.</p>
+                <h2 class="text-4xl font-semibold" id="home-slide-title1">Welcome to Sarvamitra Vayama Sangam</h2>
+                <p class="mt-4 text-center" id="home-slide-desc1">Sarvamitra Vayama Sangam is a fitness center in Chirala, India dedicated to helping individuals achieve their health and wellness goals through comprehensive training programs and support.</p>
             </div>
             <div class="slide">
-                <h2 class="text-4xl font-semibold">Why Join Sarvamitra Vayama Gym?</h2>
-                <ul class="list-disc list-inside mt-4 text-left">
-                    <li>State-of-the-art equipment</li>
-                    <li>Personalized training programs</li>
-                    <li>Group fitness classes</li>
-                    <li>Experienced trainers and nutrition guidance</li>
+                <h2 class="text-4xl font-semibold" id="home-slide-title2">Why Join Sarvamitra Vayama Gym?</h2>
+                <ul class="list-disc list-inside mt-4 text-left" id="home-slide-list">
+                    <li id="home-feature1">State-of-the-art equipment</li>
+                    <li id="home-feature2">Personalized training programs</li>
+                    <li id="home-feature3">Group fitness classes</li>
+                    <li id="home-feature4">Experienced trainers and nutrition guidance</li>
                 </ul>
             </div>
         </div>
@@ -180,7 +177,6 @@
             window.addEventListener('mouseup', removeEventListeners);
         });
 
-        // Touch events for mobile devices
         slider.addEventListener('touchstart', (event) => {
             let startX = event.touches[0].clientX;
 
@@ -204,6 +200,91 @@
             window.addEventListener('touchmove', onTouchMove);
             window.addEventListener('touchend', removeEventListeners);
         });
+
+        // Function to change the language globally
+        function changeLanguage(lang) {
+            const translations = {
+                en: {
+                    homeHeaderTitle: "Welcome to Sarvamitra Vayama Sangam",
+                    homeSlideTitle1: "Welcome to Sarvamitra Vayama Sangam",
+                    homeSlideDesc1: "Sarvamitra Vayama Sangam is a fitness center in Chirala, India dedicated to helping individuals achieve their health and wellness goals through comprehensive training programs and support.",
+                    homeSlideTitle2: "Why Join Sarvamitra Vayama Gym?",
+                    homeFeature1: "State-of-the-art equipment",
+                    homeFeature2: "Personalized training programs",
+                    homeFeature3: "Group fitness classes",
+                    homeFeature4: "Experienced trainers and nutrition guidance",
+                    navHome: "Home",
+                    navAbout: "About",
+                    navFeatures: "Features",
+                    navTerms: "Terms of Service",
+                    navSettings: "Settings"
+                },
+                hi: {
+                    homeHeaderTitle: "सरवमित्र व्यायाम संगम में आपका स्वागत है",
+                    homeSlideTitle1: "सरवमित्र व्यायाम संगम में आपका स्वागत है",
+                    homeSlideDesc1: "सरवमित्र व्यायाम संगम चिराला, भारत में एक फिटनेस केंद्र है जो व्यक्तियों को स्वास्थ्य और कल्याण लक्ष्यों को प्राप्त करने में मदद करता है।",
+                    homeSlideTitle2: "सरवमित्र व्यायाम जिम में शामिल क्यों हों?",
+                    homeFeature1: "आधुनिक उपकरण",
+                                        homeFeature2: "व्यक्तिगत प्रशिक्षण कार्यक्रम",
+                    homeFeature3: "समूह फिटनेस कक्षाएं",
+                    homeFeature4: "अनुभवी प्रशिक्षक और पोषण मार्गदर्शन",
+                    navHome: "मुखपृष्ठ",
+                    navAbout: "के बारे में",
+                    navFeatures: "विशेषताएँ",
+                    navTerms: "सेवा की शर्तें",
+                    navSettings: "सेटिंग्स"
+                },
+                te: {
+                    homeHeaderTitle: "సర్వమిత్ర వ్యాయామ సంఘం కు స్వాగతం",
+                    homeSlideTitle1: "సర్వమిత్ర వ్యాయామ సంఘం కు స్వాగతం",
+                    homeSlideDesc1: "సర్వమిత్ర వ్యాయామ సంఘం చీరల, భారతదేశంలో ఉన్న ఒక ఆరోగ్య కేంద్రం.",
+                    homeSlideTitle2: "సర్వమిత్ర వ్యాయామ జిమ్ లో చేరాలి ఎందుకు?",
+                    homeFeature1: "అధునాతన పరికరాలు",
+                    homeFeature2: "వ్యక్తిగత శిక్షణ ప్రోగ్రామ్లు",
+                    homeFeature3: "జట్టు వ్యాయామ తరగతులు",
+                    homeFeature4: "అనుభవం గల శిక్షకులు మరియు పోషణ మార్గనిర్దేశం",
+                    navHome: "హోమ్",
+                    navAbout: "గురించి",
+                    navFeatures: "సాధనాలు",
+                    navTerms: "సేవా నిబంధనలు",
+                    navSettings: "సెట్టింగులు"
+                }
+            };
+
+            // Update the text in this page
+            document.getElementById("home-header-title").innerText = translations[lang].homeHeaderTitle;
+            document.getElementById("home-slide-title1").innerText = translations[lang].homeSlideTitle1;
+            document.getElementById("home-slide-desc1").innerText = translations[lang].homeSlideDesc1;
+            document.getElementById("home-slide-title2").innerText = translations[lang].homeSlideTitle2;
+            document.getElementById("home-feature1").innerText = translations[lang].homeFeature1;
+            document.getElementById("home-feature2").innerText = translations[lang].homeFeature2;
+            document.getElementById("home-feature3").innerText = translations[lang].homeFeature3;
+            document.getElementById("home-feature4").innerText = translations[lang].homeFeature4;
+
+            // Update the navigation items
+            document.getElementById("home-link").innerText = translations[lang].navHome;
+            document.getElementById("about-link").innerText = translations[lang].navAbout;
+            document.getElementById("features-link").innerText = translations[lang].navFeatures;
+            document.getElementById("terms-link").innerText = translations[lang].navTerms;
+            document.getElementById("settings-link").innerText = translations[lang].navSettings;
+
+            // Save the selected language to localStorage
+            localStorage.setItem("selectedLanguage", lang);
+        }
+
+        // Load the saved language on page load
+        window.onload = () => {
+            const savedLanguage = localStorage.getItem("selectedLanguage");
+            if (savedLanguage) {
+                changeLanguage(savedLanguage);
+            }
+        };
+
+        // Event listener for language selection
+        document.getElementById('language-select').addEventListener('change', (event) => {
+            changeLanguage(event.target.value);
+        });
     </script>
 </body>
 </html>
+

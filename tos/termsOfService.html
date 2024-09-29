@@ -8,32 +8,33 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../about.html">About</a></li>
-                <li><a href="../features.html">Features</a></li>
-                <li><a href="./termsOfService.html">Terms of Service</a></li>
-                <li><a href="../license.html">License</a></li>
+    <header class="bg-blue-600 text-white p-6">
+        <nav class="flex justify-between items-center">
+            <ul class="flex space-x-4">
+                <li><a href="../index.html" class="hover:underline" id="nav-home">Home</a></li>
+                <li><a href="../about.html" class="hover:underline" id="nav-about">About</a></li>
+                <li><a href="../features.html" class="hover:underline" id="nav-features">Features</a></li>
+                <li><a href="./termsOfService.html" class="hover:underline active" id="nav-terms">Terms of Service</a></li>
+                <li><a href="../license.html" class="hover:underline" id="nav-license">License</a></li>
+                <li><a href="../settings.html" class="hover:underline" id="nav-settings">Settings</a></li>
             </ul>
         </nav>
     </header>
-    <main>
-        <h1>Terms of Service</h1>
-        <p>Welcome to our Terms of Service page. Please read these terms carefully before using our services.</p>
-        <h2>1. Acceptance of Terms</h2>
-        <p>By accessing or using our services, you agree to be bound by these terms.</p>
-        <h2>2. Changes to Terms</h2>
-        <p>We reserve the right to modify these terms at any time. Your continued use of our services after any changes indicates your acceptance of the new terms.</p>
-        <h2>3. User Responsibilities</h2>
-        <p>You are responsible for maintaining the confidentiality of your account and password.</p>
-        <h2>4. Termination</h2>
-        <p>We may terminate your access to the services at any time for violations of these terms.</p>
-        <h2>5. Governing Law</h2>
-        <p>These terms are governed by the laws of [Your Country].</p>
-        <h2>6. Contact Information</h2>
-        <p>If you have any questions about these terms, please contact us.</p>
+    <main class="container mx-auto my-10 p-8 bg-white rounded-lg shadow-md">
+        <h1 id="terms-header-title">Terms of Service</h1>
+        <p id="terms-intro">Welcome to our Terms of Service page. Please read these terms carefully before using our services.</p>
+        <h2 id="terms-acceptance-title">1. Acceptance of Terms</h2>
+        <p id="terms-acceptance-desc">By accessing or using our services, you agree to be bound by these terms.</p>
+        <h2 id="terms-changes-title">2. Changes to Terms</h2>
+        <p id="terms-changes-desc">We reserve the right to modify these terms at any time. Your continued use of our services after any changes indicates your acceptance of the new terms.</p>
+        <h2 id="terms-responsibilities-title">3. User Responsibilities</h2>
+        <p id="terms-responsibilities-desc">You are responsible for maintaining the confidentiality of your account and password.</p>
+        <h2 id="terms-termination-title">4. Termination</h2>
+        <p id="terms-termination-desc">We may terminate your access to the services at any time for violations of these terms.</p>
+        <h2 id="terms-law-title">5. Governing Law</h2>
+        <p id="terms-law-desc">These terms are governed by the laws of [Your Country].</p>
+        <h2 id="terms-contact-title">6. Contact Information</h2>
+        <p id="terms-contact-desc">If you have any questions about these terms, please contact us.</p>
         
         <div class="pagination">
             <a href="termsOfService.html" class="active">1</a>
@@ -43,9 +44,118 @@
             <!-- Add more links as needed -->
         </div>
     </main>
-    <footer>
+    <footer class="bg-gray-200 text-center p-4">
         <p>&copy; 2024 Your Company. All rights reserved.</p>
     </footer>
+
+    <script>
+        const translations = {
+            en: {
+                termsHeaderTitle: "Terms of Service",
+                termsIntro: "Welcome to our Terms of Service page. Please read these terms carefully before using our services.",
+                termsAcceptanceTitle: "1. Acceptance of Terms",
+                termsAcceptanceDesc: "By accessing or using our services, you agree to be bound by these terms.",
+                termsChangesTitle: "2. Changes to Terms",
+                termsChangesDesc: "We reserve the right to modify these terms at any time. Your continued use of our services after any changes indicates your acceptance of the new terms.",
+                termsResponsibilitiesTitle: "3. User Responsibilities",
+                termsResponsibilitiesDesc: "You are responsible for maintaining the confidentiality of your account and password.",
+                termsTerminationTitle: "4. Termination",
+                termsTerminationDesc: "We may terminate your access to the services at any time for violations of these terms.",
+                termsLawTitle: "5. Governing Law",
+                termsLawDesc: "These terms are governed by the laws of [Your Country].",
+                termsContactTitle: "6. Contact Information",
+                termsContactDesc: "If you have any questions about these terms, please contact us.",
+                navHome: "Home",
+                navAbout: "About",
+                navFeatures: "Features",
+                navTerms: "Terms of Service",
+                navLicense: "License",
+                navSettings: "Settings"
+            },
+            hi: {
+                termsHeaderTitle: "सेवा की शर्तें",
+                termsIntro: "कृपया हमारी सेवाओं का उपयोग करने से पहले इन शर्तों को ध्यान से पढ़ें।",
+                termsAcceptanceTitle: "1. शर्तों की स्वीकृति",
+                termsAcceptanceDesc: "हमारी सेवाओं का उपयोग करने पर आप इन शर्तों से बंधने के लिए सहमत होते हैं।",
+                termsChangesTitle: "2. शर्तों में परिवर्तन",
+                termsChangesDesc: "हम कभी भी इन शर्तों को संशोधित करने का अधिकार सुरक्षित रखते हैं। कोई भी परिवर्तन होने के बाद आपकी निरंतर सेवा का उपयोग नई शर्तों की स्वीकृति को दर्शाता है।",
+                termsResponsibilitiesTitle: "3. उपयोगकर्ता की जिम्मेदारियाँ",
+                termsResponsibilitiesDesc: "आप अपने खाते और पासवर्ड की गोपनीयता बनाए रखने के लिए जिम्मेदार हैं।",
+                termsTerminationTitle: "4. समाप्ति",
+                termsTerminationDesc: "हम कभी भी इन शर्तों के उल्लंघन के लिए आपकी सेवाओं तक पहुंच समाप्त कर सकते हैं।",
+                termsLawTitle: "5. लागू कानून",
+                termsLawDesc: "ये शर्तें [आपके देश] के कानूनों द्वारा शासित हैं।",
+                termsContactTitle: "6. संपर्क जानकारी",
+                termsContactDesc: "यदि आपके पास इन शर्तों के बारे में कोई प्रश्न हैं, तो कृपया हमसे संपर्क करें।",
+                navHome: "घर",
+                navAbout: "के बारे में",
+                navFeatures: "विशेषताएँ",
+                navTerms: "सेवा की शर्तें",
+                navLicense: "लाइसेंस",
+                navSettings: "सेटिंग्स"
+            },
+            te: {
+                termsHeaderTitle: "సేవా నిబంధనలు",
+                termsIntro: "దయచేసి మా సేవలను ఉపయోగించే ముందు ఈ నిబంధనలను జాగ్రత్తగా చదవండి.",
+                termsAcceptanceTitle: "1. నిబంధనల అంగీకారం",
+                termsAcceptanceDesc: "మా సేవలను యాక్సెస్ చేయడం లేదా ఉపయోగించడం ద్వారా, మీరు ఈ నిబంధనలకు కట్టుబడటానికి అంగీకరిస్తున్నారు.",
+                termsChangesTitle: "2. నిబంధనలలో మార్పులు",
+                termsChangesDesc: "మేము ఈ నిబంధనలను ఎప్పుడైనా సవరించుకోవడానికి హక్కు కలిగి ఉన్నాము. మార్పుల తర్వాత మీ నిరంతర సేవ ఉపయోగించడం కొత్త నిబంధనలను అంగీకరించటాన్ని సూచిస్తుంది.",
+                termsResponsibilitiesTitle: "3. వినియోగదారుడి బాధ్యతలు",
+                termsResponsibilitiesDesc: "మీ ఖాతా మరియు పాస్‌వర్డ్ యొక్క గోప్యతను కాపాడడం మీ బాధ్యత.",
+                termsTerminationTitle: "4. ముగింపు",
+                termsTerminationDesc: "ఈ నిబంధనలను ఉల్లంఘించినందున మేము మీకు సేవలను యాక్సెస్ చేయడాన్ని ఎప్పుడైనా ముగించవచ్చు.",
+                termsLawTitle: "5. చట్ట పరంగా",
+                termsLawDesc: "ఈ నిబంధనలు [మీ దేశం] చట్టాల ద్వారా నియంత్రించబడతాయి.",
+                termsContactTitle: "6. సంప్రదింపు సమాచారం",
+                termsContactDesc: "ఈ నిబంధనల గురించి మీకు ఎలాంటి ప్రశ్నలు ఉంటే, దయచేసి మమ్మల్ని సంప్రదించండి.",
+                navHome: "మూలకేంద్రం",
+                navAbout: "గురించి",
+                navFeatures: "లక్షణాలు",
+                navTerms: "సేవా నిబంధనలు",
+                navLicense: "లైసెన్స్",
+                navSettings: "సెట్టింగులు"
+            }
+        };
+
+        function updateNavLinks(lang) {
+            document.getElementById("nav-home").innerText = translations[lang].navHome;
+            document.getElementById("nav-about").innerText = translations[lang].navAbout;
+            document.getElementById("nav-features").innerText = translations[lang].navFeatures;
+            document.getElementById("nav-terms").innerText = translations[lang].navTerms;
+            document.getElementById("nav-license").innerText = translations[lang].navLicense;
+            document.getElementById("nav-settings").innerText = translations[lang].navSettings;
+        }
+
+        function changeLanguage(lang) {
+            document.getElementById("terms-header-title").innerText = translations[lang].termsHeaderTitle;
+            document.getElementById("terms-intro").innerText = translations[lang].termsIntro;
+            document.getElementById("terms-acceptance-title").innerText = translations[lang].termsAcceptanceTitle;
+            document.getElementById("terms-acceptance-desc").innerText = translations[lang].termsAcceptanceDesc;
+            document.getElementById("terms-changes-title").innerText = translations[lang].termsChangesTitle;
+            document.getElementById("terms-changes-desc").innerText = translations[lang].termsChangesDesc;
+            document.getElementById("terms-responsibilities-title").innerText = translations[lang].termsResponsibilitiesTitle;
+            document.getElementById("terms-responsibilities-desc").innerText = translations[lang].termsResponsibilitiesDesc;
+            document.getElementById("terms-termination-title").innerText = translations[lang].termsTerminationTitle;
+            document.getElementById("terms-termination-desc").innerText = translations[lang].termsTerminationDesc;
+            document.getElementById("terms-law-title").innerText = translations[lang].termsLawTitle;
+            document.getElementById("terms-law-desc").innerText = translations[lang].termsLawDesc;
+            document.getElementById("terms-contact-title").innerText = translations[lang].termsContactTitle;
+            document.getElementById("terms-contact-desc").innerText = translations[lang].termsContactDesc;
+
+            // Update the navigation links
+            updateNavLinks(lang);
+
+            // Save the selected language to localStorage
+            localStorage.setItem("selectedLanguage", lang);
+        }
+
+        window.onload = () => {
+            const savedLanguage = localStorage.getItem("selectedLanguage");
+            if (savedLanguage) {
+                changeLanguage(savedLanguage);
+            }
+        };
+    </script>
 </body>
 </html>
-

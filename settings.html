@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Settings</title>
+    <style>
+        body {
+            transition: background-color 0.5s, color 0.5s;
+        }
+        .dark-mode {
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+        }
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 300px;
+        }
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .navigation {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            gap: 10px;
+        }
+        .nav-button {
+            padding: 10px 15px;
+            background: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .nav-button:hover {
+            background: darkblue;
+        }
+        .language-dropdown {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            background: #f0f0f0;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <header class="bg-blue-600 text-white p-6" id="header">
+        <h1 class="text-4xl font-bold text-center" id="header-title">License for PlanckBot</h1>
+        <nav class="flex justify-center space-x-8 mt-3">
+            <a href="index.html" class="hover:underline" id="home-link">Home</a>
+            <a href="about.html" class="hover:underline" id="about-link">About</a>
+            <a href="features.html" class="hover:underline" id="features-link">Features</a>
+            <a href="tos/termsOfService.html" class="hover:underline" id="terms-link">Terms of Service</a>
+            <a href="license.html" class="hover:underline" id="license-link">License</a>
+            <a href="settings.html" class="hover:underline active" id="settings-link">Settings</a>
+        </nav>
+    </header>
+
+    <main class="container mx-auto my-10 p-8 bg-white rounded-lg shadow-md">
+        <div class="slider-container">
+            <div class="slider" id="slider">
+                <div class="slide">
+                    <h2 class="text-3xl font-semibold mb-5" id="settings-title">Settings</h2>
+                    <p class="text-lg" id="language-label">Change language...</p>
+                    <select id="language-selector" class="language-dropdown">
+                        <option value="">Select Language</option>
+                        <option value="te">Telugu</option>
+                        <option value="hi">Hindi</option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
+                <div class="slide">
+                    <h2 class="text-3xl font-semibold mb-5" id="conditions-title">Conditions</h2>
+                    <p class="text-lg" id="conditions-text">The above copyright notice and this permission notice shall be included in all copies...</p>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-center mt-4">
+            <label class="flex items-center">
+                <input type="checkbox" id="dark-mode-toggle" class="mr-2">
+                <span class="text-lg" id="dark-mode-label">Dark Mode</span>
+            </label>
+        </div>
+    </main>
+
+    <footer class="bg-gray-200 text-center p-4" id="footer">
+        <p>&copy; 2024 Sarvamitra Vayama Sangam. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Function to change the language globally
+        function changeLanguage(lang) {
+            const translations = {
+                en: {
+                    headerTitle: "License for PlanckBot",
+                    settingsTitle: "Settings",
+                    languageLabel: "Change language...",
+                    conditionsTitle: "Conditions",
+                    conditionsText: "The above copyright notice and this permission notice shall be included in all copies...",
+                    darkModeLabel: "Dark Mode",
+                    navHome: "Home",
+                    navAbout: "About",
+                    navFeatures: "Features",
+                    navTos: "Terms of Service",
+                    navLicense: "License",
+                    navSettings: "Settings"
+                },
+                hi: {
+                    headerTitle: "प्लैंकबॉट के लिए लाइसेंस",
+                    settingsTitle: "सेटिंग्स",
+                    languageLabel: "भाषा बदलें...",
+                    conditionsTitle: "शर्तें",
+                    conditionsText: "ऊपर दिया गया कॉपीराइट नोटिस और यह अनुमति नोटिस सभी प्रतियों में शामिल किया जाना चाहिए...",
+                    darkModeLabel: "अंधेरा मोड",
+                    navHome: "होम",
+                    navAbout: "के बारे में",
+                    navFeatures: "विशेषताएँ",
+                    navTos: "सेवा की शर्तें",
+                    navLicense: "लाइसेंस",
+                    navSettings: "सेटिंग्स"
+                },
+                te: {
+                    headerTitle: "ప్లాంక్‌బాట్ కోసం అనుమతి",
+                    settingsTitle: "సెట్టింగులు",
+                    languageLabel: "భాష మార్చండి...",
+                    conditionsTitle: "నిబంధనలు",
+                    conditionsText: "పైన ఉన్న కాపీరైట్ నోటీసు మరియు ఈ అనుమతి నోటీసు అన్ని కాపీలలో చేర్చాలి...",
+                    darkModeLabel: "డార్క్ మోడ్",
+                    navHome: "హోమ్",
+                    navAbout: "గురించి",
+                    navFeatures: "లక్షణాలు",
+                    navTos: "సేవా నిబంధనలు",
+                    navLicense: "లైసెన్స్",
+                    navSettings: "సెట్టింగులు"
+                }
+            };
+
+            // Update the text in this page
+            document.getElementById("header-title").innerText = translations[lang].headerTitle;
+            document.getElementById("settings-title").innerText = translations[lang].settingsTitle;
+            document.getElementById("language-label").innerText = translations[lang].languageLabel;
+            document.getElementById("conditions-title").innerText = translations[lang].conditionsTitle;
+            document.getElementById("conditions-text").innerText = translations[lang].conditionsText;
+            document.getElementById("dark-mode-label").innerText = translations[lang].darkModeLabel;
+
+            // Update the navigation items
+            document.getElementById("home-link").innerText = translations[lang].navHome;
+            document.getElementById("about-link").innerText = translations[lang].navAbout;
+            document.getElementById("features-link").innerText = translations[lang].navFeatures;
+            document.getElementById("terms-link").innerText = translations[lang].navTos;
+            document.getElementById("license-link").innerText = translations[lang].navLicense;
+            document.getElementById("settings-link").innerText = translations[lang].navSettings;
+
+            // Save the selected language to localStorage
+            localStorage.setItem("selectedLanguage", lang);
+        }
+
+        // Event listener for language selector
+        document.getElementById("language-selector").addEventListener("change", (event) => {
+            const selectedLanguage = event.target.value;
+            changeLanguage(selectedLanguage);
+        });
+
+        // Load the saved language on page load
+        window.onload = () => {
+            const savedLanguage = localStorage.getItem("selectedLanguage");
+            if (savedLanguage) {
+                document.getElementById("language-selector").value = savedLanguage;
+                changeLanguage(savedLanguage);
+            }
+        };
+    </script>
+</body>
+</html>
