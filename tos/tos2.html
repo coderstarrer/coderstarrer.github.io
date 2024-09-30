@@ -52,7 +52,7 @@
 
     h1, h2 {
         color: #1E3A8A; /* Matching title color with header */
-        font-weight: 700;
+        font-weight: bold
     }
 
     h1 {
@@ -61,12 +61,14 @@
         text-align: center;
         text-transform: uppercase;
         letter-spacing: 2px;
+        font-weight: bold;
     }
 
     h2 {
         font-size: 1.75rem;
         margin-top: 2rem;
         margin-bottom: 1rem;
+        font-weight: bold;
     }
 
     p {
@@ -136,6 +138,75 @@
             text-align: center;
         }
     }
+
+    @media (max-width: 640px) {
+        body {
+            padding: 0 1rem; /* Add padding to body for mobile */
+        }
+        header {
+            padding: 1rem; /* Reduce header padding for mobile */
+        }
+        h1 {
+            font-size: 2.5rem; /* Smaller header for mobile */
+            text-align: center; /* Center align the header */
+        }
+        nav {
+            flex-direction: column; /* Stack navigation items vertically */
+            align-items: center; /* Center nav items */
+            margin: 1rem 0; /* Add margin around the nav */
+        }
+        nav a {
+            font-size: 1.1rem; /* Slightly larger nav font size */
+            padding: 12px 20px; /* Increased padding for touch targets */
+            border-radius: 5px; /* Rounded corners for better appearance */
+            background: rgba(74, 144, 226, 0.1); /* Light background for nav links */
+            transition: background 0.3s ease; /* Smooth background transition */
+        }
+        nav a:hover {
+            background: rgba(74, 144, 226, 0.3); /* Darker background on hover */
+        }
+        #home-slide-title1, #home-slide-title2 {
+            font-size: 1.75rem; /* Increase font size on small screens */
+            text-align: center; /* Center align slide titles */
+        }
+        #home-slide-desc1, #home-slide-desc2 {
+            font-size: 0.9rem; /* Adjust description font size */
+            text-align: center; /* Center align descriptions */
+            margin: 0 1rem; /* Add margin for better spacing */
+        }
+        .container {
+            padding-left: 1rem; /* Add some padding */
+            padding-right: 1rem; /* Add some padding */
+        }
+        .shadow-md {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Enhance shadow for better visibility */
+        }
+    }
+
+    /* For tablets and larger devices (min-width: 769px) */
+    @media (min-width: 769px) {
+        h1 {
+            font-size: 3.5rem; /* Larger titles for bigger screens */
+            font-weight: bold;
+        }
+        h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        nav a {
+            font-size: 1.2rem; /* Make the nav items more prominent */
+            padding: 10px 20px;
+            white-space: nowrap; /* Ensure nav links are on one line */
+        }
+        footer {
+            font-size: 1rem;
+        }
+    }
 </style>
 <body>
     <header>
@@ -186,35 +257,121 @@
     </footer>
 
     <script>
-        const translations = {
-            // Translation content remains unchanged
-        };
+      const translations = {
+    en: {
+        homeHeaderTitle: "Welcome to Sarvamitra Vayama Sangam",
+        homeSlideTitle1: "Welcome to Sarvamitra Vayama Sangam",
+        homeSlideDesc1: "Sarvamitra Vayama Sangam is a fitness center in Chirala, India dedicated to helping individuals achieve their health and wellness goals through comprehensive training programs and support.",
+        homeSlideTitle2: "Why Join Sarvamitra Vayama Gym?",
+        homeFeature1: "State-of-the-art equipment",
+        homeFeature2: "Personalized training programs",
+        homeFeature3: "Group fitness classes",
+        homeFeature4: "Experienced trainers and nutrition guidance",
+        navHome: "Home",
+        navAbout: "About",
+        navFeatures: "Features",
+        navTerms: "Terms of Service",
+        navSettings: "Settings",
+        termsHeaderTitle: "Terms of Service",
+        termsIntro: "Welcome to our Terms of Service page. Please read these terms carefully before using our services.",
+        termsAcceptanceTitle: "1. Acceptance of Terms",
+        termsAcceptanceDesc: "By accessing or using our services, you agree to be bound by these terms.",
+        termsChangesTitle: "2. Changes to Terms",
+        termsChangesDesc: "We reserve the right to modify these terms at any time. Your continued use of our services after any changes indicates your acceptance of the new terms.",
+        termsResponsibilitiesTitle: "3. User Responsibilities",
+        termsResponsibilitiesDesc: "You are responsible for maintaining the confidentiality of your account and password.",
+        termsTerminationTitle: "4. Termination",
+        termsTerminationDesc: "We may terminate your access to the services at any time for violations of these terms.",
+        termsLawTitle: "5. Governing Law",
+        termsLawDesc: "These terms are governed by the laws of [Your Country].",
+        termsContactTitle: "6. Contact Information",
+        termsContactDesc: "If you have any questions about these terms, please contact us."
+    },
+    hi: {
+        homeHeaderTitle: "सरवमित्र व्यायाम संगम में आपका स्वागत है",
+        homeSlideTitle1: "सरवमित्र व्यायाम संगम में आपका स्वागत है",
+        homeSlideDesc1: "सरवमित्र व्यायाम संगम चिराला, भारत में एक फिटनेस केंद्र है जो व्यक्तियों को स्वास्थ्य और कल्याण लक्ष्यों को प्राप्त करने में मदद करता है।",
+        homeSlideTitle2: "सरवमित्र व्यायाम जिम में शामिल क्यों हों?",
+        homeFeature1: "आधुनिक उपकरण",
+        homeFeature2: "व्यक्तिगत प्रशिक्षण कार्यक्रम",
+        homeFeature3: "समूह फिटनेस कक्षाएं",
+        homeFeature4: "अनुभवी प्रशिक्षक और पोषण मार्गदर्शन",
+        navHome: "मुखपृष्ठ",
+        navAbout: "के बारे में",
+        navFeatures: "विशेषताएँ",
+        navTerms: "सेवा की शर्तें",
+        navSettings: "सेटिंग्स",
+        termsHeaderTitle: "सेवा की शर्तें",
+        termsIntro: "हमारी सेवा की शर्तों के पृष्ठ में आपका स्वागत है। कृपया हमारी सेवाओं का उपयोग करने से पहले इन शर्तों को ध्यान से पढ़ें।",
+        termsAcceptanceTitle: "1. शर्तों की स्वीकृति",
+        termsAcceptanceDesc: "हमारी सेवाओं का उपयोग करके, आप इन शर्तों से बंधे होने के लिए सहमत होते हैं।",
+        termsChangesTitle: "2. शर्तों में परिवर्तन",
+        termsChangesDesc: "हम किसी भी समय इन शर्तों में संशोधन करने का अधिकार रखते हैं। किसी भी परिवर्तन के बाद हमारी सेवाओं का निरंतर उपयोग नए शर्तों की स्वीकृति का संकेत है।",
+        termsResponsibilitiesTitle: "3. उपयोगकर्ता की जिम्मेदारियां",
+        termsResponsibilitiesDesc: "आप अपने खाते और पासवर्ड की गोपनीयता बनाए रखने के लिए जिम्मेदार हैं।",
+        termsTerminationTitle: "4. समाप्ति",
+        termsTerminationDesc: "यदि आप इन शर्तों का उल्लंघन करते हैं, तो हम आपकी सेवाओं तक पहुंच को किसी भी समय समाप्त कर सकते हैं।",
+        termsLawTitle: "5. लागू कानून",
+        termsLawDesc: "इन शर्तों पर [आपका देश] के कानून लागू होते हैं।",
+        termsContactTitle: "6. संपर्क जानकारी",
+        termsContactDesc: "यदि आपके पास इन शर्तों के बारे में कोई प्रश्न हैं, तो कृपया हमसे संपर्क करें।"
+    },
+    te: {
+        homeHeaderTitle: "సర్వమిత్ర వ్యాయామ సంఘం కు స్వాగతం",
+        homeSlideTitle1: "సర్వమిత్ర వ్యాయామ సంఘం కు స్వాగతం",
+        homeSlideDesc1: "సర్వమిత్ర వ్యాయామ సంఘం చీరల, భారతదేశంలో ఉన్న ఒక ఆరోగ్య కేంద్రం.",
+        homeSlideTitle2: "సర్వమిత్ర వ్యాయామ జిమ్ లో చేరాలి ఎందుకు?",
+        homeFeature1: "అధునాతన పరికరాలు",
+        homeFeature2: "వ్యక్తిగత శిక్షణ ప్రోగ్రామ్లు",
+        homeFeature3: "జట్టు వ్యాయామ తరగతులు",
+        homeFeature4: "అనుభవం గల శిక్షకులు మరియు పోషణ మార్గనిర్దేశం",
+        navHome: "హోమ్",
+        navAbout: "గురించి",
+        navFeatures: "సాధనాలు",
+        navTerms: "సేవా నిబంధనలు",
+        navSettings: "సెట్టింగులు",
+        termsHeaderTitle: "సేవా నిబంధనలు",
+        termsIntro: "మా సేవా నిబంధనల పేజీకి స్వాగతం. మా సేవలను ఉపయోగించడానికి ముందు దయచేసి ఈ నిబంధనలను జాగ్రత్తగా చదవండి.",
+        termsAcceptanceTitle: "1. నిబంధనల అంగీకారం",
+        termsAcceptanceDesc: "మా సేవలను యాక్సెస్ చేయడం లేదా ఉపయోగించడం ద్వారా, మీరు ఈ నిబంధనలతో బంధించడానికి అంగీకరిస్తున్నారు.",
+        termsChangesTitle: "2. నిబంధనల్లో మార్పులు",
+        termsChangesDesc: "మీరు తీసుకునే మార్పుల తర్వాత, మా సేవలను ఉపయోగించడం కొనసాగించడం కొత్త నిబంధనలను అంగీకరించడానికి మీ అంగీకారం సూచిస్తుంది.",
+        termsResponsibilitiesTitle: "3. వినియోగదారు బాధ్యతలు",
+        termsResponsibilitiesDesc: "మీ ఖాతా మరియు పాస్‌వర్డ్ యొక్క గోప్యతను నిర్వహించడం మీ బాధ్యత.",
+        termsTerminationTitle: "4. ముగింపు",
+        termsTerminationDesc: "ఈ నిబంధనలను ఉల్లంఘించినందున మీకు సేవలకు యాక్సెస్‌ని మేము ఎప్పుడైనా ముగించవచ్చు.",
+        termsLawTitle: "5. అమలులో ఉన్న చట్టం",
+        termsLawDesc: "ఈ నిబంధనలు [మీ దేశం] చట్టాల ఆధీనంలో ఉన్నాయి.",
+        termsContactTitle: "6. సంప్రదింపు సమాచారం",
+        termsContactDesc: "ఈ నిబంధనల గురించి మీకు ఏవైనా ప్రశ్నలు ఉంటే, దయచేసి మాతో సంప్రదించండి."
+    }
+};
 
-        function updateNavLinks(lang) {
-            document.getElementById("nav-home").innerText = translations[lang].navHome;
-            document.getElementById("nav-about").innerText = translations[lang].navAbout;
-            document.getElementById("nav-features").innerText = translations[lang].navFeatures;
-            document.getElementById("nav-terms").innerText = translations[lang].navTerms;
-            document.getElementById("nav-settings").innerText = translations[lang].navSettings;
-        }
+function updateNavLinks(lang) {
+    document.getElementById("nav-home").innerText = translations[lang].navHome;
+    document.getElementById("nav-about").innerText = translations[lang].navAbout;
+    document.getElementById("nav-features").innerText = translations[lang].navFeatures;
+    document.getElementById("nav-terms").innerText = translations[lang].navTerms;
+    document.getElementById("nav-settings").innerText = translations[lang].navSettings;
+}
 
-        function changeLanguage(lang) {
-            document.getElementById("terms-header-title").innerText = translations[lang].termsHeaderTitle;
-            document.getElementById("terms-intro").innerText = translations[lang].termsIntro;
-            document.getElementById("terms-acceptance-title").innerText = translations[lang].termsAcceptanceTitle;
-            document.getElementById("terms-acceptance-desc").innerText = translations[lang].termsAcceptanceDesc;
-            document.getElementById("terms-changes-title").innerText = translations[lang].termsChangesTitle;
-            document.getElementById("terms-changes-desc").innerText = translations[lang].termsChangesDesc;
-            document.getElementById("terms-responsibilities-title").innerText = translations[lang].termsResponsibilitiesTitle;
-            document.getElementById("terms-responsibilities-desc").innerText = translations[lang].termsResponsibilitiesDesc;
-            document.getElementById("terms-termination-title").innerText = translations[lang].termsTerminationTitle;
-            document.getElementById("terms-termination-desc").innerText = translations[lang].termsTerminationDesc;
-            document.getElementById("terms-law-title").innerText = translations[lang].termsLawTitle;
-            document.getElementById("terms-law-desc").innerText = translations[lang].termsLawDesc;
-            document.getElementById("terms-contact-title").innerText = translations[lang].termsContactTitle;
-            document.getElementById("terms-contact-desc").innerText = translations[lang].termsContactDesc;
+function changeLanguage(lang) {
+    document.getElementById("terms-header-title").innerText = translations[lang].termsHeaderTitle;
+    document.getElementById("terms-intro").innerText = translations[lang].termsIntro;
+    document.getElementById("terms-acceptance-title").innerText = translations[lang].termsAcceptanceTitle;
+    document.getElementById("terms-acceptance-desc").innerText = translations[lang].termsAcceptanceDesc;
+    document.getElementById("terms-changes-title").innerText = translations[lang].termsChangesTitle;
+    document.getElementById("terms-changes-desc").innerText = translations[lang].termsChangesDesc;
+    document.getElementById("terms-responsibilities-title").innerText = translations[lang].termsResponsibilitiesTitle;
+    document.getElementById("terms-responsibilities-desc").innerText = translations[lang].termsResponsibilitiesDesc;
+    document.getElementById("terms-termination-title").innerText = translations[lang].termsTerminationTitle;
+    document.getElementById("terms-termination-desc").innerText = translations[lang].termsTerminationDesc;
+    document.getElementById("terms-law-title").innerText = translations[lang].termsLawTitle;
+    document.getElementById("terms-law-desc").innerText = translations[lang].termsLawDesc;
+    document.getElementById("terms-contact-title").innerText = translations[lang].termsContactTitle;
+    document.getElementById("terms-contact-desc").innerText = translations[lang].termsContactDesc;
 
-            updateNavLinks(lang);
+    updateNavLinks(lang)
             localStorage.setItem("selectedLanguage", lang);
         }
 
