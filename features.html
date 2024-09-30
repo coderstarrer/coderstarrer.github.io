@@ -86,58 +86,74 @@
         /* MEDIA QUERIES */
 
         /* For mobile devices (max-width: 768px) */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem; /* Adjust title size on mobile */
-            }
-            h2 {
-                font-size: 1.75rem; /* Adjust subtitle size on mobile */
-            }
-            nav {
-                display: flex;
-                flex-wrap: wrap; /* Allow nav items to wrap */
-                justify-content: center;
-                gap: 10px;
-            }
-            nav a {
-                font-size: 1rem; /* Smaller nav links for mobile */
-                padding: 8px 12px;
-                width: 100%; /* Make each nav item take up full width */
-                text-align: center;
-            }
-            .slider-container {
-                width: 100%; /* Take full width on mobile */
-            }
-            .slide {
-                padding: 10px; /* Less padding for mobile screens */
-            }
-            footer {
-                font-size: 0.875rem; /* Smaller footer text */
-            }
+        @media (max-width: 640px) {
+        body {
+            padding: 0 1rem; /* Add padding to body for mobile */
         }
+        header {
+            padding: 1rem; /* Reduce header padding for mobile */
+        }
+        h1 {
+            font-size: 2.5rem; /* Smaller header for mobile */
+            text-align: center; /* Center align the header */
+        }
+        nav {
+            flex-direction: column; /* Stack navigation items vertically */
+            align-items: center; /* Center nav items */
+            margin: 1rem 0; /* Add margin around the nav */
+        }
+        nav a {
+            font-size: 1.1rem; /* Slightly larger nav font size */
+            padding: 12px 20px; /* Increased padding for touch targets */
+            border-radius: 5px; /* Rounded corners for better appearance */
+            background: rgba(74, 144, 226, 0.1); /* Light background for nav links */
+            transition: background 0.3s ease; /* Smooth background transition */
+        }
+        nav a:hover {
+            background: rgba(74, 144, 226, 0.3); /* Darker background on hover */
+        }
+        #home-slide-title1, #home-slide-title2 {
+            font-size: 1.75rem; /* Increase font size on small screens */
+            text-align: center; /* Center align slide titles */
+        }
+        #home-slide-desc1, #home-slide-desc2 {
+            font-size: 0.9rem; /* Adjust description font size */
+            text-align: center; /* Center align descriptions */
+            margin: 0 1rem; /* Add margin for better spacing */
+        }
+        .container {
+            padding-left: 1rem; /* Add some padding */
+            padding-right: 1rem; /* Add some padding */
+        }
+        .shadow-md {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Enhance shadow for better visibility */
+        }
+    }
 
-        /* For tablets and larger devices (min-width: 769px) */
-        @media (min-width: 769px) {
-            h1 {
-                font-size: 3.5rem; /* Larger titles for bigger screens */
-            }
-            h2 {
-                font-size: 2.5rem;
-            }
-            nav {
-                display: flex;
-                justify-content: center;
-                gap: 20px;
-            }
-            nav a {
-                font-size: 1.2rem; /* Make the nav items more prominent */
-                padding: 10px 20px;
-                white-space: nowrap; /* Ensure nav links are on one line */
-            }
-            footer {
-                font-size: 1rem;
-            }
+    /* For tablets and larger devices (min-width: 769px) */
+    @media (min-width: 769px) {
+        h1 {
+            font-size: 3.5rem; /* Larger titles for bigger screens */
+            font-weight: bold;
         }
+        h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        nav a {
+            font-size: 1.2rem; /* Make the nav items more prominent */
+            padding: 10px 20px;
+            white-space: nowrap; /* Ensure nav links are on one line */
+        }
+        footer {
+            font-size: 1rem;
+        }
+    }
     </style>
 </head>
 <body>
