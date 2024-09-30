@@ -1,10 +1,18 @@
+# Advanced PowerShell Script for File Management and Git Operations
+
+# Function to handle errors gracefully
+function Handle-Error {
+    param ($message)
+    Write-Host "Error: $message" -ForegroundColor Red
+    exit 1
+}
+
 # Change to the specified directory
 $directoryPath = "C:\Users\BHANU\Downloads\coderstarrer.github.io-main"
 
-# Check if the directory exists
+# Validate directory existence
 if (-Not (Test-Path $directoryPath)) {
-    Write-Host "Error: The specified directory does not exist: $directoryPath" -ForegroundColor Red
-    exit 1
+    Handle-Error "The specified directory does not exist: $directoryPath"
 }
 
 Set-Location $directoryPath
@@ -12,118 +20,124 @@ Write-Host "Current directory set to: $directoryPath" -ForegroundColor Green
 
 # Prompt for the file or folder to delete
 $itemToDelete = Read-Host "Enter the name of the file or folder to delete (leave blank to skip)"
-Write-Host "User entered for deletion: '$itemToDelete'"
-
-# Check if the user provided a filename or folder for deletion
 if (-Not [string]::IsNullOrEmpty($itemToDelete)) {
-    # Use the full path for deletion
     $fullPathToDelete = Join-Path -Path $directoryPath -ChildPath $itemToDelete
-    Write-Host "Full path to delete: '$fullPathToDelete'"
-
     if (Test-Path $fullPathToDelete) {
-        Remove-Item $fullPathToDelete -Recurse -Force
+        Remove-Item $fullPathToDelete -Recurse -Force -ErrorAction Stop
         Write-Host "Deleted: $fullPathToDelete" -ForegroundColor Green
     } else {
-        Write-Host "Error: Item '$fullPathToDelete' does not exist." -ForegroundColor Red
+        Handle-Error "Item '$fullPathToDelete' does not exist."
     }
 }
 
-# Prompt for the new file name or folder to create
+# Prompt for the new file or folder creation
 $newItemName = Read-Host "Enter the name of the new file or folder to create (with extension or '/' for folders, leave blank to skip)"
-Write-Host "User entered for creation: '$newItemName'"
-
-# Check if the user provided a filename or folder for creation
 if (-Not [string]::IsNullOrEmpty($newItemName)) {
     $fullPathToCreate = Join-Path -Path $directoryPath -ChildPath $newItemName
-    Write-Host "Full path to create: '$fullPathToCreate'"
 
+    # Create folder or file based on user input
     if ($newItemName.EndsWith("/")) {
-        # Create a new folder
-        New-Item -ItemType Directory -Path $fullPathToCreate -Force
+        New-Item -ItemType Directory -Path $fullPathToCreate -Force -ErrorAction Stop
         Write-Host "Successfully created the folder: $fullPathToCreate" -ForegroundColor Green
     } else {
-        # Check if the file already exists
         if (-Not (Test-Path $fullPathToCreate)) {
-            # Open a loop to allow the user to enter multiple lines of content
-            Write-Host "Creating the file: $fullPathToCreate"
-            Write-Host "Enter content for the file (type 'END' on a new line to finish):"
-            
-            $fileContent = @()
-            while ($true) {
-                $lineContent = Read-Host "> "
-                
-                # Check for the termination condition
-                if ($lineContent -eq "END") {
-                    break
-                }
-
-                # Append the line to the file content
-                $fileContent += $lineContent
+            # Backup file if it already exists
+            if (Test-Path $fullPathToCreate) {
+                Copy-Item -Path $fullPathToCreate -Destination "$fullPathToCreate.bak" -Force
+                Write-Host "Backup created: $fullPathToCreate.bak" -ForegroundColor Yellow
             }
 
-            # Save the file content to the specified file
-            $fileContent | Out-File -FilePath $fullPathToCreate -Encoding UTF8
-            Write-Host "Successfully created and saved the file: $fullPathToCreate" -ForegroundColor Green
+            # Editor choice for file creation
+            $editorChoice = Read-Host "Do you want to use the terminal editor or Notepad? (Enter 'terminal' or 'notepad')"
+            if ($editorChoice -eq "notepad") {
+                New-Item -Path $fullPathToCreate -ItemType File -Force
+                Start-Process notepad.exe $fullPathToCreate
+                Write-Host "File opened in Notepad: $fullPathToCreate"
+            } else {
+                # Interactive terminal editor with improved UX
+                Write-Host "Enter content for the file (type 'END' on a new line to finish):"
+                $fileContent = @()
+                while ($true) {
+                    $lineContent = Read-Host "> "
+                    if ($lineContent -eq "END") { break }
+                    $fileContent += $lineContent
+                }
+                $fileContent | Out-File -FilePath $fullPathToCreate -Encoding UTF8
+                Write-Host "Successfully created and saved the file: $fullPathToCreate" -ForegroundColor Green
 
-            # Simple editing simulation
-            $edit = $true
-            while ($edit) {
-                Write-Host "Contents of the file:"
-                $currentContent = Get-Content $fullPathToCreate
-                $currentContent | ForEach-Object { Write-Host "$($_)" }
-                
-                $userCommand = Read-Host "Enter 'edit' to modify a line, 'exit' to finish editing"
-                
-                if ($userCommand -eq "edit") {
-                    # Show available lines for editing
-                    $lineNumbers = 1..$currentContent.Count
-                    Write-Host "Available lines to edit: $($lineNumbers -join ', ')"
-                    $lineToEdit = Read-Host "Enter the line number to edit (1 to $($currentContent.Count))"
+                # File editing loop
+                $edit = $true
+                while ($edit) {
+                    Write-Host "File content:"
+                    $currentContent = @(Get-Content -Path $fullPathToCreate)
+                    $currentContent | ForEach-Object { Write-Host "$($_)" }
+                    $userCommand = Read-Host "Enter 'edit' to modify a line, 'add' to append, 'delete' to remove a line, 'exit' to finish editing"
 
-                    # Validate line number input
-                    if ($lineToEdit -as [int] -and $lineToEdit -gt 0 -and $lineToEdit -le $currentContent.Count) {
-                        $newLineContent = Read-Host "Enter new content for line $lineToEdit"
-                        $currentContent[$lineToEdit - 1] = $newLineContent  # Update the specific line
-                        $currentContent | Set-Content -Path $fullPathToCreate
-                    } else {
-                        Write-Host "Invalid line number. Please enter a number between 1 and $($currentContent.Count)." -ForegroundColor Red
+                    switch ($userCommand) {
+                        'edit' {
+                            $lineToEdit = Read-Host "Enter the line number to edit (1 to $($currentContent.Count))"
+                            if ($lineToEdit -as [int] -and $lineToEdit -gt 0 -and $lineToEdit -le $currentContent.Count) {
+                                $newLineContent = Read-Host "Enter new content for line $lineToEdit"
+                                $currentContent[$lineToEdit - 1] = $newLineContent
+                                $currentContent | Set-Content -Path $fullPathToCreate
+                                Write-Host "Line $lineToEdit updated." -ForegroundColor Green
+                            } else {
+                                Write-Host "Invalid line number." -ForegroundColor Red
+                            }
+                        }
+                        'add' {
+                            $newLineContent = Read-Host "Enter new content to add"
+                            Add-Content -Path $fullPathToCreate -Value $newLineContent
+                            Write-Host "Line added." -ForegroundColor Green
+                        }
+                        'delete' {
+                            $lineToDelete = Read-Host "Enter the line number to delete (1 to $($currentContent.Count))"
+                            if ($lineToDelete -as [int] -and $lineToDelete -gt 0 -and $lineToDelete -le $currentContent.Count) {
+                                $currentContent = $currentContent | Where-Object { $_ -ne $currentContent[$lineToDelete - 1] }
+                                $currentContent | Set-Content -Path $fullPathToCreate
+                                Write-Host "Line $lineToDelete deleted." -ForegroundColor Green
+                            } else {
+                                Write-Host "Invalid line number." -ForegroundColor Red
+                            }
+                        }
+                        'exit' {
+                            $edit = $false
+                        }
+                        default {
+                            Write-Host "Unknown command." -ForegroundColor Red
+                        }
                     }
-                } elseif ($userCommand -eq "exit") {
-                    $edit = $false
                 }
             }
         } else {
-            Write-Host "Error: File '$fullPathToCreate' already exists." -ForegroundColor Red
+            Handle-Error "File '$fullPathToCreate' already exists."
         }
     }
 }
 
-# Add all changes to the staging area
+# Stage all changes in the repository
 git add .
 if ($LASTEXITCODE -ne 0) {
-    Write-Host "Error: Failed to add changes to the staging area." -ForegroundColor Red
-    exit 1
+    Handle-Error "Failed to add changes to the staging area."
 }
 
-# Prompt for commit message and provide a default option
+# Prompt for commit message with a default option
 $commitMessage = Read-Host "Commit message (leave blank for default 'Update')"
 if ([string]::IsNullOrEmpty($commitMessage)) {
-    $commitMessage = "Update"  # Use "Update" as the default commit message
+    $commitMessage = "Update"
 }
 
-# Attempt to commit changes
+# Commit changes
 git commit -m $commitMessage
 if ($LASTEXITCODE -ne 0) {
-    Write-Host "Error: Failed to commit changes." -ForegroundColor Red
-    exit 1
+    Handle-Error "Failed to commit changes."
 }
 
-# Attempt to push changes to the remote repository
+# Push changes to the remote repository
 git push origin main
 if ($LASTEXITCODE -ne 0) {
-    Write-Host "Error: Failed to push changes to the remote repository." -ForegroundColor Red
-    exit 1
+    Handle-Error "Failed to push changes to the remote repository."
 }
 
-# Notify the user of successful completion
-Write-Host "Changes have been successfully committed and pushed!" -ForegroundColor Green
+# Final success message
+Write-Host "Changes successfully committed and pushed!" -ForegroundColor Green
