@@ -87,49 +87,49 @@
     /* MEDIA QUERIES */
 
     /* For mobile devices (max-width: 640px) */
-    @media (max-width: 640px) {
-        body {
-            padding: 0 1rem; /* Add padding to body for mobile */
-        }
-        header {
-            padding: 1rem; /* Reduce header padding for mobile */
-        }
-        h1 {
-            font-size: 2.5rem; /* Smaller header for mobile */
-            text-align: center; /* Center align the header */
-        }
-        nav {
-            flex-direction: column; /* Stack navigation items vertically */
-            align-items: center; /* Center nav items */
-            margin: 1rem 0; /* Add margin around the nav */
-        }
-        nav a {
-            font-size: 1.1rem; /* Slightly larger nav font size */
-            padding: 12px 20px; /* Increased padding for touch targets */
-            border-radius: 5px; /* Rounded corners for better appearance */
-            background: rgba(74, 144, 226, 0.1); /* Light background for nav links */
-            transition: background 0.3s ease; /* Smooth background transition */
-        }
-        nav a:hover {
-            background: rgba(74, 144, 226, 0.3); /* Darker background on hover */
-        }
-        #home-slide-title1, #home-slide-title2 {
-            font-size: 1.75rem; /* Increase font size on small screens */
-            text-align: center; /* Center align slide titles */
-        }
-        #home-slide-desc1, #home-slide-desc2 {
-            font-size: 0.9rem; /* Adjust description font size */
-            text-align: center; /* Center align descriptions */
-            margin: 0 1rem; /* Add margin for better spacing */
-        }
-        .container {
-            padding-left: 1rem; /* Add some padding */
-            padding-right: 1rem; /* Add some padding */
-        }
-        .shadow-md {
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Enhance shadow for better visibility */
-        }
+    /* For mobile devices (max-width: 640px) */
+@media (max-width: 640px) {
+    /* General Styles */
+    .slider {
+        flex-direction: column; /* Stack slides vertically */
+        align-items: center; /* Center align slides */
     }
+    .slide {
+        min-width: 100%; /* Make slide take full width */
+        height: auto; /* Allow height to adjust based on content */
+        padding: 1rem; /* Add padding for better spacing */
+        box-shadow: none; /* Remove shadow for simplicity */
+        margin-bottom: 1rem; /* Add space between slides */
+    }
+    #home-slide-title1, #home-slide-title2 {
+        font-size: 1.5rem; /* Adjust title font size */
+        text-align: center; /* Center align the titles */
+    }
+    #home-slide-desc1, #home-slide-desc2 {
+        font-size: 0.9rem; /* Adjust description font size */
+        text-align: center; /* Center align descriptions */
+        margin: 0 0.5rem; /* Add margin for better spacing */
+        padding: 0 1rem; /* Add padding for text */
+    }
+    .list-disc {
+        padding-left: 1.5rem; /* Ensure list items are indented */
+    }
+    .slide ul {
+        text-align: left; /* Align list items to the left */
+        margin: 0; /* Remove margin */
+        padding: 0; /* Remove padding */
+    }
+    nav {
+        padding: 0 1rem; /* Add padding to nav for mobile */
+    }
+    nav a {
+        display: block; /* Stack navigation links */
+        width: 100%; /* Make nav links take full width */
+        margin-bottom: 0.5rem; /* Add spacing between links */
+        text-align: center; /* Center align nav text */
+    }
+}
+
 
     /* For tablets and larger devices (min-width: 769px) */
     @media (min-width: 769px) {
