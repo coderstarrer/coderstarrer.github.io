@@ -86,37 +86,26 @@
         /* MEDIA QUERIES */
 
         /* For mobile devices (max-width: 768px) */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem; /* Adjust title size on mobile */
-                font-weight: bold;
-            }
-            h2 {
-                font-size: 1.75rem; 
-                font-weight: bold; 
-            }
-            nav {
-                display: flex;
-                flex-wrap: wrap; /* Allow nav items to wrap */
-                justify-content: center;
-                gap: 10px;
-            }
-            nav a {
-                font-size: 1rem; /* Smaller nav links for mobile */
-                padding: 8px 12px;
-                width: 100%; /* Make each nav item take up full width */
-                text-align: center;
-            }
-            .slider-container {
-                width: 100%; /* Take full width on mobile */
-            }
-            .slide {
-                padding: 10px; /* Less padding for mobile screens */
-            }
-            footer {
-                font-size: 0.875rem; /* Smaller footer text */
-            }
-        }
+
+        @media (max-width: 640px) {
+    #home-slide-title1, #home-slide-title2 {
+        font-size: 1.5rem; /* Increase font size on small screens */
+    }
+
+    #home-slide-desc1, #home-slide-desc2 {
+        font-size: 1rem; /* Adjust description font size */
+    }
+
+    .container {
+        padding-left: 1rem; /* Add some padding */
+        padding-right: 1rem; /* Add some padding */
+    }
+
+    .shadow-md {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Enhance shadow for better visibility */
+    }
+}
+
 
         /* For tablets and larger devices (min-width: 769px) */
         @media (min-width: 769px) {
@@ -250,74 +239,75 @@
         });
 
         // Function to change the language globally
-        function changeLanguage(lang) {
-            const translations = {
-                en: {
-                    homeHeaderTitle: "Welcome to Sarvamitra Vayama Sangam",
-                    homeSlideTitle1: "Welcome to Sarvamitra Vayama Sangam",
-                    homeSlideDesc1: "Sarvamitra Vayama Sangam is a fitness center in Chirala, India dedicated to helping individuals achieve their health and wellness goals through comprehensive training programs and support.",
-                    homeSlideTitle2: "Why Join Sarvamitra Vayama Gym?",
-                    homeFeature1: "State-of-the-art equipment",
-                    homeFeature2: "Personalized training programs",
-                    homeFeature3: "Group fitness classes",
-                    homeFeature4: "Experienced trainers and nutrition guidance",
-                    navHome: "Home",
-                    navAbout: "About",
-                    navFeatures: "Features",
-                    navTerms: "Terms of Service",
-                    navSettings: "Settings"
-                },
-                hi: {
-                    homeHeaderTitle: "सर्वमित्र व्यायाम संगम में आपका स्वागत है",
-                    homeSlideTitle1: "सरवमित्र व्यायाम संगम में आपका स्वागत है",
-                    homeSlideDesc1: "सर्वमित्र व्यायाम संगम भारत के चिराला में एक फिटनेस सेंटर है, जो व्यापक प्रशिक्षण कार्यक्रमों और सहायता के माध्यम से व्यक्तियों को उनके स्वास्थ्य और कल्याण लक्ष्यों को प्राप्त करने में मदद करने के लिए समर्पित है।",
-                    homeSlideTitle2: "सर्वमित्र व्यायाम जिम से क्यों जुड़ें?",
-                    homeFeature1: "आधुनिक उपकरण",
-                    homeFeature2: "व्यक्तिगत प्रशिक्षण कार्यक्रम",
-                    homeFeature3: "समूह फिटनेस कक्षाएं",
-                    homeFeature4: "अनुभवी प्रशिक्षक और पोषण मार्गदर्शन",
-                    navHome: "मुखपृष्ठ",
-                    navAbout: "के बारे में",
-                    navFeatures: "विशेषताएँ",
-                    navTerms: "सेवा की शर्तें",
-                    navSettings: "सेटिंग्स"
-                },
-                te: {
-                    homeHeaderTitle: "సర్వమిత్ర వయమ సంగమానికి స్వాగతం",
-                    homeSlideTitle1: "సర్వమిత్ర వయమ సంగమానికి స్వాగతం",
-                    homeSlideDesc1: "సర్వమిత్ర వ్యామ సంగం అనేది భారతదేశంలోని చీరాలలోని ఫిట్‌నెస్ కేంద్రం, సమగ్ర శిక్షణా కార్యక్రమాలు మరియు మద్దతు ద్వారా వ్యక్తులు వారి ఆరోగ్యం మరియు ఆరోగ్య లక్ష్యాలను సాధించడంలో సహాయపడటానికి అంకితం చేయబడింది.",
-                    homeFeature1: "సర్వమిత్ర వయమ జిమ్‌లో ఎందుకు చేరాలి?",
-                    homeFeature2: "వ్యక్తిగత శిక్షణ ప్రోగ్రామ్లు",
-                    homeFeature3: "జట్టు వ్యాయామ తరగతులు",
-                    homeFeature4: "అనుభవం గల శిక్షకులు మరియు పోషణ మార్గనిర్దేశం",
-                    navHome: "హోమ్",
-                    navAbout: "గురించి",
-                    navFeatures: "సాధనాలు",
-                    navTerms: "సేవా నిబంధనలు",
-                    navSettings: "సెట్టింగులు"
-                }
-            };
-
-            // Update the text in this page
-            document.getElementById("home-header-title").innerText = translations[lang].homeHeaderTitle;
-            document.getElementById("home-slide-title1").innerText = translations[lang].homeSlideTitle1;
-            document.getElementById("home-slide-desc1").innerText = translations[lang].homeSlideDesc1;
-            document.getElementById("home-slide-title2").innerText = translations[lang].homeSlideTitle2;
-            document.getElementById("home-feature1").innerText = translations[lang].homeFeature1;
-            document.getElementById("home-feature2").innerText = translations[lang].homeFeature2;
-            document.getElementById("home-feature3").innerText = translations[lang].homeFeature3;
-            document.getElementById("home-feature4").innerText = translations[lang].homeFeature4;
-
-            // Update the navigation items
-            document.getElementById("home-link").innerText = translations[lang].navHome;
-            document.getElementById("about-link").innerText = translations[lang].navAbout;
-            document.getElementById("features-link").innerText = translations[lang].navFeatures;
-            document.getElementById("terms-link").innerText = translations[lang].navTerms;
-            document.getElementById("settings-link").innerText = translations[lang].navSettings;
-
-            // Save the selected language to localStorage
-            localStorage.setItem("selectedLanguage", lang);
+     function changeLanguage(lang) {
+    const translations = {
+        en: {
+            homeHeaderTitle: "Welcome to Sarvamitra Vayama Sangam",
+            homeSlideTitle1: "Welcome to Sarvamitra Vayama Sangam",
+            homeSlideDesc1: "Sarvamitra Vayama Sangam is a fitness center in Chirala, India dedicated to helping individuals achieve their health and wellness goals through comprehensive training programs and support.",
+            homeSlideTitle2: "Why Join Sarvamitra Vayama Gym?", // Corrected here
+            homeFeature1: "State-of-the-art equipment",
+            homeFeature2: "Personalized training programs",
+            homeFeature3: "Group fitness classes",
+            homeFeature4: "Experienced trainers and nutrition guidance",
+            navHome: "Home",
+            navAbout: "About",
+            navFeatures: "Features",
+            navTerms: "Terms of Service",
+            navSettings: "Settings"
+        },
+        hi: {
+            homeHeaderTitle: "सर्वमित्र व्यायाम संगम में आपका स्वागत है",
+            homeSlideTitle1: "सरवमित्र व्यायाम संगम में आपका स्वागत है",
+            homeSlideDesc1: "सर्वमित्र व्यायाम संगम भारत के चिराला में एक फिटनेस सेंटर है, जो व्यापक प्रशिक्षण कार्यक्रमों और सहायता के माध्यम से व्यक्तियों को उनके स्वास्थ्य और कल्याण लक्ष्यों को प्राप्त करने में मदद करने के लिए समर्पित है।",
+            homeSlideTitle2: "सर्वमित्र व्यायाम जिम से क्यों जुड़ें?", // Corrected here
+            homeFeature1: "आधुनिक उपकरण",
+            homeFeature2: "व्यक्तिगत प्रशिक्षण कार्यक्रम",
+            homeFeature3: "समूह फिटनेस कक्षाएं",
+            homeFeature4: "अनुभवी प्रशिक्षक और पोषण मार्गदर्शन",
+            navHome: "मुखपृष्ठ",
+            navAbout: "के बारे में",
+            navFeatures: "विशेषताएँ",
+            navTerms: "सेवा की शर्तें",
+            navSettings: "सेटिंग्स"
+        },
+        te: {
+            homeHeaderTitle: "సర్వమిత్ర వయమ సంగమానికి స్వాగతం",
+            homeSlideTitle1: "సర్వమిత్ర వయమ సంగమానికి స్వాగతం",
+            homeSlideDesc1: "సర్వమిత్ర వ్యామ సంగం అనేది భారతదేశంలోని చీరాలలోని ఫిట్‌నెస్ కేంద్రం, సమగ్ర శిక్షణా కార్యక్రమాలు మరియు మద్దతు ద్వారా వ్యక్తులు వారి ఆరోగ్యం మరియు ఆరోగ్య లక్ష్యాలను సాధించడంలో సహాయపడటానికి అంకితం చేయబడింది.",
+            homeSlideTitle2: "సర్వమిత్ర వయమ జిమ్ కి ఎందుకు చేరాలి?", // Corrected here
+            homeFeature1: "అద్భుతమైన పరికరాలు",
+            homeFeature2: "వ్యక్తిగత శిక్షణా కార్యక్రమాలు",
+            homeFeature3: "సమూహ వ్యాయామ తరగతులు",
+            homeFeature4: "అనుభవం గల శిక్షకులు మరియు పోషణ మార్గనిర్దేశం",
+            navHome: "హోమ్",
+            navAbout: "గురించి",
+            navFeatures: "సాధనాలు",
+            navTerms: "సేవా నిబంధనలు",
+            navSettings: "సెట్టింగులు"
         }
+    };
+
+    // Update the text in this page
+    document.getElementById("home-header-title").innerText = translations[lang].homeHeaderTitle;
+    document.getElementById("home-slide-title1").innerText = translations[lang].homeSlideTitle1;
+    document.getElementById("home-slide-desc1").innerText = translations[lang].homeSlideDesc1;
+    document.getElementById("home-slide-title2").innerText = translations[lang].homeSlideTitle2; // Ensure this line is included
+    document.getElementById("home-feature1").innerText = translations[lang].homeFeature1;
+    document.getElementById("home-feature2").innerText = translations[lang].homeFeature2;
+    document.getElementById("home-feature3").innerText = translations[lang].homeFeature3;
+    document.getElementById("home-feature4").innerText = translations[lang].homeFeature4;
+
+    // Update the navigation items
+    document.getElementById("home-link").innerText = translations[lang].navHome;
+    document.getElementById("about-link").innerText = translations[lang].navAbout;
+    document.getElementById("features-link").innerText = translations[lang].navFeatures;
+    document.getElementById("terms-link").innerText = translations[lang].navTerms;
+    document.getElementById("settings-link").innerText = translations[lang].navSettings;
+
+    // Save the selected language to localStorage
+    localStorage.setItem("selectedLanguage", lang);
+}
 
         // Load the saved language on page load
         window.onload = () => {
