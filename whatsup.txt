@@ -1,2 +1,0 @@
-I am recording my powershell application
-I am sure it will work

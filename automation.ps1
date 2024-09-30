@@ -8,7 +8,7 @@ function Handle-Error {
 }
 
 # Change to the specified directory
-$directoryPath = "C:\Users\BHANU\Downloads\Waste_Folder"
+$directoryPath = "C:\Users\BHANU\Downloads\coderstarrer.github.io-main"
 
 # Validate directory existence
 if (-Not (Test-Path $directoryPath)) {
