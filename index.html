@@ -122,29 +122,36 @@
     }
 
     .slide {
-        padding: 10px;
+        padding: 20px; /* Increased padding for spacing */
         height: auto;
+        word-wrap: break-word; /* Ensures long text breaks to the next line */
+        line-height: 1.5; /* Added line-height to improve readability */
     }
 
     .slide h2 {
         font-size: 1.5rem;
         text-align: center;
+        margin-bottom: 10px; /* Adds spacing below heading */
     }
 
     .slide p, .slide ul {
         font-size: 1rem;
         text-align: center;
+        padding: 10px; /* Padding inside text for better spacing */
+        line-height: 1.4;
     }
 
     ul {
         padding: 0;
         margin: 0;
+        list-style-type: none; /* Remove list bullet points */
     }
 
     footer {
         font-size: 0.9rem;
     }
 }
+
 
     /* For tablets and larger devices (min-width: 769px) */
     @media (min-width: 769px) {

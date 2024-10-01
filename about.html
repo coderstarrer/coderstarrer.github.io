@@ -88,46 +88,69 @@
 
     /* For mobile devices (max-width: 640px) */
 @media (max-width: 640px) {
-    /* General Styles */
-    .slider {
-        flex-direction: column; /* Stack slides vertically */
-        align-items: center; /* Center align slides */
+    h1 {
+        font-size: 2rem;
+        text-align: center;
     }
-    .slide {
-        min-width: 100%; /* Make slide take full width */
-        height: auto; /* Allow height to adjust based on content */
-        padding: 1rem; /* Add padding for better spacing */
-        box-shadow: none; /* Remove shadow for simplicity */
-        margin-bottom: 1rem; /* Add space between slides */
+
+    h2 {
+        font-size: 1.8rem;
+        text-align: center;
     }
-    #home-slide-title1, #home-slide-title2 {
-        font-size: 1.5rem; /* Adjust title font size */
-        text-align: center; /* Center align the titles */
+
+    p {
+        font-size: 1rem;
+        text-align: center;
     }
-    #home-slide-desc1, #home-slide-desc2 {
-        font-size: 0.9rem; /* Adjust description font size */
-        text-align: center; /* Center align descriptions */
-        margin: 0 0.5rem; /* Add margin for better spacing */
-        padding: 0 1rem; /* Add padding for text */
-    }
-    .list-disc {
-        padding-left: 1.5rem; /* Ensure list items are indented */
-    }
-    .slide ul {
-        text-align: left; /* Align list items to the left */
-        margin: 0; /* Remove margin */
-        padding: 0; /* Remove padding */
-    }
+
     nav {
-        padding: 0 1rem; /* Add padding to nav for mobile */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
     }
+
     nav a {
-        display: block; /* Stack navigation links */
-        width: 100%; /* Make nav links take full width */
-        margin-bottom: 0.5rem; /* Add spacing between links */
-        text-align: center; /* Center align nav text */
+        font-size: 1rem;
+        padding: 8px 10px;
+    }
+
+    .slider {
+        width: 100vw;
+    }
+
+    .slide {
+        padding: 20px; /* Increased padding for spacing */
+        height: auto;
+        word-wrap: break-word; /* Ensures long text breaks to the next line */
+        line-height: 1.5; /* Added line-height to improve readability */
+    }
+
+    .slide h2 {
+        font-size: 1.5rem;
+        text-align: center;
+        margin-bottom: 10px; /* Adds spacing below heading */
+    }
+
+    .slide p, .slide ul {
+        font-size: 1rem;
+        text-align: center;
+        padding: 10px; /* Padding inside text for better spacing */
+        line-height: 1.4;
+    }
+
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style-type: none; /* Remove list bullet points */
+    }
+
+    footer {
+        font-size: 0.9rem;
     }
 }
+
 
     /* For tablets and larger devices (min-width: 769px) */
     @media (min-width: 769px) {
