@@ -88,30 +88,23 @@
 
     /* For mobile devices (max-width: 640px) */
 @media (max-width: 640px) {
-    /* Overall body adjustments for better readability */
-    body {
-        font-size: 1rem;  /* Base font size for easy reading */
-        line-height: 1.5;  /* Consistent line height for all text */
-        padding: 0 15px;  /* Add some padding to the sides for comfort */
-    }
-
     h1 {
-        font-size: 2.4rem;  /* Increased for better visibility */
+        font-size: 2.2rem;  /* Slightly larger for better visibility */
         text-align: center;
-        margin-bottom: 20px;  /* More space below for separation */
+        margin-bottom: 15px;  /* Add margin below to separate text */
     }
 
     h2 {
-        font-size: 1.4rem;  /* Adjusted size for better visibility */
+        font-size: 1.1rem;  /* Reduce font size to fit Telugu text better */
         text-align: center;
         margin-bottom: 15px;
     }
 
     p {
-        font-size: 1.2rem;  /* Increased font size slightly for readability */
+        font-size: 1.1rem;  /* Increased font size slightly for readability */
         text-align: center;
         line-height: 1.6;  /* Increase line-height for better spacing */
-        margin-bottom: 20px;  /* More margin for separation */
+        margin-bottom: 15px;  /* Added margin for separation */
     }
 
     nav {
@@ -119,48 +112,38 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 15px;  /* Increased gap for better spacing */
-        padding: 10px 0;  /* Padding for better touch target */
+        gap: 12px;  /* Slightly larger gap for better spacing */
     }
 
     nav a {
-        font-size: 1.1rem;  /* Increased for better readability */
-        padding: 12px 15px;  /* Increased padding for larger touch targets */
-        border-radius: 5px;  /* Added border radius for a smoother look */
-        transition: background-color 0.3s;  /* Smooth transition for hover effects */
-    }
-
-    nav a:hover {
-        background-color: rgba(0, 0, 0, 0.1);  /* Slight background change on hover */
+        font-size: 1rem;
+        padding: 10px 12px;  /* Increased padding to make touch targets larger */
     }
 
     .slider {
         width: 100vw;
-        overflow: hidden;  /* Hide overflow to prevent horizontal scroll */
     }
 
     .slide {
         padding: 20px;  /* Spacing inside the slide */
         height: auto;
         word-wrap: break-word;  /* Ensures long text breaks to the next line */
-        line-height: 1.7;  /* Increase line-height to avoid Telugu text overlap */
-        margin-bottom: 25px;  /* More space between the slides */
-        background-color: #f9f9f9;  /* Light background for slide for contrast */
-        border-radius: 8px;  /* Rounded corners for a modern look */
+        line-height: 1.6;  /* Increase line-height to avoid Telugu text overlap */
+        margin-bottom: 20px;  /* Adds spacing between the slides */
     }
 
     .slide h2 {
-        font-size: 1.6rem;  /* Adjusted size for better visibility */
+        font-size: 1.4rem;  /* Adjusted size to prevent overlap with Telugu */
         text-align: center;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
     }
 
     .slide p, .slide ul {
-        font-size: 1.2rem;  /* Slightly increased for readability */
+        font-size: 1.1rem;  /* Slightly increased for readability */
         text-align: center;
-        padding: 10px 5px;  /* Adjusted padding for balance */
-        line-height: 1.6;  /* Ensure better vertical space for Telugu text */
-        margin-bottom: 20px;  /* Increased margin for better spacing */
+        padding: 12px;  /* Increased padding inside the text for better spacing */
+        line-height: 1.5;  /* Ensure better vertical space for Telugu text */
+        margin-bottom: 15px;
     }
 
     ul {
@@ -170,9 +153,8 @@
     }
 
     footer {
-        font-size: 1.1rem;  /* Made footer text a bit larger */
-        padding: 15px 0;  /* Added more padding inside the footer */
-        text-align: center;  /* Center footer text for uniformity */
+        font-size: 1rem;  /* Made footer text a bit larger */
+        padding: 10px 0;  /* Added padding inside the footer */
     }
 }
 
