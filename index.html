@@ -90,18 +90,22 @@
     /* For mobile devices (max-width: 640px) */
        @media (max-width: 640px) {
     h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;  /* Slightly larger for better visibility */
         text-align: center;
+        margin-bottom: 15px;  /* Add margin below to separate text */
     }
 
     h2 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;  /* Reduce font size to fit Telugu text better */
         text-align: center;
+        margin-bottom: 15px;
     }
 
     p {
-        font-size: 1rem;
+        font-size: 1.1rem;  /* Increased font size slightly for readability */
         text-align: center;
+        line-height: 1.6;  /* Increase line-height for better spacing */
+        margin-bottom: 15px;  /* Added margin for separation */
     }
 
     nav {
@@ -109,12 +113,12 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 10px;
+        gap: 12px;  /* Slightly larger gap for better spacing */
     }
 
     nav a {
         font-size: 1rem;
-        padding: 8px 10px;
+        padding: 10px 12px;  /* Increased padding to make touch targets larger */
     }
 
     .slider {
@@ -122,35 +126,39 @@
     }
 
     .slide {
-        padding: 20px; /* Increased padding for spacing */
+        padding: 20px;  /* Spacing inside the slide */
         height: auto;
-        word-wrap: break-word; /* Ensures long text breaks to the next line */
-        line-height: 1.5; /* Added line-height to improve readability */
+        word-wrap: break-word;  /* Ensures long text breaks to the next line */
+        line-height: 1.6;  /* Increase line-height to avoid Telugu text overlap */
+        margin-bottom: 20px;  /* Adds spacing between the slides */
     }
 
     .slide h2 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;  /* Adjusted size to prevent overlap with Telugu */
         text-align: center;
-        margin-bottom: 10px; /* Adds spacing below heading */
+        margin-bottom: 10px;
     }
 
     .slide p, .slide ul {
-        font-size: 1rem;
+        font-size: 1.1rem;  /* Slightly increased for readability */
         text-align: center;
-        padding: 10px; /* Padding inside text for better spacing */
-        line-height: 1.4;
+        padding: 12px;  /* Increased padding inside the text for better spacing */
+        line-height: 1.5;  /* Ensure better vertical space for Telugu text */
+        margin-bottom: 15px;
     }
 
     ul {
         padding: 0;
         margin: 0;
-        list-style-type: none; /* Remove list bullet points */
+        list-style-type: none;  /* Remove bullet points for a cleaner look */
     }
 
     footer {
-        font-size: 0.9rem;
+        font-size: 1rem;  /* Made footer text a bit larger */
+        padding: 10px 0;  /* Added padding inside the footer */
     }
 }
+
 
 
     /* For tablets and larger devices (min-width: 769px) */
