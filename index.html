@@ -26,7 +26,7 @@
     }
     .slider {
         display: flex;
-        transition: transform 1.5s ease;
+        transition: transform 1.3s ease;
         width: 100%;
     }
     .slide {
@@ -173,6 +173,29 @@ nav a.active::before {
         line-height: 1.5; /* Increase line height for better readability */
     }
 
+    /* General styles for images */
+.slide img {
+    max-width: 100%;  /* Ensure images do not overflow their container */
+    height: auto;      /* Maintain aspect ratio */
+    border-radius: 8px; /* Round corners for aesthetics */
+    margin-top: 10px;  /* Space above the images */
+}
+
+/* Specific adjustments for image containers */
+.flex.space-x-4 {
+    display: flex;             /* Use flexbox for layout */
+    flex-wrap: wrap;          /* Allow wrapping of images */
+    justify-content: center;   /* Center the images */
+    margin: 20px 0;           /* Space above and below the image container */
+}
+
+.flex.space-x-4 img {
+    margin: 10px; /* Space between images */
+    flex: 1 0 150px; /* Allow images to grow and shrink, with a base size */
+    max-width: calc(50% - 20px); /* Two images per row, accounting for margins */
+}
+
+
     /* Specific adjustments for Telugu and Hindi texts */
     h1,
     h2,
@@ -189,6 +212,10 @@ nav a.active::before {
 
 /* For mobile devices (max-width: 640px) */
 @media (max-width: 640px) {
+
+    .flex.space-x-4 img {
+        max-width: calc(100% - 20px); /* Full width on smaller screens */
+    }
     body {
         padding: 10px; /* Add padding to body for better spacing */
     }
@@ -275,39 +302,56 @@ nav a.active::before {
 /* For tablets and larger devices (min-width: 769px) */
 @media (min-width: 769px) {
     .slide {
-        padding: 30px; /* Increase padding for more spacing on larger screens */
-        height: 80vh; /* Set a fixed height that looks good on laptops */
+        padding: 40px; /* Increased padding for more spacing */
+        height: 80vh; /* Fixed height for consistency */
+        display: flex; /* Use flexbox for better alignment */
+        flex-direction: column; /* Stack content vertically */
+        justify-content: center; /* Center content vertically */
+        text-align: center; /* Center text for improved aesthetics */
     }
 
     h2 {
-        font-size: 2.5rem; /* Increase font size for larger screens */
+        font-size: 2.8rem; /* Larger font size for impact */
         line-height: 1.3;
+        margin-bottom: 15px; /* Add margin for separation */
     }
 
     p, ul {
-        font-size: 1.2rem; /* Slightly larger text for better readability */
+        font-size: 1.3rem; /* Larger text for readability */
         line-height: 1.6;
+        margin-bottom: 15px; /* Add margin for separation */
     }
 
     ul {
-        padding-left: 25px; /* Add more space for list items */
+        padding-left: 30px; /* More space for list items */
+        list-style-position: outside; /* Ensure bullet points are visible */
     }
 
     .slider-container {
-        width: 100vw; /* Full width for better viewing on laptops */
-        height: 80vh; /* Keep the container height consistent */
+        width: 100%; /* Full width for a seamless look */
+        height: 80vh; /* Keep height consistent */
+        overflow: hidden; /* Prevent overflow */
     }
 
     .slider {
-        height: 100%; /* Ensure slider takes the full height */
-        justify-content: space-around; /* Distribute the slides */
+        height: 100%; /* Full height for slider */
+        display: flex; /* Use flexbox for better distribution */
+        justify-content: space-between; /* Space slides evenly */
     }
 
     .slide.active {
-        transform: scale(1); /* Ensure active slides are fully visible */
+        transform: scale(0.9); /* Ensure active slides are fully visible */
         opacity: 1;
+        transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transitions */
     }
+
+    .slide.not-active {
+    transform: scale(0.7); /* Slightly smaller */
+    opacity: 0.5; /* Semi-transparent */
+    transition: transform 0.3s ease, opacity 0.3s ease, filter 0.3s ease; /* Smooth transitions */
 }
+}
+
 
 
 </style>
@@ -357,74 +401,81 @@ nav a.active::before {
 
     <script>
         const slider = document.getElementById('slider');
-        const slides = slider.children;
-        let currentIndex = 0;
+const slides = slider.children;
+let currentIndex = 0;
 
-        function showSlide(index) {
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].classList.remove('active');
-            }
-            slides[index].classList.add('active');
-            slider.style.transform = `translateX(-${index * 100}vw)`;
+function showSlide(index) {
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove('active', 'not-active'); // Remove both classes
+        if (i === index) {
+            slides[i].classList.add('active'); // Add active class to the current slide
+        } else {
+            slides[i].classList.add('not-active'); // Add not-active class to other slides
         }
+    }
+    slider.style.transform = `translateX(-${index * 100}vw)`; // Move the slider to the active slide
+}
 
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % slides.length;
-            showSlide(currentIndex);
+function nextSlide() {
+    currentIndex = (currentIndex + 1) % slides.length; // Loop back to the first slide
+    showSlide(currentIndex);
+}
+
+function prevSlide() {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length; // Loop to the last slide
+    showSlide(currentIndex);
+}
+
+slider.addEventListener('mousedown', (event) => {
+    let startX = event.clientX;
+
+    function onMouseMove(moveEvent) {
+        const dragDistance = moveEvent.clientX - startX;
+
+        if (dragDistance > 50) {
+            prevSlide();
+            removeEventListeners();
+        } else if (dragDistance < -50) {
+            nextSlide();
+            removeEventListeners();
         }
+    }
 
-        function prevSlide() {
-            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-            showSlide(currentIndex);
+    function removeEventListeners() {
+        window.removeEventListener('mousemove', onMouseMove);
+        window.removeEventListener('mouseup', removeEventListeners);
+    }
+
+    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mouseup', removeEventListeners);
+});
+
+slider.addEventListener('touchstart', (event) => {
+    let startX = event.touches[0].clientX;
+
+    function onTouchMove(moveEvent) {
+        const dragDistance = moveEvent.touches[0].clientX - startX;
+
+        if (dragDistance > 50) {
+            prevSlide();
+            removeEventListeners();
+        } else if (dragDistance < -50) {
+            nextSlide();
+            removeEventListeners();
         }
+    }
 
-        slider.addEventListener('mousedown', (event) => {
-            let startX = event.clientX;
+    function removeEventListeners() {
+        window.removeEventListener('touchmove', onTouchMove);
+        window.removeEventListener('touchend', removeEventListeners);
+    }
 
-            function onMouseMove(moveEvent) {
-                const dragDistance = moveEvent.clientX - startX;
+    window.addEventListener('touchmove', onTouchMove);
+    window.addEventListener('touchend', removeEventListeners);
+});
 
-                if (dragDistance > 50) {
-                    prevSlide();
-                    removeEventListeners();
-                } else if (dragDistance < -50) {
-                    nextSlide();
-                    removeEventListeners();
-                }
-            }
-
-            function removeEventListeners() {
-                window.removeEventListener('mousemove', onMouseMove);
-                window.removeEventListener('mouseup', removeEventListeners);
-            }
-
-            window.addEventListener('mousemove', onMouseMove);
-            window.addEventListener('mouseup', removeEventListeners);
-        });
-
-        slider.addEventListener('touchstart', (event) => {
-            let startX = event.touches[0].clientX;
-
-            function onTouchMove(moveEvent) {
-                const dragDistance = moveEvent.touches[0].clientX - startX;
-
-                if (dragDistance > 50) {
-                    prevSlide();
-                    removeEventListeners();
-                } else if (dragDistance < -50) {
-                    nextSlide();
-                    removeEventListeners();
-                }
-            }
-
-            function removeEventListeners() {
-                window.removeEventListener('touchmove', onTouchMove);
-                window.removeEventListener('touchend', removeEventListeners);
-            }
-
-            window.addEventListener('touchmove', onTouchMove);
-            window.addEventListener('touchend', removeEventListeners);
-        });
+// Initialize the first slide
+showSlide(currentIndex);
 
         // Function to change the language globally
      function changeLanguage(lang) {
