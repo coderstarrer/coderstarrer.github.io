@@ -212,47 +212,56 @@ nav a.active::before {
 
 /* For mobile devices (max-width: 640px) */
 @media (max-width: 640px) {
+    body {
+        padding: 15px; /* Increased padding for better spacing */
+        font-family: 'Inter', sans-serif; /* Consistent font for the body */
+        background-color: #f9f9f9; /* Light background for contrast */
+    }
 
     .flex.space-x-4 img {
         max-width: calc(100% - 20px); /* Full width on smaller screens */
-    }
-    body {
-        padding: 10px; /* Add padding to body for better spacing */
+        border-radius: 8px; /* Rounded corners for images */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     }
 
     h1 {
-        font-size: 2.5rem; /* Slightly larger title for better visibility */
+        font-size: 2.8rem; /* Increased title size for visibility */
         font-weight: bold;
         text-align: center;
-        line-height: 1.2; /* Increase line height for better readability */
+        line-height: 1.4; /* Increased line height for better readability */
+        margin: 10px 0; /* Space above and below the title */
     }
 
     h2 {
-        font-size: 2rem; /* Adjusted heading size for clarity */
+        font-size: 2.4rem; /* Larger heading size for clarity */
         font-weight: bold;
-        line-height: 1.3; /* Increase line height for better readability */
-        text-align: center; /* Center headings for better visual appeal */
+        line-height: 1.4; /* Consistent line height */
+        text-align: center; /* Center headings for appeal */
+        margin: 8px 0; /* Space above and below headings */
     }
 
     nav {
         flex-direction: column; /* Stack nav items vertically */
         align-items: stretch; /* Stretch nav items to full width */
-        margin-top: 10px; /* Add space above nav */
+        margin-top: 15px; /* Add space above nav */
     }
 
     nav a {
-        font-size: 1rem; /* Adjust font size for better readability */
-        padding: 10px 0; /* Increased padding for touch targets */
+        font-size: 1.1rem; /* Increased font size for readability */
+        padding: 12px 0; /* Increased padding for touch targets */
         width: 100%; /* Full width for nav items */
         text-align: center; /* Center text */
-        border: 1px solid transparent; /* Add a border for visual separation */
-        border-radius: 5px; /* Add rounded corners */
-        transition: background-color 0.3s ease; /* Transition for hover effect */
+        border: 1px solid transparent; /* Add border for separation */
+        border-radius: 5px; /* Rounded corners */
+        transition: background-color 0.3s ease, border 0.3s ease; /* Transition for hover effect */
+        color: #333; /* Default link color */
+        margin-bottom: 8px; /* Space between links */
     }
 
     nav a:hover {
         background-color: rgba(74, 144, 226, 0.1); /* Light background on hover */
         border: 1px solid #4a90e2; /* Border color on hover */
+        color: #4a90e2; /* Change link color on hover */
     }
 
     nav a.active {
@@ -261,43 +270,55 @@ nav a.active::before {
     }
 
     footer {
-        font-size: 0.9rem; /* Slightly smaller footer text for clarity */
-        padding: 10px; /* Add padding for footer  */
+        font-size: 1rem; /* Increased footer text for clarity */
+        padding: 12px; /* Add padding for footer */
+        text-align: center; /* Center footer text */
+        background-color: #333; /* Dark background for footer */
+        color: #fff; /* White text for contrast */
+        border-radius: 5px; /* Rounded corners for footer */
+        margin-top: 10px; /* Space above footer */
     }
 
     .slide {
-        padding: 15px; /* Increased padding for slides for better spacing */
-        box-shadow: none; /* Remove shadow for a cleaner look on mobile */
-        height: auto; /* Set height to auto to allow content to fit better */
-        min-height: 300px; /* Minimum height to maintain visual consistency */
+        padding: 20px; /* Increased padding for slides */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Added shadow for depth */
+        height: auto; /* Set height to auto */
+        min-height: 320px; /* Adjusted minimum height */
+        border-radius: 10px; /* Rounded corners for slides */
+        background-color: #ffffff; /* White background for slides */
     }
 
     .slide h2 {
-        font-size: 1.6rem; /* Reduce slide heading size */
-        margin-bottom: 10px; /* Space below the heading */
+        font-size: 1.8rem; /* Adjusted slide heading size */
+        margin-bottom: 12px; /* Space below the heading */
     }
 
     .slide p, .slide ul {
-        font-size: 0.9rem; /* Ensure body text is legible */
-        line-height: 1.4; /* Increase line height for better readability */
+        font-size: 1rem; /* Increased body text for legibility */
+        line-height: 1.5; /* Increased line height for better readability */
+        margin-bottom: 10px; /* Space below text */
     }
 
-    /* Image adjustments */
-    .slide img {
-        width: 100%; /* Make images responsive */
-        height: auto; /* Maintain aspect ratio */
-        border-radius: 8px; /* Slightly round the corners */
-        margin-top: 10px; /* Add spacing above images */
+    .slider {
+        height: 80%; /* Full height for slider */
+        display: flex; /* Flexbox for distribution */
+        justify-content: center; /* Center slides */
+        overflow: hidden; /* Prevent overflow */
     }
 
-    /* Specific adjustments for Telugu and Hindi texts */
-    h1,
-    h2,
-    .slide p,
-    .slide ul {
-        font-family: 'Inter', sans-serif; /* Use the same font for consistency */
+    .slide.active {
+        transform: scale(0.85); /* Fully visible */
+        opacity: 1; /* Fully opaque */
+        transition: transform 0.5s ease, opacity 0.3s ease; /* Smooth transitions */
+    }
+
+    .slide.not-active {
+        transform: scale(0.65); /* Slightly smaller */
+        opacity: 0.6; /* Semi-transparent */
+        transition: transform 0.5s ease, opacity 0.3s ease; /* Smooth transitions */
     }
 }
+
 
 /* For tablets and larger devices (min-width: 769px) */
 @media (min-width: 769px) {
@@ -342,13 +363,13 @@ nav a.active::before {
     .slide.active {
         transform: scale(0.9); /* Ensure active slides are fully visible */
         opacity: 1;
-        transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transitions */
+        transition: transform 0.5s ease, opacity 0.3s ease; /* Smooth transitions */
     }
 
     .slide.not-active {
     transform: scale(0.7); /* Slightly smaller */
     opacity: 0.5; /* Semi-transparent */
-    transition: transform 0.3s ease, opacity 0.3s ease, filter 0.3s ease; /* Smooth transitions */
+    transition: transform 1s ease, opacity 0.3s ease, filter 0.3s ease; /* Smooth transitions */
 }
 }
 
