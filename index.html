@@ -6,7 +6,8 @@
     <link href="styles.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>Sarvamitra Vayama Sangam - Home</title>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
     /* General Styles */
     body {
@@ -15,7 +16,7 @@
         flex-direction: column;
         min-height: 100vh;
         background: #f0f4f8;
-        font-family: 'DM Sans', sans-serif;
+        font-family: 'Inter', sans-serif;
     }
     .slider-container {
         flex: 1;
@@ -108,7 +109,7 @@
         text-align: left; /* Align headings to the left */
     }
 
-    nav {
+   nav {
         flex-direction: column; /* Stack nav items vertically */
         align-items: stretch; /* Stretch nav items to full width */
         margin-top: 10px; /* Add space above nav */
@@ -129,9 +130,33 @@
         border: 1px solid #4a90e2; /* Border color on hover */
     }
 
+nav a.active {
+    color: #ffffff; /* Active link color */
+    background-color: #4a90e2; /* Active link background color */
+}
+
+nav a::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #4a90e2;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out;
+}
+
+nav a:hover::before,
+nav a.active::before {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
     footer {
         font-size: 1rem; /* Slightly larger footer text for clarity */
-        padding: 10px; /* Add padding for footer */
+        padding: 10px; /* Add padding for footer  */
     }
 
     .slide {
@@ -153,48 +178,62 @@
     h2,
     .slide p,
     .slide ul {
-        font-family: 'DM Sans', sans-serif; /* Use the same font for consistency */
+        font-family: 'Inter', sans-serif; /* Use the same font for consistencygg gf */
     }
 }
 
 
     /* For tablets and larger devices (min-width: 769px) */
-    @media (min-width: 769px) {
-        h1 {
-            font-size: 3.5rem; /* Larger titles for bigger screens */
-            font-weight: bold;
-        }
-        h2 {
-            font-size: 2.5rem;
-            font-weight: bold;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-        nav a {
-            font-size: 1.2rem; /* Make the nav items more prominent */
-            padding: 10px 20px;
-            white-space: nowrap; /* Ensure nav links are on one line */
-        }
-        footer {
-            font-size: 1rem;
-        }
+   /* Media query for laptops (min-width: 1024px) */
+@media (min-width: 769px) {
+    .slide {
+        padding: 30px; /* Increase padding for more spacing on larger screens */
+        height: 80vh; /* Set a fixed height that looks good on laptops */
     }
+
+    h2 {
+        font-size: 2.5rem; /* Increase font size for larger screens */
+        line-height: 1.3;
+    }
+
+    p, ul {
+        font-size: 1.2rem; /* Slightly larger text for better readability */
+        line-height: 1.6;
+    }
+
+    ul {
+        padding-left: 25px; /* Add more space for list items */
+    }
+
+    .slider-container {
+        width: 100vw; /* Full width for better viewing on laptops */
+        height: 80vh; /* Keep the container height consistent */
+    }
+
+    .slider {
+        height: 100%; /* Ensure slider takes the full height */
+        justify-content: space-around; /* Distribute the slides */
+    }
+
+    .slide.active {
+        transform: scale(1); /* Ensure active slides are fully visible */
+        opacity: 1;
+    }
+}
+
 </style>
 
 </head>
 <body>
     <header class="bg-blue-600 text-white p-6">
         <h1 class="text-5xl font-extrabold text-center" id="home-header-title">Welcome to Sarvamitra Vayama Sangam</h1>
-        <nav class="flex justify-center space-x-4 mt-3">
-            <a href="index.html" class="hover:underline transition active" id="home-link">Home</a>
-            <a href="about.html" class="hover:underline transition" id="about-link">About</a>
-            <a href="features.html" class="hover:underline transition" id="features-link">Features</a>
-            <a href="tos/termsOfService.html" class="hover:underline transition" id="terms-link">Terms of Service</a>
-            <a href="settings.html" class="hover:underline transition" id="settings-link">Settings</a>
-        </nav>
+        <nav class="flex justify-center space-x-6 mt-3"> <!-- Increased space-x-4 to space-x-6 for more spacing -->
+    <a href="index.html" class="hover:underline transition active" id="home-link">Home</a>
+    <a href="about.html" class="hover:underline transition" id="about-link">About</a>
+    <a href="features.html" class="hover:underline transition" id="features-link">Features</a>
+    <a href="tos/termsOfService.html" class="hover:underline transition" id="terms-link">Terms of Service</a>
+    <a href="settings.html" class="hover:underline transition" id="settings-link">Settings</a>
+</nav>
     </header>
 
     <main class="slider-container" id="slider-container">
@@ -202,16 +241,24 @@
             <div class="slide active">
                 <h2 class="text-4xl font-semibold" id="home-slide-title1">Welcome to Sarvamitra Vayama Sangam</h2>
                 <p class="mt-4 text-center" id="home-slide-desc1">Sarvamitra Vayama Sangam is a fitness center in Chirala, India dedicated to helping individuals achieve their health and wellness goals through comprehensive training programs and support.</p>
+                <img src="images/sangam-gym-and-fitness-centre--chitradurga-1kkqpyjhkf.jpg" alt="Gym Image" width="700" height="500">
             </div>
             <div class="slide">
-                <h2 class="text-4xl font-semibold" id="home-slide-title2">Why Join Sarvamitra Vayama Gym?</h2>
-                <ul class="list-disc list-inside mt-4 text-left" id="home-slide-list">
-                    <li id="home-feature1">State-of-the-art equipment</li>
-                    <li id="home-feature2">Personalized training programs</li>
-                    <li id="home-feature3">Group fitness classes</li>
-                    <li id="home-feature4">Experienced trainers and nutrition guidance</li>
-                </ul>
-            </div>
+    <h2 class="text-4xl font-semibold" id="home-slide-title2">Why Join Sarvamitra Vayama Gym?</h2>
+    <ul class="list-disc list-inside mt-4 text-left" id="home-slide-list">
+        <li id="home-feature1">State-of-the-art equipment</li>
+        <li id="home-feature2">Personalized training programs</li>
+        <li id="home-feature3">Group fitness classes</li>
+        <li id="home-feature4">Experienced trainers and nutrition guidance</li>
+    </ul>
+    
+    <!-- Image Container -->
+    <div class="flex space-x-4 mt-4">
+        <img src="images/newdownload.png" alt="Description of newdownload" class="max-w-xs">
+        <img src="images/sangamadvert.jpg" alt="Description of sangamadvert" class="max-w-xs">
+    </div>
+</div>
+
         </div>
     </main>
 

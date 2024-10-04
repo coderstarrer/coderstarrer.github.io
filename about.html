@@ -7,86 +7,94 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>Sarvamitra Vayama Sangam - About</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;800&display=swap" rel="stylesheet">
-    <style>
-    /* General Styles */
-    body {
-        overflow-x: hidden;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-        background: #f0f4f8;
-        font-family: 'DM Sans', sans-serif;
-    }
-    .slider-container {
-        flex: 1;
-        position: relative;
-        overflow: hidden;
-        width: 100vw;
-    }
-    .slider {
-        display: flex;
-        transition: transform 1s ease;
-        width: 100%;
-    }
-    .slide {
-        min-width: 100vw;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        opacity: 0;
-        transform: scale(0.9);
-        transition: opacity 0.5s ease, transform 0.5s ease;
-        padding: 20px;
-        box-sizing: border-box;
-        background: #ffffff;
-        color: #333333;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    .slide.active {
-        opacity: 1;
-        transform: scale(1);
-    }
-    nav a {
-        position: relative;
-        color: #4a90e2;
-        padding-bottom: 4px;
-        transition: color 0.3s ease;
-    }
-    nav a:hover {
-        color: #d3e0f7;
-    }
-    nav a::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 2px;
-        bottom: 0;
-        left: 0;
-        background-color: #4a90e2;
-        visibility: hidden;
-        transform: scaleX(0);
-        transition: all 0.3s ease-in-out;
-    }
-    nav a:hover::before,
-    nav a.active::before {
-        visibility: visible;
-        transform: scaleX(1);
-    }
-    footer {
-        background: #888383;
-        color: #ffffff;
-        text-align: center;
-        padding: 1rem 0;
-        width: 100%;
-        margin-top: auto;
-    }
+ 
+  <style>
+body {
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #f0f4f8;
+    font-family: 'DM Sans', sans-serif;
+}
 
-    /* MEDIA QUERIES */
+.slider-container {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+}
 
-    /* For mobile devices (max-width: 640px) */
+.slider {
+    display: flex;
+    transition: transform 1s ease;
+    width: 100%;
+}
+
+.slide {
+    min-width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    padding: 20px;
+    box-sizing: border-box;
+    background: #ffffff;
+    color: #333333;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.slide.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+nav a {
+    position: relative;
+    color: #4a90e2;
+    padding-bottom: 4px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #d3e0f7;
+}
+
+nav a::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #4a90e2;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out;
+}
+
+nav a:hover::before,
+nav a.active::before {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+footer {
+    background: #888383;
+    color: #ffffff;
+    text-align: center;
+    padding: 1rem 0;
+    width: 100%;
+    margin-top: auto;
+}
+
+/* MEDIA QUERIES */
+
 /* For mobile devices (max-width: 640px) */
 @media (max-width: 640px) {
     body {
@@ -156,32 +164,34 @@
     }
 }
 
-
-
-    /* For tablets and larger devices (min-width: 769px) */
-    @media (min-width: 769px) {
-        h1 {
-            font-size: 3.5rem; /* Larger titles for bigger screens */
-            font-weight: bold;
-        }
-        h2 {
-            font-size: 2.5rem;
-            font-weight: bold;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-        nav a {
-            font-size: 1.2rem; /* Make the nav items more prominent */
-            padding: 10px 20px;
-            white-space: nowrap; /* Ensure nav links are on one line */
-        }
-        footer {
-            font-size: 1rem;
-        }
+/* For tablets and larger devices (min-width: 769px) */
+@media (min-width: 769px) {
+    h1 {
+        font-size: 3.5rem; /* Larger titles for bigger screens */
+        font-weight: bold;
     }
+
+    h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
+    nav {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    nav a {
+        font-size: 1.2rem; /* Make the nav items more prominent */
+        padding: 10px 20px;
+        white-space: nowrap; /* Ensure nav links are on one line */
+    }
+
+    footer {
+        font-size: 1rem;
+    }
+}
 </style>
 
 </head>

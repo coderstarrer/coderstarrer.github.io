@@ -13,6 +13,7 @@ if not exist "%directoryPath%" (
 cd /d "%directoryPath%"
 echo Current directory set to: %directoryPath%
 
+
 :: Add all changes to the staging area
 git add .
 if %ERRORLEVEL% neq 0 (
