@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Sarvamitra Vayama Sangam - Features</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: #f0f4f8;
+            font-family:  'DM Sans',sans-serif
+        }
+        .slider-container {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            width: 100vw;
+        }
+        .slider {
+            display: flex;
+            transition: transform 1s ease;
+            width: 100%;
+        }
+        .slide {
+            min-width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            padding: 20px;
+            box-sizing: border-box;
+            background: #ffffff;
+            color: #333333;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        nav a {
+            position: relative;
+            color: #4a90e2;
+            padding-bottom: 4px;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #d3e0f7;
+        }
+        nav a::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #4a90e2;
+            visibility: hidden;
+            transform: scaleX(0);
+            transition: all 0.3s ease-in-out;
+        }
+        nav a:hover::before,
+        nav a.active::before {
+            visibility: visible;
+            transform: scaleX(1);
+        }
+        footer {
+            background: #888383;
+            color: #ffffff;
+            text-align: center;
+            padding: 1rem 0;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        /* MEDIA QUERIES */
+
+        /* For mobile devices (max-width: 768px) */
+        /* For mobile devices (max-width: 640px) */
+/* For mobile devices (max-width: 640px) */
+@media (max-width: 640px) {
+    body {
+        padding: 10px; /* Add padding to body for better spacing */
+    }
+
+    h1 {
+        font-size: 2.8rem; /* Slightly larger title for better visibility */
+        font-weight: bold;
+        text-align: center;
+        line-height: 1.2; /* Increase line height for better readability */
+    }
+
+    h2 {
+        font-size: 2.2rem; /* Adjusted heading size for clarity */
+        font-weight: bold;
+        line-height: 1.3; /* Increase line height for better readability */
+        text-align: left; /* Align headings to the left */
+    }
+
+    nav {
+        flex-direction: column; /* Stack nav items vertically */
+        align-items: stretch; /* Stretch nav items to full width */
+        margin-top: 10px; /* Add space above nav */
+    }
+
+    nav a {
+        font-size: 1.1rem; /* Increased font size for better readability */
+        padding: 10px 0; /* Increased padding for touch targets */
+        width: 100%; /* Full width for nav items */
+        text-align: center; /* Center text */
+        border: 1px solid transparent; /* Add a border for visual separation */
+        border-radius: 5px; /* Add rounded corners */
+        transition: background-color 0.3s ease; /* Transition for hover effect */
+    }
+
+    nav a:hover {
+        background-color: rgba(74, 144, 226, 0.1); /* Light background on hover */
+        border: 1px solid #4a90e2; /* Border color on hover */
+    }
+
+    footer {
+        font-size: 1rem; /* Slightly larger footer text for clarity */
+        padding: 10px; /* Add padding for footer */
+    }
+
+    .slide {
+        padding: 15px; /* Increased padding for slides for better spacing */
+        box-shadow: none; /* Remove shadow for a cleaner look on mobile */
+    }
+
+    .slide h2 {
+        font-size: 1.8rem; /* Reduce slide heading size */
+    }
+
+    .slide p, .slide ul {
+        font-size: 1rem; /* Ensure body text is legible */
+        line-height: 1.5; /* Increase line height for better readability */
+    }
+
+    /* Specific adjustments for Telugu and Hindi texts */
+    h1,
+    h2,
+    .slide p,
+    .slide ul {
+        font-family: 'DM Sans', sans-serif; /* Use the same font for consistency */
+    }
+
+    slider-container {
+        width: 100%; /* Full width for a seamless look */
+        height: 80vh; /* Keep height consistent */
+        overflow: hidden; /* Prevent overflow */
+    }
+
+    .slider {
+        height: 100%; /* Full height for slider */
+        display: flex; /* Use flexbox for better distribution */
+        justify-content: space-between; /* Space slides evenly */
+    }
+
+    .slide.active {
+        transform: scale(0.9); /* Ensure active slides are fully visible */
+        opacity: 1;
+        transition: transform 0.7s ease, opacity 0.3s ease; /* Smooth transitions */
+    }
+
+    .slide.not-active {
+    transform: scale(0.7); /* Slightly smaller */
+    opacity: 0.5; /* Semi-transparent */
+    transition: transform 0.7s ease, opacity 0.3s ease, filter 0.3s ease; /* Smooth transitions */
+}
+}
+
+
+
+    /* For tablets and larger devices (min-width: 769px) */
+    @media (min-width: 769px) {
+        h1 {
+            font-size: 3.5rem; /* Larger titles for bigger screens */
+            font-weight: bold;
+        }
+        h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        nav a {
+            font-size: 1.2rem; /* Make the nav items more prominent */
+            padding: 10px 20px;
+            white-space: nowrap; /* Ensure nav links are on one line */
+        }
+        footer {
+            font-size: 1rem;
+        }
+    }
+
+    slider-container {
+        width: 100%; /* Full width for a seamless look */
+        height: 80vh; /* Keep height consistent */
+        overflow: hidden; /* Prevent overflow */
+    }
+
+    .slider {
+        height: 100%; /* Full height for slider */
+        display: flex; /* Use flexbox for better distribution */
+        justify-content: space-between; /* Space slides evenly */
+    }
+
+    .slide.active {
+        transform: scale(0.9); /* Ensure active slides are fully visible */
+        opacity: 1;
+        transition: transform 0.7s ease, opacity 0.3s ease; /* Smooth transitions */
+    }
+
+    .slide.not-active {
+    transform: scale(0.7); /* Slightly smaller */
+    opacity: 0.5; /* Semi-transparent */
+    transition: transform 0.7s ease, opacity 0.3s ease, filter 0.3s ease; /* Smooth transitions */
+}
+    </style>
+</head>
+<body>
+    <header class="bg-blue-600 text-white p-6">
+        <h1 class="text-5xl font-extrabold text-center" id="features-header-title">Contact Us</h1>
+        <nav class="flex justify-center space-x-8 mt-3">
+            <a href="index.html" class="hover:underline transition" id="nav-home">Home</a>
+            <a href="about.html" class="hover:underline transition" id="nav-about">About</a>
+            <a href="features.html" class="hover:underline transition active" id="nav-features">Contact Us</a>
+            <a href="tos/termsOfService.html" class="hover:underline transition" id="nav-tos">Terms of Service</a>
+            <a href="settings.html" class="hover:underline transition" id="nav-settings">Settings</a>
+        </nav>
+    </header>
+
+    <main class="slider-container" id="slider-container">
+        <div class="slider" id="slider">
+            <div class="slide active">
+                <h2 class="text-4xl font-semibold" id="features-slide-title1">Email</h2>
+                <p class="mt-4 text-center" id="features-slide-desc1">You can contact us at sssgym@gmail.com </p>
+                <p class="mt-4 text-center" id="features-slide-card-1-desc-2">Phone Number:4124124124</p>
+            </div>
+            <div class="slide">
+                <h2 class="text-4xl font-semibold" id="features-slide-title2">Music Guessing Game</h2>
+                <p class="mt-4 text-center" id="features-slide-desc2">Engage with your friends in a fun music guessing game powered by YouTube!</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Sarvamitra Vayama Sangam. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const slider = document.getElementById('slider');
+        const slides = slider.children;
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove('active');
+            }
+            slides[index].classList.add('active');
+            slider.style.transform = `translateX(-${index * 100}vw)`;
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlide(currentIndex);
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            showSlide(currentIndex);
+        }
+
+        // Event listeners for mouse and touch events
+        slider.addEventListener('mousedown', (event) => {
+            let startX = event.clientX;
+
+            function onMouseMove(moveEvent) {
+                const dragDistance = moveEvent.clientX - startX;
+
+                if (dragDistance > 50) {
+                    prevSlide();
+                    removeEventListeners();
+                } else if (dragDistance < -50) {
+                    nextSlide();
+                    removeEventListeners();
+                }
+            }
+
+            function removeEventListeners() {
+                window.removeEventListener('mousemove', onMouseMove);
+                window.removeEventListener('mouseup', removeEventListeners);
+            }
+
+            window.addEventListener('mousemove', onMouseMove);
+            window.addEventListener('mouseup', removeEventListeners);
+        });
+
+        slider.addEventListener('touchstart', (event) => {
+            let startX = event.touches[0].clientX;
+
+            function onTouchMove(moveEvent) {
+                const dragDistance = moveEvent.touches[0].clientX - startX;
+
+                if (dragDistance > 50) {
+                    prevSlide();
+                    removeEventListeners();
+                } else if (dragDistance < -50) {
+                    nextSlide();
+                    removeEventListeners();
+                }
+            }
+
+            function removeEventListeners() {
+                window.removeEventListener('touchmove', onTouchMove);
+                window.removeEventListener('touchend', removeEventListeners);
+            }
+
+            window.addEventListener('touchmove', onTouchMove);
+            window.addEventListener('touchend', removeEventListeners);
+        });
+
+        // Function to change the language globally
+        function changeLanguage(lang) {
+            const translations = {
+                en: {
+                    featuresHeaderTitle: "Contact us",
+                    featuresSlideTitle1: "Email",
+                    featuresSlideDesc1: "You can contact us at sssgym@gmail.com",
+                    featuresSlideTitle2: "Music Guessing Game",
+                    featuresSlideDesc2: "Engage with your friends in a fun music guessing game powered by YouTube!",
+                    navHome: "Home",
+                    navAbout: "About",
+                    navFeatures: "Features",
+                    navTos: "Terms of Service",
+                    navSettings: "Settings"
+                },
+                hi: {
+                    featuresHeaderTitle: "सरवमित्र व्यायाम संगम की विशेषताएँ",
+                    featuresSlideTitle1: "स्मार्ट अश्लीलता फ़िल्टर",
+                    featuresSlideDesc1: "यह सुविधा अनुपयुक्त सामग्री को फ़िल्टर करके एक सुरक्षित वातावरण सुनिश्चित करती है।",
+                    featuresSlideTitle2: "संगीत अनुमान खेल",
+                    featuresSlideDesc2: "यूट्यूब द्वारा संचालित एक मजेदार संगीत अनुमान खेल में अपने दोस्तों के साथ शामिल हों!",
+                    navHome: "होम",
+                    navAbout: "के बारे में",
+                    navFeatures: "विशेषताएँ",
+                    navTos: "सेवा की शर्तें",
+                    navSettings: "सेटिंग्स"
+                },
+                te: {
+                    featuresHeaderTitle: "సర్వమిత్ర వ్యాయామ సంఘం లక్షణాలు",
+                    featuresSlideTitle1: "స్మార్ట్ వాడుక పాయి నిఘా",
+                    featuresSlideDesc1: "ఈ ఫీచర్ అసభ్యమైన కంటెంట్‌ను ఫిల్టర్ చేసి ఒక సురక్షితమైన వాతావరణాన్ని నిర్ధారిస్తుంది.",
+                    featuresSlideTitle2: "సంగీతానుభవం ఆట",
+                    featuresSlideDesc2: "యూట్యూబ్ ద్వారా శక్తివంతమైన సరదా సంగీతానుభవం ఆటలో మీ స్నేహితులను కలపండి!",
+                    navHome: "హోమ్",
+                    navAbout: "గురించి",
+                    navFeatures: "సాధనాలు",
+                    navTos: "సేవా నిబంధనలు",
+                    navSettings: "సెట్టింగులు"
+                }
+            };
+
+            // Update the text in this page
+            document.getElementById("features-header-title").innerText = translations[lang].featuresHeaderTitle;
+            document.getElementById("features-slide-title1").innerText = translations[lang].featuresSlideTitle1;
+            document.getElementById("features-slide-desc1").innerText = translations[lang].featuresSlideDesc1;
+            document.getElementById("features-slide-title2").innerText = translations[lang].featuresSlideTitle2;
+            document.getElementById("features-slide-desc2").innerText = translations[lang].featuresSlideDesc2;
+
+            // Update the navigation items
+            document.getElementById("nav-home").innerText = translations[lang].navHome;
+            document.getElementById("nav-about").innerText = translations[lang].navAbout;
+            document.getElementById("nav-features").innerText = translations[lang].navFeatures;
+            document.getElementById("nav-tos").innerText = translations[lang].navTos;
+            document.getElementById("nav-settings").innerText = translations[lang].navSettings;
+
+            // Save the selected language to localStorage
+            localStorage.setItem("selectedLanguage", lang);
+        }
+
+        // Load the saved language on page load
+        window.onload = () => {
+            const savedLanguage = localStorage.getItem("selectedLanguage");
+            if (savedLanguage) {
+                changeLanguage(savedLanguage);
+            }
+        };
+
+        // Event listener for language selection
+        document.getElementById('language-select').addEventListener('change', (event) => {
+            changeLanguage(event.target.value);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "coderstarrer.github.io-main",
+  "version": "1.0.0",
+  "description": "**Welcome to the official website of PlanckBot for Discord!**  \r Do NOT trust any other website claiming to be affiliated with PlanckBot.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.6.2"
+  }
+}
