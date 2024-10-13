@@ -7,10 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>Sarvamitra Vayama Sangam - Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-      <link rel="apple-touch-icon" sizes="180x180" href="new_favicon.io/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="new_favicon.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="16x16" href="new_favicon.io/favicon-32x32.png">
-<link rel="manifest" href="new_favicon.io/site.webmanifest">
+
     <style>
     /* General Styles */
     body {
@@ -53,16 +50,89 @@
         opacity: 1;
         transform: scale(1);
     }
-    
     nav a {
-    position: relative;
-    color: #4a90e2;
-    padding-bottom: 4px;
-    transition: color 0.3s ease;
-}
+        position: relative;
+        color: #4a90e2;
+        padding-bottom: 4px;
+        transition: color 0.3s ease;
+    }
+    nav a:hover {
+        color: #d3e0f7;
+    }
+    nav a::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #4a90e2;
+        visibility: hidden;
+        transform: scaleX(0);
+        transition: all 0.3s ease-in-out;
+    }
+    nav a:hover::before,
+    nav a.active::before {
+        visibility: visible;
+        transform: scaleX(1);
+    }
+    footer {
+        background: #888383;
+        color: #ffffff;
+        text-align: center;
+        padding: 1rem 0;
+        width: 100%;
+        margin-top: auto;
+    }
 
-nav a:hover {
-    color: #d3e0f7;
+    /* MEDIA QUERIES */
+
+    /* For mobile devices (max-width: 640px) */
+    /* For mobile devices (max-width: 640px) */
+     /* For mobile devices (max-width: 640px) */
+@media (max-width: 640px) {
+    body {
+        padding: 10px; /* Add padding to body for better spacing */
+    }
+
+    h1 {
+        font-size: 2.8rem; /* Slightly larger title for better visibility */
+        font-weight: bold;
+        text-align: center;
+        line-height: 1.2; /* Increase line height for better readability */
+    }
+
+    h2 {
+        font-size: 2.2rem; /* Adjusted heading size for clarity */
+        font-weight: bold;
+        line-height: 1.3; /* Increase line height for better readability */
+        text-align: left; /* Align headings to the left */
+    }
+
+   nav {
+        flex-direction: column; /* Stack nav items vertically */
+        align-items: stretch; /* Stretch nav items to full width */
+        margin-top: 10px; /* Add space above nav */
+    }
+
+    nav a {
+        font-size: 1.1rem; /* Increased font size for better readability */
+        padding: 10px 0; /* Increased padding for touch targets */
+        width: 100%; /* Full width for nav items */
+        text-align: center; /* Center text */
+        border: 1px solid transparent; /* Add a border for visual separation */
+        border-radius: 5px; /* Add rounded corners */
+        transition: background-color 0.3s ease; /* Transition for hover effect */
+    }
+
+    nav a:hover {
+        background-color: rgba(74, 144, 226, 0.1); /* Light background on hover */
+        border: 1px solid #4a90e2; /* Border color on hover */
+    }
+
+nav a.active {
+    color: #ffffff; /* Active link color */
+    background-color: #4a90e2; /* Active link background color */
 }
 
 nav a::before {
@@ -83,17 +153,62 @@ nav a.active::before {
     visibility: visible;
     transform: scaleX(1);
 }
+
     footer {
-        background: #888383;
-        color: #ffffff;
-        text-align: center;
-        padding: 1rem 0;
-        width: 100%;
-        margin-top: auto;
+        font-size: 1rem; /* Slightly larger footer text for clarity */
+        padding: 10px; /* Add padding for footer  */
     }
 
-    /* MEDIA QUERIES */
+    .slide {
+        padding: 15px; /* Increased padding for slides for better spacing */
+        box-shadow: none; /* Remove shadow for a cleaner look on mobile */
+    }
 
+    .slide h2 {
+        font-size: 1.8rem; /* Reduce slide heading size */
+    }
+
+    .slide p, .slide ul {
+        font-size: 1rem; /* Ensure body text is legible */
+        line-height: 1.5; /* Increase line height for better readability */
+    }
+
+    /* General styles for images */
+.slide img {
+    max-width: 100%;  /* Ensure images do not overflow their container */
+    height: auto;      /* Maintain aspect ratio */
+    border-radius: 8px; /* Round corners for aesthetics */
+    margin-top: 10px;  /* Space above the images */
+}
+
+/* Specific adjustments for image containers */
+.flex.space-x-4 {
+    display: flex;             /* Use flexbox for layout */
+    flex-wrap: wrap;          /* Allow wrapping of images */
+    justify-content: center;   /* Center the images */
+    margin: 20px 0;           /* Space above and below the image container */
+}
+
+.flex.space-x-4 img {
+    margin: 10px; /* Space between images */
+    flex: 1 0 150px; /* Allow images to grow and shrink, with a base size */
+    max-width: calc(50% - 20px); /* Two images per row, accounting for margins */
+}
+
+
+    /* Specific adjustments for Telugu and Hindi texts */
+    h1,
+    h2,
+    .slide p,
+    .slide ul {
+        font-family: 'Inter', sans-serif; /* Use the same font for consistencygg gf */
+    }
+}
+
+
+    /* For tablets and larger devices (min-width: 769px) */
+   /* Media query for laptops (min-width: 1024px) */
+/* MEDIA QUERIES */
 
 /* For mobile devices (max-width: 640px) */
 @media (max-width: 640px) {
@@ -245,22 +360,17 @@ nav a.active::before {
         justify-content: space-between; /* Space slides evenly */
     }
 
-    
-.slide.active {
-    transform: scale(1); /* Keep active slide at full size */
-    opacity: 1;
-    filter: none; /* No filter on active slide */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Soft shadow for active slide */
-    transition: transform 0.6s ease, opacity 0.6s ease, box-shadow 0.6s ease; /* Smooth, slightly slower transitions */
-}
+    .slide.active {
+        transform: scale(0.9); /* Ensure active slides are fully visible */
+        opacity: 1;
+        transition: transform 0.7s ease, opacity 0.3s ease; /* Smooth transitions */
+    }
 
-.slide.not-active {
-    transform: scale(0.92); /* Slightly smaller for inactive slides */
-    opacity: 0.5; /* Slight fade for inactive slides */
-    filter: blur(1.5px) grayscale(30%); /* Subtle blur with a bit more desaturation */
-    transition: transform 0.6s ease, opacity 0.6s ease, filter 0.6s ease; /* Smooth transitions for a more fluid feel */
+    .slide.not-active {
+    transform: scale(0.7); /* Slightly smaller */
+    opacity: 0.5; /* Semi-transparent */
+    transition: transform 0.7s ease, opacity 0.3s ease, filter 0.3s ease; /* Smooth transitions */
 }
-
 }
 
 
@@ -269,14 +379,9 @@ nav a.active::before {
 
 </head>
 <body>
-
     <header class="bg-blue-600 text-white p-6">
-        <a href="index.html">
-  <img src="new_favicon.io/favicon-32x32_LE_auto_x2.jpg" alt="Favicon" width="64" height="64">
-</a>
         <h1 class="text-5xl font-extrabold text-center" id="home-header-title">Welcome to Sarvamitra Vayama Sangam</h1>
-        <nav class="flex justify-center space-x-6 mt-3"> 
-            
+        <nav class="flex justify-center space-x-6 mt-3"> <!-- Increased space-x-4 to space-x-6 for more spacing -->
     <a href="index.html" class="hover:underline transition active" id="home-link">Home</a>
     <a href="about.html" class="hover:underline transition" id="about-link">About</a>
     <a href="features.html" class="hover:underline transition" id="features-link">Features</a>
@@ -477,30 +582,5 @@ showSlide(currentIndex);
             changeLanguage(event.target.value);
         });
     </script>
-</body>
-</html>
-    <title>PlanckBot - Home</title>
-</head>
-<body class="bg-gray-100 text-gray-800">
-    <header class="bg-blue-600 text-white p-6 shadow-lg">
-        <h1 class="text-5xl font-extrabold text-center">Welcome to PlanckBot</h1>
-        <nav class="flex justify-center space-x-8 mt-3">
-            <a href="index.html" class="hover:underline hover:text-blue-300 transition">Home</a>
-            <a href="about.html" class="hover:underline hover:text-blue-300 transition">About</a>
-            <a href="features.html" class="hover:underline hover:text-blue-300 transition">Features</a>
-            <a href="tos/termsOfService.html" class="hover:underline hover:text-blue-300 transition">Terms of Service</a>
-            <a href="license.html" class="hover:underline hover:text-blue-300 transition">License</a>
-        </nav>
-    </header>
-
-    <main class="container mx-auto my-10 p-8 bg-white rounded-lg shadow-md">
-        <h2 class="text-4xl font-semibold mb-5">Meet PlanckBot</h2>
-        <p class="mb-5 text-lg">Your friendly Discord companion! Whether you're enjoying a chill vibe with its smart profanity filter (almost 5000 words!) or having fun with a random music guessing game, PlanckBot has you covered.</p>
-        <p class="text-lg">It's not just about fun, though—PlanckBot helps keep your server safe and running smoothly with easy moderation tools and seamless AI integration!</p>
-    </main>
-
-    <footer class="bg-gray-200 text-center p-4">
-        <p>&copy; 2024 PlanckBot. All rights reserved.</p>
-    </footer>
 </body>
 </html>

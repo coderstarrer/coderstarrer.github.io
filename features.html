@@ -154,30 +154,6 @@
     .slide ul {
         font-family: 'DM Sans', sans-serif; /* Use the same font for consistency */
     }
-
-    slider-container {
-        width: 100%; /* Full width for a seamless look */
-        height: 80vh; /* Keep height consistent */
-        overflow: hidden; /* Prevent overflow */
-    }
-
-    .slider {
-        height: 100%; /* Full height for slider */
-        display: flex; /* Use flexbox for better distribution */
-        justify-content: space-between; /* Space slides evenly */
-    }
-
-    .slide.active {
-        transform: scale(0.9); /* Ensure active slides are fully visible */
-        opacity: 1;
-        transition: transform 0.7s ease, opacity 0.3s ease; /* Smooth transitions */
-    }
-
-    .slide.not-active {
-    transform: scale(0.7); /* Slightly smaller */
-    opacity: 0.5; /* Semi-transparent */
-    transition: transform 0.7s ease, opacity 0.3s ease, filter 0.3s ease; /* Smooth transitions */
-}
 }
 
 
@@ -206,39 +182,15 @@
             font-size: 1rem;
         }
     }
-
-    slider-container {
-        width: 100%; /* Full width for a seamless look */
-        height: 80vh; /* Keep height consistent */
-        overflow: hidden; /* Prevent overflow */
-    }
-
-    .slider {
-        height: 100%; /* Full height for slider */
-        display: flex; /* Use flexbox for better distribution */
-        justify-content: space-between; /* Space slides evenly */
-    }
-
-    .slide.active {
-        transform: scale(0.9); /* Ensure active slides are fully visible */
-        opacity: 1;
-        transition: transform 0.7s ease, opacity 0.3s ease; /* Smooth transitions */
-    }
-
-    .slide.not-active {
-    transform: scale(0.7); /* Slightly smaller */
-    opacity: 0.5; /* Semi-transparent */
-    transition: transform 0.7s ease, opacity 0.3s ease, filter 0.3s ease; /* Smooth transitions */
-}
     </style>
 </head>
 <body>
     <header class="bg-blue-600 text-white p-6">
-        <h1 class="text-5xl font-extrabold text-center" id="features-header-title">Contact Us</h1>
+        <h1 class="text-5xl font-extrabold text-center" id="features-header-title">Features of Sarvamitra Vayama Sangam</h1>
         <nav class="flex justify-center space-x-8 mt-3">
             <a href="index.html" class="hover:underline transition" id="nav-home">Home</a>
             <a href="about.html" class="hover:underline transition" id="nav-about">About</a>
-            <a href="features.html" class="hover:underline transition active" id="nav-features">Contact Us</a>
+            <a href="features.html" class="hover:underline transition active" id="nav-features">Features</a>
             <a href="tos/termsOfService.html" class="hover:underline transition" id="nav-tos">Terms of Service</a>
             <a href="settings.html" class="hover:underline transition" id="nav-settings">Settings</a>
         </nav>
@@ -247,9 +199,8 @@
     <main class="slider-container" id="slider-container">
         <div class="slider" id="slider">
             <div class="slide active">
-                <h2 class="text-4xl font-semibold" id="features-slide-title1">Email</h2>
-                <p class="mt-4 text-center" id="features-slide-desc1">You can contact us at sssgym@gmail.com </p>
-                <p class="mt-4 text-center" id="features-slide-card-1-desc-2">Phone Number:4124124124</p>
+                <h2 class="text-4xl font-semibold" id="features-slide-title1">Smart Adult Content Filter</h2>
+                <p class="mt-4 text-center" id="features-slide-desc1">This feature ensures a safe environment by filtering inappropriate content.</p>
             </div>
             <div class="slide">
                 <h2 class="text-4xl font-semibold" id="features-slide-title2">Music Guessing Game</h2>
@@ -338,9 +289,9 @@
         function changeLanguage(lang) {
             const translations = {
                 en: {
-                    featuresHeaderTitle: "Contact us",
-                    featuresSlideTitle1: "Email",
-                    featuresSlideDesc1: "You can contact us at sssgym@gmail.com",
+                    featuresHeaderTitle: "Features of Sarvamitra Vayama Sangam",
+                    featuresSlideTitle1: "Smart Adult Content Filter",
+                    featuresSlideDesc1: "This feature ensures a safe environment by filtering inappropriate content.",
                     featuresSlideTitle2: "Music Guessing Game",
                     featuresSlideDesc2: "Engage with your friends in a fun music guessing game powered by YouTube!",
                     navHome: "Home",
@@ -406,34 +357,5 @@
             changeLanguage(event.target.value);
         });
     </script>
-    <title>PlanckBot - Features</title>
-</head>
-<body class="bg-gray-100 text-gray-800">
-    <header class="bg-blue-600 text-white p-6 shadow-lg">
-        <h1 class="text-5xl font-bold text-center">Features of PlanckBot</h1>
-        <nav class="flex justify-center space-x-8 mt-3">
-            <a href="index.html" class="hover:underline hover:text-blue-300 transition">Home</a>
-            <a href="about.html" class="hover:underline hover:text-blue-300 transition">About</a>
-            <a href="features.html" class="hover:underline hover:text-blue-300 transition">Features</a>
-            <a href="tos/termsOfService.html" class="hover:underline hover:text-blue-300 transition">Terms of Service</a>
-            <a href="license.html" class="hover:underline hover:text-blue-300 transition">License</a>
-        </nav>
-    </header>
-
-    <main class="container mx-auto my-10 p-8 bg-white rounded-lg shadow-md">
-        <h2 class="text-4xl font-semibold mb-5">Our Key Features</h2>
-        <ul class="list-disc list-inside mb-5">
-            <li class="text-lg">Smart Profanity Filter</li>
-            <li class="text-lg">Random Music Guessing Game</li>
-            <li class="text-lg">Moderation Tools</li>
-            <li class="text-lg">Seamless AI Integration</li>
-            <li class="text-lg">User-Friendly Interface</li>
-        </ul>
-        <p class="text-lg">PlanckBot is designed to make your Discord experience enjoyable while ensuring a safe environment for all users.</p>
-    </main>
-
-    <footer class="bg-gray-200 text-center p-4">
-        <p>&copy; 2024 PlanckBot. All rights reserved.</p>
-    </footer>
 </body>
 </html>

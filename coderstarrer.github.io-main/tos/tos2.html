@@ -7,264 +7,34 @@
     <link href="../styles.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<style>
-    body {
-        overflow-x: hidden;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-        background: #f8fafc; /* Lighter background */
-        font-family: 'Inter', sans-serif; /* Sleek modern font */
-        color: #333; /* Darker text for better readability */
-    }
-
-    header {
-        background-color: #1E3A8A; /* Darker blue for header */
-        padding: 20px;
-    }
-
-    nav ul {
-        display: flex;
-        gap: 20px;
-    }
-
-    nav a {
-        position: relative;
-        color: #e0f2fe; /* Light blue text */
-        padding: 10px 20px;
-        transition: color 0.3s ease;
-        font-weight: 500; /* Slightly bolder text */
-    }
-
-    nav a:hover, nav a.active {
-        color: #fff;
-        text-decoration: underline;
-    }
-
-    main {
-        background: #ffffff; /* Clean white background */
-        max-width: 900px;
-        margin: 50px auto;
-        padding: 40px;
-        border-radius: 12px; /* Rounded corners */
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    }
-
-    h1, h2 {
-        color: #1E3A8A; /* Matching title color with header */
-        font-weight: bold
-    }
-
-    h1 {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        text-align: center;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        font-weight: bold;
-    }
-
-    h2 {
-        font-size: 1.75rem;
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-        font-weight: bold;
-    }
-
-    p {
-        line-height: 1.6; /* Increased line spacing */
-        margin-bottom: 1rem;
-        font-size: 1.1rem;
-    }
-
-    .pagination {
-        display: flex;
-        justify-content: center;
-        gap: 8px;
-        margin-top: 2rem;
-    }
-
-    .pagination a {
-        display: inline-block;
-        padding: 10px 16px;
-        border-radius: 6px;
-        background-color: #1E3A8A;
-        color: white;
-        font-weight: bold;
-        text-decoration: none;
-        transition: background-color 0.3s ease;
-    }
-
-    .pagination a:hover, .pagination a.active {
-        background-color: #4f46e5; /* Slightly lighter hover effect */
-    }
-
-    footer {
-        background-color: #1E3A8A;
-        color: #e0f2fe;
-        text-align: center;
-        padding: 20px;
-        margin-top: auto;
-        font-size: 0.9rem;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-        main {
-            padding: 20px;
-            margin: 20px;
-        }
-
-        h1 {
-            font-size: 2rem;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-        }
-
-        nav ul {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .pagination {
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .pagination a {
-            width: 100%;
-            text-align: center;
-        }
-    }
-
-    /* For mobile devices (max-width: 640px) */
-@media (max-width: 640px) {
-    h1 {
-        font-size: 2rem;
-        text-align: center;
-    }
-
-    h2 {
-        font-size: 1.8rem;
-        text-align: center;
-    }
-
-    p {
-        font-size: 1rem;
-        text-align: center;
-    }
-
-    nav {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-    }
-
-    nav a {
-        font-size: 1rem;
-        padding: 8px 10px;
-    }
-
-    .slider {
-        width: 100vw;
-    }
-
-    .slide {
-        padding: 20px; /* Increased padding for spacing */
-        height: auto;
-        word-wrap: break-word; /* Ensures long text breaks to the next line */
-        line-height: 1.5; /* Added line-height to improve readability */
-    }
-
-    .slide h2 {
-        font-size: 1.5rem;
-        text-align: center;
-        margin-bottom: 10px; /* Adds spacing below heading */
-    }
-
-    .slide p, .slide ul {
-        font-size: 1rem;
-        text-align: center;
-        padding: 10px; /* Padding inside text for better spacing */
-        line-height: 1.4;
-    }
-
-    ul {
-        padding: 0;
-        margin: 0;
-        list-style-type: none; /* Remove list bullet points */
-    }
-
-    footer {
-        font-size: 0.9rem;
-    }
-}
-
-
-    /* For tablets and larger devices (min-width: 769px) */
-    @media (min-width: 769px) {
-        h1 {
-            font-size: 3.5rem; /* Larger titles for bigger screens */
-            font-weight: bold;
-        }
-        h2 {
-            font-size: 2.5rem;
-            font-weight: bold;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-        nav a {
-            font-size: 1.2rem; /* Make the nav items more prominent */
-            padding: 10px 20px;
-            white-space: nowrap; /* Ensure nav links are on one line */
-        }
-        footer {
-            font-size: 1rem;
-        }
-    }
-</style>
 <body>
     <header>
-        <nav class="flex justify-between items-center">
-            <ul class="flex space-x-4">
-                <li><a href="../index.html" class="hover:underline" id="nav-home">Home</a></li>
-                <li><a href="../about.html" class="hover:underline" id="nav-about">About</a></li>
-                <li><a href="../features.html" class="hover:underline" id="nav-features">Features</a></li>
-                <li><a href="./termsOfService.html" class="hover:underline active" id="nav-terms">Terms of Service</a></li>
-                <li><a href="../settings.html" class="hover:underline" id="nav-settings">Settings</a></li>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../features.html">Features</a></li>
+                <li><a href="./termsOfService.html">Terms of Service</a></li>
+                <li><a href="../license.html">License</a></li>
             </ul>
         </nav>
     </header>
-
     <main>
-        <h1 id="terms-header-title">Terms of Service</h1>
-        <p id="terms-intro">Welcome to our Terms of Service page. Please read these terms carefully before using our services.</p>
-
-        <h2 id="terms-acceptance-title">1. Acceptance of Terms</h2>
-        <p id="terms-acceptance-desc">By accessing or using our services, you agree to be bound by these terms.</p>
-
-        <h2 id="terms-changes-title">2. Changes to Terms</h2>
-        <p id="terms-changes-desc">We reserve the right to modify these terms at any time. Your continued use of our services after any changes indicates your acceptance of the new terms.</p>
-
-        <h2 id="terms-responsibilities-title">3. User Responsibilities</h2>
-        <p id="terms-responsibilities-desc">You are responsible for maintaining the confidentiality of your account and password.</p>
-
-        <h2 id="terms-termination-title">4. Termination</h2>
-        <p id="terms-termination-desc">We may terminate your access to the services at any time for violations of these terms.</p>
-
-        <h2 id="terms-law-title">5. Governing Law</h2>
-        <p id="terms-law-desc">These terms are governed by the laws of [Your Country].</p>
-
-        <h2 id="terms-contact-title">6. Contact Information</h2>
-        <p id="terms-contact-desc">If you have any questions about these terms, please contact us.</p>
-
+        <h1>Terms of Service</h1>
+        <p>Welcome to our Terms of Service page. Please read these terms carefully before using our services.</p>
+        <h2>1. Acceptance of Terms</h2>
+        <p>By accessing or using our services, you agree to be bound by these terms.</p>
+        <h2>2. Changes to Terms</h2>
+        <p>We reserve the right to modify these terms at any time. Your continued use of our services after any changes indicates your acceptance of the new terms.</p>
+        <h2>3. User Responsibilities</h2>
+        <p>You are responsible for maintaining the confidentiality of your account and password.</p>
+        <h2>4. Termination</h2>
+        <p>We may terminate your access to the services at any time for violations of these terms.</p>
+        <h2>5. Governing Law</h2>
+        <p>These terms are governed by the laws of [Your Country].</p>
+        <h2>6. Contact Information</h2>
+        <p>If you have any questions about these terms, please contact us.</p>
+        
         <div class="pagination">
             <a href="termsOfService.html" class="active">1</a>
             <a href="tos2.html">2</a>
@@ -273,6 +43,7 @@
             <!-- Add more links as needed -->
         </div>
     </main>
+<<<<<<< HEAD
 
     <footer>
         <p>&copy; 2024 Your Company. All rights reserved.</p>
@@ -404,5 +175,10 @@ function changeLanguage(lang) {
             }
         };
     </script>
+=======
+    <footer>
+        <p>&copy; 2024 Your Company. All rights reserved.</p>
+    </footer>
+>>>>>>> e32acb714458046b16c2b60b51a2217e2bc9ca4c
 </body>
 </html>
